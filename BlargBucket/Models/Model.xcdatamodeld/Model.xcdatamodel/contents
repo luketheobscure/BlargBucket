@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6252" systemVersion="14B25" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Commit" representedClassName="BlargBucket.Commit" syncable="YES">
+        <attribute name="commit_description" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="commit_hash" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="belongsToEvent" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="hasCommits" inverseEntity="Event" syncable="YES"/>
+        <relationship name="belongsToPullRequest" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PullRequest" inverseName="hasCommits" inverseEntity="PullRequest" syncable="YES"/>
+        <relationship name="belongsToRepository" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Repository" inverseName="hasCommits" inverseEntity="Repository" syncable="YES"/>
+    </entity>
+    <entity name="Event" representedClassName="BlargBucket.Event" syncable="YES">
+        <attribute name="event" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="event_description" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="node" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="utc_created_on" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="belongsToRepository" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Repository" inverseName="hasEvents" inverseEntity="Repository" syncable="YES"/>
+        <relationship name="belongsToUser" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="hasEvents" inverseEntity="User" syncable="YES"/>
+        <relationship name="hasCommits" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Commit" inverseName="belongsToEvent" inverseEntity="Commit" syncable="YES"/>
+    </entity>
+    <entity name="PullRequest" representedClassName="BlargBucket.PullRequest" syncable="YES">
+        <attribute name="created_on" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="destination_branch" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="diff" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="pr_description" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="source_branch" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="string" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updated_on" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="belongsToRepository" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Repository" inverseName="hasPullRequests" inverseEntity="Repository" syncable="YES"/>
+        <relationship name="belongsToUser" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="hasPullRequests" inverseEntity="User" syncable="YES"/>
+        <relationship name="hasCommits" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Commit" inverseName="belongsToPullRequest" inverseEntity="Commit" syncable="YES"/>
+        <relationship name="hasReviewers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Reviewer" inverseName="belongsToPullRequest" inverseEntity="Reviewer" syncable="YES"/>
+    </entity>
+    <entity name="Repository" representedClassName="BlargBucket.Repository" syncable="YES">
+        <attribute name="creator" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="email_mailinglist" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="email_writers" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="fork_of" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="has_issues" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="has_wiki" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="is_fork" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="is_mq" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="is_private" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="language" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="logo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mq_of" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="no_forks" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="no_public_forks" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="owner" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="read_only" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="repo_description" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="resource_uri" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="scm" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="size" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="slug" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="utc_created_on" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="utc_last_updated" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="website" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="hasCommits" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Commit" inverseName="belongsToRepository" inverseEntity="Commit" syncable="YES"/>
+        <relationship name="hasEvents" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Event" inverseName="belongsToRepository" inverseEntity="Event" syncable="YES"/>
+        <relationship name="hasPullRequests" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PullRequest" inverseName="belongsToRepository" inverseEntity="PullRequest" syncable="YES"/>
+    </entity>
+    <entity name="Reviewer" representedClassName="BlargBucket.Reviewer" syncable="YES">
+        <attribute name="approved" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <relationship name="belongsToPullRequest" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PullRequest" inverseName="hasReviewers" inverseEntity="PullRequest" syncable="YES"/>
+        <relationship name="belongsToUser" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="hasPullRequestReviews" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="User" representedClassName="BlargBucket.User" syncable="YES">
+        <attribute name="avatar" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="display_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="first_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="last_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="hasEvents" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="belongsToUser" inverseEntity="Event" syncable="YES"/>
+        <relationship name="hasPullRequestReviews" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Reviewer" inverseName="belongsToUser" inverseEntity="Reviewer" syncable="YES"/>
+        <relationship name="hasPullRequests" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PullRequest" inverseName="belongsToUser" inverseEntity="PullRequest" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Commit" positionX="-243" positionY="135" width="128" height="118"/>
+        <element name="Event" positionX="-380" positionY="21" width="128" height="150"/>
+        <element name="PullRequest" positionX="-425" positionY="153" width="128" height="238"/>
+        <element name="Repository" positionX="-63" positionY="-18" width="128" height="493"/>
+        <element name="Reviewer" positionX="-243" positionY="135" width="128" height="88"/>
+        <element name="User" positionX="-342" positionY="281" width="128" height="165"/>
+    </elements>
+</model>

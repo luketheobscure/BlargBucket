@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="roU-Kf-DhK" customClass="ButtonTableViewCell" customModule="BlargBucket" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="roU-Kf-DhK" id="Fd5-Yd-vbZ">
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KhR-8b-dsI">
+                        <rect key="frame" x="52" y="11" width="260" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="260" id="hY5-8r-6dS"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5mo-Tn-miD">
+                        <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottomMargin" secondItem="5mo-Tn-miD" secondAttribute="bottom" constant="-8.5" id="7nZ-XG-B1m"/>
+                    <constraint firstItem="KhR-8b-dsI" firstAttribute="leading" secondItem="Fd5-Yd-vbZ" secondAttribute="leading" constant="52" id="SnK-gI-USh"/>
+                    <constraint firstItem="5mo-Tn-miD" firstAttribute="leading" secondItem="Fd5-Yd-vbZ" secondAttribute="leading" id="URX-iA-1F9"/>
+                    <constraint firstItem="KhR-8b-dsI" firstAttribute="leading" secondItem="5mo-Tn-miD" secondAttribute="trailing" constant="8" symbolic="YES" id="dkV-DA-7yj"/>
+                    <constraint firstItem="KhR-8b-dsI" firstAttribute="top" secondItem="Fd5-Yd-vbZ" secondAttribute="topMargin" constant="3" id="f0W-s1-3GM"/>
+                    <constraint firstItem="5mo-Tn-miD" firstAttribute="top" secondItem="Fd5-Yd-vbZ" secondAttribute="top" id="gTX-dQ-pOH"/>
+                    <constraint firstItem="KhR-8b-dsI" firstAttribute="centerY" secondItem="Fd5-Yd-vbZ" secondAttribute="centerY" id="gdY-xF-uW7"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="customImageView" destination="5mo-Tn-miD" id="lj8-HU-3iC"/>
+                <outlet property="customTextLabel" destination="KhR-8b-dsI" id="phg-Hb-ulQ"/>
+            </connections>
+            <point key="canvasLocation" x="113" y="154"/>
+        </tableViewCell>
+    </objects>
+</document>

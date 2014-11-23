@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="BlargBucket" customModuleProvider="target">
+            <connections>
+                <outlet property="loginButton" destination="bqS-oT-V1b" id="YAp-d2-sHV"/>
+                <outlet property="passwordField" destination="CDl-HX-hf0" id="A98-30-UQq"/>
+                <outlet property="usernameField" destination="jbt-IY-t18" id="rNE-uU-YRE"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CDl-HX-hf0">
+                    <rect key="frame" x="32" y="492" width="250" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="144" id="ujw-d4-pmH"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="ujw-d4-pmH"/>
+                        </mask>
+                    </variation>
+                </textField>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Blarg Bucket" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V7J-cb-i6W">
+                    <rect key="frame" x="27" y="77" width="260" height="186"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="186" id="K67-uB-zMg"/>
+                    </constraints>
+                    <color key="textColor" name="controlLightHighlightColor" catalog="System" colorSpace="catalog"/>
+                    <fontDescription key="fontDescription" name="AvenirNext-UltraLight" family="Avenir Next" pointSize="70"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bqS-oT-V1b">
+                    <rect key="frame" x="32" y="530" width="250" height="33"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="143.5" id="3A1-Gz-vyt"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
+                    <state key="normal" title="Login">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="3A1-Gz-vyt"/>
+                        </mask>
+                    </variation>
+                    <connections>
+                        <action selector="loginButtonPushed:" destination="-1" eventType="touchUpInside" id="rX9-6p-kHA"/>
+                    </connections>
+                </button>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username or Email" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="jbt-IY-t18">
+                    <rect key="frame" x="32" y="454" width="250" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+            </subviews>
+            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="V7J-cb-i6W" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="27" id="2Kf-xU-MQf"/>
+                <constraint firstItem="CDl-HX-hf0" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="216" id="2NV-CE-SaN"/>
+                <constraint firstAttribute="trailing" secondItem="CDl-HX-hf0" secondAttribute="trailing" constant="215" id="4oB-tP-RPY"/>
+                <constraint firstAttribute="trailing" secondItem="V7J-cb-i6W" secondAttribute="trailing" constant="33" id="5hc-5j-FUo"/>
+                <constraint firstItem="jbt-IY-t18" firstAttribute="leading" secondItem="CDl-HX-hf0" secondAttribute="leading" id="7wh-Hg-QhK"/>
+                <constraint firstItem="jbt-IY-t18" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="216" id="ARR-8l-YW4"/>
+                <constraint firstItem="CDl-HX-hf0" firstAttribute="leading" secondItem="bqS-oT-V1b" secondAttribute="leading" id="FE7-p6-YSD"/>
+                <constraint firstItem="CDl-HX-hf0" firstAttribute="trailing" secondItem="bqS-oT-V1b" secondAttribute="trailing" id="G8t-he-7lj"/>
+                <constraint firstItem="jbt-IY-t18" firstAttribute="centerX" secondItem="V7J-cb-i6W" secondAttribute="centerX" id="PEL-DD-Enp"/>
+                <constraint firstAttribute="bottom" secondItem="bqS-oT-V1b" secondAttribute="bottom" constant="154" id="SAj-D1-fvB"/>
+                <constraint firstAttribute="bottom" secondItem="jbt-IY-t18" secondAttribute="bottom" constant="84" id="Suc-Qh-iNW"/>
+                <constraint firstItem="CDl-HX-hf0" firstAttribute="top" secondItem="jbt-IY-t18" secondAttribute="bottom" constant="8" symbolic="YES" id="TcH-nG-Whb"/>
+                <constraint firstAttribute="trailing" secondItem="jbt-IY-t18" secondAttribute="trailing" constant="215" id="XJS-R2-9ys"/>
+                <constraint firstItem="jbt-IY-t18" firstAttribute="trailing" secondItem="CDl-HX-hf0" secondAttribute="trailing" id="Xf2-sJ-Sq5"/>
+                <constraint firstItem="jbt-IY-t18" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="32" id="aZ7-gb-Sq8"/>
+                <constraint firstItem="V7J-cb-i6W" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="77" id="cc0-Us-yfA"/>
+                <constraint firstItem="jbt-IY-t18" firstAttribute="trailing" secondItem="CDl-HX-hf0" secondAttribute="trailing" constant="-16" id="dUJ-ey-fAs"/>
+                <constraint firstItem="bqS-oT-V1b" firstAttribute="centerX" secondItem="CDl-HX-hf0" secondAttribute="centerX" id="ftl-1y-glV"/>
+                <constraint firstItem="bqS-oT-V1b" firstAttribute="top" secondItem="CDl-HX-hf0" secondAttribute="bottom" constant="8" symbolic="YES" id="seT-AW-Pfh"/>
+            </constraints>
+            <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="ARR-8l-YW4"/>
+                    <exclude reference="XJS-R2-9ys"/>
+                    <exclude reference="dUJ-ey-fAs"/>
+                    <exclude reference="2NV-CE-SaN"/>
+                    <exclude reference="4oB-tP-RPY"/>
+                    <exclude reference="SAj-D1-fvB"/>
+                    <exclude reference="ftl-1y-glV"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="495" y="237"/>
+        </view>
+    </objects>
+</document>
