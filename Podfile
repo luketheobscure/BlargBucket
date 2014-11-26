@@ -8,5 +8,8 @@ target "BlargBucket" do
 end
 
 target "BlargBucketTests" do
+  pod 'SDWebImage', '~>3.6'
+  pod 'AFNetworking', '~> 2.0'
+  pod 'RegExCategories', '~> 1.0'
 end
 
