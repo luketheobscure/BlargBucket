@@ -1,4 +1,4 @@
-# BlargBucket #
+## BlargBucket [![Build Status](https://travis-ci.org/luketheobscure/BlargBucket.svg?branch=master)](https://travis-ci.org/luketheobscure/BlargBucket)
 ======
 
 A nice bucket for your blargs.

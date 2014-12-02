@@ -9,25 +9,25 @@
 import UIKit
 import CoreData
 
-class User: NSManagedObject {
+public class User: NSManagedObject {
 
-	@NSManaged var avatar: NSString?
-	@NSManaged var display_name: NSString?
-	@NSManaged var last_name: NSString?
-	@NSManaged var first_name: NSString?
-	@NSManaged var username: NSString?
+	@NSManaged public var avatar: NSString?
+	@NSManaged public var display_name: NSString?
+	@NSManaged public var last_name: NSString?
+	@NSManaged public var first_name: NSString?
+	@NSManaged public var username: NSString?
 
-	class func userWithUsername(username:AnyObject) -> User {
+	public class func userWithUsername(username:AnyObject, context: NSManagedObjectContext = CoreDataStack.sharedInstance.managedObjectContext) -> User {
 		var user : User?
 		let request = NSFetchRequest()
-		request.entity = NSEntityDescription.entityForName("User", inManagedObjectContext: CoreDataStack.sharedInstance.managedObjectContext)
+		request.entity = NSEntityDescription.entityForName("User", inManagedObjectContext: context)
 		request.predicate = NSPredicate(format: "username = '\(username)'")
 		var error = NSErrorPointer()
-		let results = CoreDataStack.sharedInstance.managedObjectContext.executeFetchRequest(request, error: nil) as Array?
+		let results = context.executeFetchRequest(request, error: nil) as Array?
 		user = results?.last as? User
 
 		if user == nil {
-			user =  NSEntityDescription.insertNewObjectForEntityForName("User", inManagedObjectContext: CoreDataStack.sharedInstance.managedObjectContext) as? User
+			user =  NSEntityDescription.insertNewObjectForEntityForName("User", inManagedObjectContext: context) as? User
 			user!.username = username as? NSString
 		}
 

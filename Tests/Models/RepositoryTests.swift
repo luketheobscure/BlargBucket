@@ -11,15 +11,7 @@ import CoreData
 import XCTest
 import BlargBucket
 
-class RepositoryModelTests: XCTestCase {
-
-	lazy var context: NSManagedObjectContext = ({
-		let coordinator = NSPersistentStoreCoordinator(managedObjectModel: CoreDataStack.sharedInstance.managedObjectModel)
-		coordinator.addPersistentStoreWithType(NSInMemoryStoreType, configuration: nil, URL: nil, options: nil, error: nil)
-		let moc = NSManagedObjectContext()
-		moc.persistentStoreCoordinator = coordinator
-		return moc
-	})()
+class RepositoryTests: BlargTest {
 
     func testCreateAndGet() {
 		var JSON: AnyObject = [
@@ -53,8 +45,8 @@ class RepositoryModelTests: XCTestCase {
 			"website": ""
 		]
 
-		let repository = Repository.create(JSON, context: context)
-		context.save(nil)
+		let repository = Repository.create(JSON, context: fixtures.context)
+		fixtures.context.save(nil)
 
 		XCTAssertEqual(JSON["name"] as NSString, repository.name!, "Repo name not correct.")
 		XCTAssertEqual(JSON["description"] as NSString, repository.repo_description!, "Repo description not correct.")
@@ -66,7 +58,7 @@ class RepositoryModelTests: XCTestCase {
 		XCTAssertNotNil(repository.utc_created_on, "Created on is nil")
 		XCTAssertNotNil(repository.utc_last_updated, "Updated on is nil")
 
-		let repository2 = Repository.repoWithURL(JSON["resource_uri"] as String, context: context)
+		let repository2 = Repository.repoWithURL(JSON["resource_uri"] as String, context: fixtures.context)
 
 		XCTAssertEqual(JSON["name"] as NSString, repository2.name!, "Repo name not correct.")
 		XCTAssertEqual(JSON["description"] as NSString, repository2.repo_description!, "Repo description not correct.")

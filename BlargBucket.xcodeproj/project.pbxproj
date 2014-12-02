@@ -7,21 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2EC21C3F82DF4C7A9A298C0B /* libPods-BlargBucketTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A92B1606B64A41DCA1A82776 /* libPods-BlargBucketTests.a */; };
 		9C82EA889C8E46E78D2F6E0A /* libPods-BlargBucket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E5939069ECF049F5958530A3 /* libPods-BlargBucket.a */; };
 		B52FD1A11A0EC3CA00D7324F /* ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52FD19F1A0EC3CA00D7324F /* ButtonTableViewCell.swift */; };
 		B52FD1A21A0EC3CA00D7324F /* ButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B52FD1A01A0EC3CA00D7324F /* ButtonTableViewCell.xib */; };
 		B5314CDA19A3AAFE0066B402 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5314CD919A3AAFE0066B402 /* Notifications.swift */; };
+		B54054881A2D62BE00974C75 /* Fixtures.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54054861A2D615C00974C75 /* Fixtures.swift */; };
+		B540548B1A2D648F00974C75 /* BlargTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54054891A2D645C00974C75 /* BlargTest.swift */; };
 		B547AD2A19B398EE00AE2F5B /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = B547AD2919B398EE00AE2F5B /* Formatters.swift */; };
 		B547AD2C19B3AA1D00AE2F5B /* BlargManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B547AD2B19B3AA1D00AE2F5B /* BlargManagedObject.swift */; };
 		B547AD3219B3D5C800AE2F5B /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B547AD3119B3D5C800AE2F5B /* CoreDataStack.swift */; };
 		B547AD3B19B3E36200AE2F5B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B547AD3A19B3E36200AE2F5B /* CoreData.framework */; };
 		B547AD3C19B3E36C00AE2F5B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B547AD3A19B3E36200AE2F5B /* CoreData.framework */; };
 		B54C1B5B199D1F78002F5E04 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54C1B5A199D1F78002F5E04 /* Repository.swift */; };
-		B552102F1A22495400A184B7 /* RepositoryModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B547AD2F19B3C83700AE2F5B /* RepositoryModelTests.swift */; };
+		B552102F1A22495400A184B7 /* RepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B547AD2F19B3C83700AE2F5B /* RepositoryTests.swift */; };
 		B55210301A22499000A184B7 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B547AD3119B3D5C800AE2F5B /* CoreDataStack.swift */; };
 		B55210321A2249CB00A184B7 /* BlargManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B547AD2B19B3AA1D00AE2F5B /* BlargManagedObject.swift */; };
 		B55210331A2249D600A184B7 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = B547AD2919B398EE00AE2F5B /* Formatters.swift */; };
 		B556333B19F408C500856D7A /* ReviewersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B556333A19F408C500856D7A /* ReviewersViewController.swift */; };
+		B561F69C1A2D9B920087D8CA /* UserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B561F69B1A2D9B920087D8CA /* UserTests.swift */; };
 		B564A9DA19AA57D400464885 /* NormalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B564A9D819AA57D400464885 /* NormalTableViewCell.swift */; };
 		B567B94919B189B500D4430B /* PullRequestsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B567B94819B189B500D4430B /* PullRequestsTableViewController.swift */; };
 		B567B94B19B18A6D00D4430B /* PullRequestsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B567B94A19B18A6D00D4430B /* PullRequestsViewModel.swift */; };
@@ -30,7 +34,6 @@
 		B56D3BC519E98F05004A2504 /* DiffViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56D3BC419E98F05004A2504 /* DiffViewModel.swift */; };
 		B573029F199C6A0B00060D2E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B573029E199C6A0B00060D2E /* AppDelegate.swift */; };
 		B57302A9199C6A0B00060D2E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B57302A8199C6A0B00060D2E /* Images.xcassets */; };
-		B57302B5199C6A0B00060D2E /* BlargBucketTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57302B4199C6A0B00060D2E /* BlargBucketTests.swift */; };
 		B57302C0199C6A8F00060D2E /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B57302BE199C6A8F00060D2E /* Model.xcdatamodeld */; };
 		B57302C6199C6DCF00060D2E /* DataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57302C5199C6DCF00060D2E /* DataFetcher.swift */; };
 		B583A9BE19F8551800AC1EF8 /* ReviewerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B583A9BC19F8551800AC1EF8 /* ReviewerCollectionViewCell.swift */; };
@@ -109,6 +112,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		90234EC078E04131A447D304 /* Pods-BlargBucketTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlargBucketTests.xcconfig"; path = "Pods/Pods-BlargBucketTests.xcconfig"; sourceTree = "<group>"; };
 		A92B1606B64A41DCA1A82776 /* libPods-BlargBucketTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BlargBucketTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B259516F5B724AE1B79BF5B4 /* Pods-BlargBucket.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlargBucket.xcconfig"; path = "Pods/Pods-BlargBucket.xcconfig"; sourceTree = "<group>"; };
 		B50976D119BD687000513CC4 /* libPods-BlargBucket.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-BlargBucket.a"; path = "Pods/build/Debug-iphoneos/libPods-BlargBucket.a"; sourceTree = "<group>"; };
@@ -116,13 +120,16 @@
 		B52FD19F1A0EC3CA00D7324F /* ButtonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ButtonTableViewCell.swift; path = Views/ButtonTableViewCell.swift; sourceTree = "<group>"; };
 		B52FD1A01A0EC3CA00D7324F /* ButtonTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ButtonTableViewCell.xib; path = Views/ButtonTableViewCell.xib; sourceTree = "<group>"; };
 		B5314CD919A3AAFE0066B402 /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		B54054861A2D615C00974C75 /* Fixtures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Fixtures.swift; path = "Other Classes/Fixtures.swift"; sourceTree = "<group>"; };
+		B54054891A2D645C00974C75 /* BlargTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BlargTest.swift; path = "Other Classes/BlargTest.swift"; sourceTree = "<group>"; };
 		B547AD2919B398EE00AE2F5B /* Formatters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
 		B547AD2B19B3AA1D00AE2F5B /* BlargManagedObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BlargManagedObject.swift; path = "Models/Base Classes/BlargManagedObject.swift"; sourceTree = "<group>"; };
-		B547AD2F19B3C83700AE2F5B /* RepositoryModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RepositoryModelTests.swift; path = Models/RepositoryModelTests.swift; sourceTree = "<group>"; };
+		B547AD2F19B3C83700AE2F5B /* RepositoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RepositoryTests.swift; path = Models/RepositoryTests.swift; sourceTree = "<group>"; };
 		B547AD3119B3D5C800AE2F5B /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		B547AD3A19B3E36200AE2F5B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		B54C1B5A199D1F78002F5E04 /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Repository.swift; path = Models/Repository.swift; sourceTree = "<group>"; };
 		B556333A19F408C500856D7A /* ReviewersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReviewersViewController.swift; path = ViewControllers/ReviewersViewController.swift; sourceTree = "<group>"; };
+		B561F69B1A2D9B920087D8CA /* UserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserTests.swift; path = Models/UserTests.swift; sourceTree = "<group>"; };
 		B564A9D819AA57D400464885 /* NormalTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NormalTableViewCell.swift; path = Views/NormalTableViewCell.swift; sourceTree = "<group>"; };
 		B567B94819B189B500D4430B /* PullRequestsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PullRequestsTableViewController.swift; path = ViewControllers/PullRequestsTableViewController.swift; sourceTree = "<group>"; };
 		B567B94A19B18A6D00D4430B /* PullRequestsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PullRequestsViewModel.swift; path = ViewModels/PullRequestsViewModel.swift; sourceTree = "<group>"; };
@@ -134,8 +141,7 @@
 		B573029E199C6A0B00060D2E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B57302A8199C6A0B00060D2E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "UI Resources/Images.xcassets"; sourceTree = "<group>"; };
 		B57302AE199C6A0B00060D2E /* BlargBucketTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlargBucketTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B57302B3199C6A0B00060D2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B57302B4199C6A0B00060D2E /* BlargBucketTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlargBucketTests.swift; sourceTree = "<group>"; };
+		B57302B3199C6A0B00060D2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../../../Documents/BlargBucket/Tests/Info.plist; sourceTree = "<group>"; };
 		B57302BF199C6A8F00060D2E /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		B57302C5199C6DCF00060D2E /* DataFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataFetcher.swift; sourceTree = "<group>"; };
 		B583A9BC19F8551800AC1EF8 /* ReviewerCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReviewerCollectionViewCell.swift; path = Views/ReviewerCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -192,6 +198,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B547AD3B19B3E36200AE2F5B /* CoreData.framework in Frameworks */,
+				2EC21C3F82DF4C7A9A298C0B /* libPods-BlargBucketTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,6 +217,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B540548C1A2D650100974C75 /* Other Classes */ = {
+			isa = PBXGroup;
+			children = (
+				B54054891A2D645C00974C75 /* BlargTest.swift */,
+				B54054861A2D615C00974C75 /* Fixtures.swift */,
+			);
+			name = "Other Classes";
+			sourceTree = "<group>";
+		};
 		B547AD2D19B3AA7E00AE2F5B /* Base Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -221,7 +237,8 @@
 		B547AD2E19B3B05300AE2F5B /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				B547AD2F19B3C83700AE2F5B /* RepositoryModelTests.swift */,
+				B547AD2F19B3C83700AE2F5B /* RepositoryTests.swift */,
+				B561F69B1A2D9B920087D8CA /* UserTests.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -243,6 +260,7 @@
 				B573029A199C6A0B00060D2E /* Products */,
 				7AC059AF6DF44D7AA61DF82E /* Frameworks */,
 				B259516F5B724AE1B79BF5B4 /* Pods-BlargBucket.xcconfig */,
+				90234EC078E04131A447D304 /* Pods-BlargBucketTests.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -283,8 +301,8 @@
 		B57302B1199C6A0B00060D2E /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				B540548C1A2D650100974C75 /* Other Classes */,
 				B547AD2E19B3B05300AE2F5B /* Models */,
-				B57302B4199C6A0B00060D2E /* BlargBucketTests.swift */,
 				B57302B2199C6A0B00060D2E /* Supporting Files */,
 			);
 			path = Tests;
@@ -643,9 +661,11 @@
 			files = (
 				B55210331A2249D600A184B7 /* Formatters.swift in Sources */,
 				B55210321A2249CB00A184B7 /* BlargManagedObject.swift in Sources */,
+				B540548B1A2D648F00974C75 /* BlargTest.swift in Sources */,
+				B561F69C1A2D9B920087D8CA /* UserTests.swift in Sources */,
 				B55210301A22499000A184B7 /* CoreDataStack.swift in Sources */,
-				B57302B5199C6A0B00060D2E /* BlargBucketTests.swift in Sources */,
-				B552102F1A22495400A184B7 /* RepositoryModelTests.swift in Sources */,
+				B552102F1A22495400A184B7 /* RepositoryTests.swift in Sources */,
+				B54054881A2D62BE00974C75 /* Fixtures.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -798,6 +818,7 @@
 		};
 		B57302BC199C6A0B00060D2E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 90234EC078E04131A447D304 /* Pods-BlargBucketTests.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -822,6 +843,7 @@
 		};
 		B57302BD199C6A0B00060D2E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 90234EC078E04131A447D304 /* Pods-BlargBucketTests.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
