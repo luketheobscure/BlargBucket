@@ -28,9 +28,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B57302AD199C6A0B00060D2E"
-               BuildableName = "BlargBucketTests.xctest"
-               BlueprintName = "BlargBucketTests"
+               BlueprintIdentifier = "B55DBAE61A2F6503001D90E8"
+               BuildableName = "Tests.xctest"
+               BlueprintName = "Tests"
                ReferencedContainer = "container:BlargBucket.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -46,9 +46,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B57302AD199C6A0B00060D2E"
-               BuildableName = "BlargBucketTests.xctest"
-               BlueprintName = "BlargBucketTests"
+               BlueprintIdentifier = "B55DBAE61A2F6503001D90E8"
+               BuildableName = "Tests.xctest"
+               BlueprintName = "Tests"
                ReferencedContainer = "container:BlargBucket.xcodeproj">
             </BuildableReference>
          </TestableReference>

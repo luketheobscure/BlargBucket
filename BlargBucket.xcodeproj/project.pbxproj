@@ -7,25 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2EC21C3F82DF4C7A9A298C0B /* libPods-BlargBucketTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A92B1606B64A41DCA1A82776 /* libPods-BlargBucketTests.a */; };
 		9C82EA889C8E46E78D2F6E0A /* libPods-BlargBucket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E5939069ECF049F5958530A3 /* libPods-BlargBucket.a */; };
 		B52FD1A11A0EC3CA00D7324F /* ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52FD19F1A0EC3CA00D7324F /* ButtonTableViewCell.swift */; };
 		B52FD1A21A0EC3CA00D7324F /* ButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B52FD1A01A0EC3CA00D7324F /* ButtonTableViewCell.xib */; };
 		B5314CDA19A3AAFE0066B402 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5314CD919A3AAFE0066B402 /* Notifications.swift */; };
-		B54054881A2D62BE00974C75 /* Fixtures.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54054861A2D615C00974C75 /* Fixtures.swift */; };
-		B540548B1A2D648F00974C75 /* BlargTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54054891A2D645C00974C75 /* BlargTest.swift */; };
 		B547AD2A19B398EE00AE2F5B /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = B547AD2919B398EE00AE2F5B /* Formatters.swift */; };
 		B547AD2C19B3AA1D00AE2F5B /* BlargManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B547AD2B19B3AA1D00AE2F5B /* BlargManagedObject.swift */; };
 		B547AD3219B3D5C800AE2F5B /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B547AD3119B3D5C800AE2F5B /* CoreDataStack.swift */; };
-		B547AD3B19B3E36200AE2F5B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B547AD3A19B3E36200AE2F5B /* CoreData.framework */; };
 		B547AD3C19B3E36C00AE2F5B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B547AD3A19B3E36200AE2F5B /* CoreData.framework */; };
 		B54C1B5B199D1F78002F5E04 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54C1B5A199D1F78002F5E04 /* Repository.swift */; };
-		B552102F1A22495400A184B7 /* RepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B547AD2F19B3C83700AE2F5B /* RepositoryTests.swift */; };
-		B55210301A22499000A184B7 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B547AD3119B3D5C800AE2F5B /* CoreDataStack.swift */; };
-		B55210321A2249CB00A184B7 /* BlargManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B547AD2B19B3AA1D00AE2F5B /* BlargManagedObject.swift */; };
-		B55210331A2249D600A184B7 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = B547AD2919B398EE00AE2F5B /* Formatters.swift */; };
 		B556333B19F408C500856D7A /* ReviewersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B556333A19F408C500856D7A /* ReviewersViewController.swift */; };
-		B561F69C1A2D9B920087D8CA /* UserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B561F69B1A2D9B920087D8CA /* UserTests.swift */; };
+		B55DBAF21A2F655A001D90E8 /* RepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B547AD2F19B3C83700AE2F5B /* RepositoryTests.swift */; };
+		B55DBAF31A2F655E001D90E8 /* UserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B561F69B1A2D9B920087D8CA /* UserTests.swift */; };
+		B55DBAF41A2F6563001D90E8 /* BlargTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54054891A2D645C00974C75 /* BlargTest.swift */; };
+		B55DBAF51A2F6567001D90E8 /* Fixtures.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54054861A2D615C00974C75 /* Fixtures.swift */; };
 		B564A9DA19AA57D400464885 /* NormalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B564A9D819AA57D400464885 /* NormalTableViewCell.swift */; };
 		B567B94919B189B500D4430B /* PullRequestsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B567B94819B189B500D4430B /* PullRequestsTableViewController.swift */; };
 		B567B94B19B18A6D00D4430B /* PullRequestsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B567B94A19B18A6D00D4430B /* PullRequestsViewModel.swift */; };
@@ -38,6 +33,8 @@
 		B57302C6199C6DCF00060D2E /* DataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57302C5199C6DCF00060D2E /* DataFetcher.swift */; };
 		B583A9BE19F8551800AC1EF8 /* ReviewerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B583A9BC19F8551800AC1EF8 /* ReviewerCollectionViewCell.swift */; };
 		B583A9BF19F8551800AC1EF8 /* ReviewerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B583A9BD19F8551800AC1EF8 /* ReviewerCollectionViewCell.xib */; };
+		B585F4221A2FF08A00567A34 /* Locksmith.swift in Sources */ = {isa = PBXBuildFile; fileRef = B585F4201A2FF08A00567A34 /* Locksmith.swift */; };
+		B585F4231A2FF08A00567A34 /* LocksmithRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B585F4211A2FF08A00567A34 /* LocksmithRequest.swift */; };
 		B587B4721A0D2BDB007F7F10 /* TableCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B587B4711A0D2BDB007F7F10 /* TableCellModel.swift */; };
 		B587B4741A0D2C7E007F7F10 /* PullRequestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B587B4731A0D2C7E007F7F10 /* PullRequestViewModel.swift */; };
 		B594D90B19A53FD5000D6A10 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B594D90A19A53FD5000D6A10 /* EventsViewController.swift */; };
@@ -54,7 +51,6 @@
 		B5B4CA3F199FFA2300A4213A /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B4CA3E199FFA2300A4213A /* SettingsTableViewController.swift */; };
 		B5B4CA4419A07ADE00A4213A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B4CA4219A07ADE00A4213A /* LoginViewController.swift */; };
 		B5B4CA4519A07ADE00A4213A /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5B4CA4319A07ADE00A4213A /* LoginView.xib */; };
-		B5B4CA4819A07DB500A4213A /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B4CA4719A07DB500A4213A /* KeychainService.swift */; };
 		B5B4CA4B19A1691F00A4213A /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B4CA4919A1677B00A4213A /* UIButtonExtension.swift */; };
 		B5B6DC8D19A1C0660086BE5D /* BlargNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B6DC8C19A1C0660086BE5D /* BlargNav.swift */; };
 		B5B93D1E19A6399200E5976E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B5B93D1D19A6399200E5976E /* Localizable.strings */; };
@@ -74,35 +70,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		B50976CD19BD67C700513CC4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B5730291199C6A0B00060D2E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B5730298199C6A0B00060D2E;
-			remoteInfo = BlargBucket;
-		};
-		B50976CF19BD67C800513CC4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B5730291199C6A0B00060D2E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B5730298199C6A0B00060D2E;
-			remoteInfo = BlargBucket;
-		};
-		B50976D519BD69B100513CC4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B5730291199C6A0B00060D2E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B5730298199C6A0B00060D2E;
-			remoteInfo = BlargBucket;
-		};
-		B50976D719BD69B600513CC4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B5730291199C6A0B00060D2E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B5730298199C6A0B00060D2E;
-			remoteInfo = BlargBucket;
-		};
-		B57302AF199C6A0B00060D2E /* PBXContainerItemProxy */ = {
+		B55DBAED1A2F6503001D90E8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B5730291199C6A0B00060D2E /* Project object */;
 			proxyType = 1;
@@ -112,9 +80,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		90234EC078E04131A447D304 /* Pods-BlargBucketTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlargBucketTests.xcconfig"; path = "Pods/Pods-BlargBucketTests.xcconfig"; sourceTree = "<group>"; };
+		0A02CCCAA03C03640B1AFB46 /* Pods-BlargBucket.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlargBucket.release.xcconfig"; path = "Pods/Target Support Files/Pods-BlargBucket/Pods-BlargBucket.release.xcconfig"; sourceTree = "<group>"; };
+		3A68715FD87B4DBD972D83A0 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F33C1EE740E4029A551673B /* libPods-Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A92B1606B64A41DCA1A82776 /* libPods-BlargBucketTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BlargBucketTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B259516F5B724AE1B79BF5B4 /* Pods-BlargBucket.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlargBucket.xcconfig"; path = "Pods/Pods-BlargBucket.xcconfig"; sourceTree = "<group>"; };
 		B50976D119BD687000513CC4 /* libPods-BlargBucket.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-BlargBucket.a"; path = "Pods/build/Debug-iphoneos/libPods-BlargBucket.a"; sourceTree = "<group>"; };
 		B50976D319BD687300513CC4 /* libPods-BlargBucket-SDWebImage.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-BlargBucket-SDWebImage.a"; path = "Pods/build/Debug-iphoneos/libPods-BlargBucket-SDWebImage.a"; sourceTree = "<group>"; };
 		B52FD19F1A0EC3CA00D7324F /* ButtonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ButtonTableViewCell.swift; path = Views/ButtonTableViewCell.swift; sourceTree = "<group>"; };
@@ -129,6 +98,7 @@
 		B547AD3A19B3E36200AE2F5B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		B54C1B5A199D1F78002F5E04 /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Repository.swift; path = Models/Repository.swift; sourceTree = "<group>"; };
 		B556333A19F408C500856D7A /* ReviewersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReviewersViewController.swift; path = ViewControllers/ReviewersViewController.swift; sourceTree = "<group>"; };
+		B55DBAE71A2F6503001D90E8 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B561F69B1A2D9B920087D8CA /* UserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserTests.swift; path = Models/UserTests.swift; sourceTree = "<group>"; };
 		B564A9D819AA57D400464885 /* NormalTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NormalTableViewCell.swift; path = Views/NormalTableViewCell.swift; sourceTree = "<group>"; };
 		B567B94819B189B500D4430B /* PullRequestsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PullRequestsTableViewController.swift; path = ViewControllers/PullRequestsTableViewController.swift; sourceTree = "<group>"; };
@@ -140,12 +110,13 @@
 		B573029D199C6A0B00060D2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Supporting Files/Info.plist"; sourceTree = "<group>"; };
 		B573029E199C6A0B00060D2E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B57302A8199C6A0B00060D2E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "UI Resources/Images.xcassets"; sourceTree = "<group>"; };
-		B57302AE199C6A0B00060D2E /* BlargBucketTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlargBucketTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B57302B3199C6A0B00060D2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../../../Documents/BlargBucket/Tests/Info.plist; sourceTree = "<group>"; };
 		B57302BF199C6A8F00060D2E /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		B57302C5199C6DCF00060D2E /* DataFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataFetcher.swift; sourceTree = "<group>"; };
 		B583A9BC19F8551800AC1EF8 /* ReviewerCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReviewerCollectionViewCell.swift; path = Views/ReviewerCollectionViewCell.swift; sourceTree = "<group>"; };
 		B583A9BD19F8551800AC1EF8 /* ReviewerCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ReviewerCollectionViewCell.xib; path = Views/ReviewerCollectionViewCell.xib; sourceTree = "<group>"; };
+		B585F4201A2FF08A00567A34 /* Locksmith.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Locksmith.swift; path = ext/Locksmith.swift; sourceTree = "<group>"; };
+		B585F4211A2FF08A00567A34 /* LocksmithRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocksmithRequest.swift; path = ext/LocksmithRequest.swift; sourceTree = "<group>"; };
 		B587B4711A0D2BDB007F7F10 /* TableCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableCellModel.swift; path = "ViewModels/Base Classes/TableCellModel.swift"; sourceTree = "<group>"; };
 		B587B4731A0D2C7E007F7F10 /* PullRequestViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PullRequestViewModel.swift; path = ViewModels/PullRequestViewModel.swift; sourceTree = "<group>"; };
 		B594D90A19A53FD5000D6A10 /* EventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventsViewController.swift; path = ViewControllers/EventsViewController.swift; sourceTree = "<group>"; };
@@ -162,7 +133,6 @@
 		B5B4CA3E199FFA2300A4213A /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsTableViewController.swift; path = ViewControllers/SettingsTableViewController.swift; sourceTree = "<group>"; };
 		B5B4CA4219A07ADE00A4213A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = ViewControllers/LoginViewController.swift; sourceTree = "<group>"; };
 		B5B4CA4319A07ADE00A4213A /* LoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginView.xib; path = ViewControllers/LoginView.xib; sourceTree = "<group>"; };
-		B5B4CA4719A07DB500A4213A /* KeychainService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		B5B4CA4919A1677B00A4213A /* UIButtonExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIButtonExtension.swift; path = "UI Resources/UIButtonExtension.swift"; sourceTree = "<group>"; };
 		B5B4CA4C19A16C6500A4213A /* BlargBucket-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BlargBucket-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		B5B6DC8C19A1C0660086BE5D /* BlargNav.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BlargNav.swift; path = "ViewControllers/Base Classes/BlargNav.swift"; sourceTree = "<group>"; };
@@ -181,24 +151,23 @@
 		B5F52A0819F21D2600468E35 /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InfoViewController.swift; path = ViewControllers/InfoViewController.swift; sourceTree = "<group>"; };
 		B5F646B119AD962F003A20A1 /* NormalTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NormalTableViewCell.xib; path = Views/NormalTableViewCell.xib; sourceTree = "<group>"; };
 		E5939069ECF049F5958530A3 /* libPods-BlargBucket.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BlargBucket.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE9DFE0D8D53A187F38197E8 /* Pods-BlargBucket.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlargBucket.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BlargBucket/Pods-BlargBucket.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		B55DBAE41A2F6503001D90E8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B5730296199C6A0B00060D2E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				B547AD3C19B3E36C00AE2F5B /* CoreData.framework in Frameworks */,
 				9C82EA889C8E46E78D2F6E0A /* libPods-BlargBucket.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B57302AB199C6A0B00060D2E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B547AD3B19B3E36200AE2F5B /* CoreData.framework in Frameworks */,
-				2EC21C3F82DF4C7A9A298C0B /* libPods-BlargBucketTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,8 +182,19 @@
 				B547AD3A19B3E36200AE2F5B /* CoreData.framework */,
 				E5939069ECF049F5958530A3 /* libPods-BlargBucket.a */,
 				A92B1606B64A41DCA1A82776 /* libPods-BlargBucketTests.a */,
+				3A68715FD87B4DBD972D83A0 /* libPods.a */,
+				9F33C1EE740E4029A551673B /* libPods-Tests.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		804C182F4ECCC291AC2D32F2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EE9DFE0D8D53A187F38197E8 /* Pods-BlargBucket.debug.xcconfig */,
+				0A02CCCAA03C03640B1AFB46 /* Pods-BlargBucket.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		B540548C1A2D650100974C75 /* Other Classes */ = {
@@ -259,8 +239,7 @@
 				B57302B1199C6A0B00060D2E /* Tests */,
 				B573029A199C6A0B00060D2E /* Products */,
 				7AC059AF6DF44D7AA61DF82E /* Frameworks */,
-				B259516F5B724AE1B79BF5B4 /* Pods-BlargBucket.xcconfig */,
-				90234EC078E04131A447D304 /* Pods-BlargBucketTests.xcconfig */,
+				804C182F4ECCC291AC2D32F2 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -268,7 +247,7 @@
 			isa = PBXGroup;
 			children = (
 				B5730299199C6A0B00060D2E /* BlargBucket.app */,
-				B57302AE199C6A0B00060D2E /* BlargBucketTests.xctest */,
+				B55DBAE71A2F6503001D90E8 /* Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -331,6 +310,15 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		B585F4241A2FF49C00567A34 /* ext */ = {
+			isa = PBXGroup;
+			children = (
+				B585F4201A2FF08A00567A34 /* Locksmith.swift */,
+				B585F4211A2FF08A00567A34 /* LocksmithRequest.swift */,
+			);
+			name = ext;
+			sourceTree = "<group>";
+		};
 		B587B4701A0D2BB3007F7F10 /* Base Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -387,10 +375,10 @@
 		B5B4CA4619A07D8300A4213A /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				B57302C5199C6DCF00060D2E /* DataFetcher.swift */,
+				B585F4241A2FF49C00567A34 /* ext */,
 				B573029E199C6A0B00060D2E /* AppDelegate.swift */,
+				B57302C5199C6DCF00060D2E /* DataFetcher.swift */,
 				B547AD3119B3D5C800AE2F5B /* CoreDataStack.swift */,
-				B5B4CA4719A07DB500A4213A /* KeychainService.swift */,
 				B5314CD919A3AAFE0066B402 /* Notifications.swift */,
 				B547AD2919B398EE00AE2F5B /* Formatters.swift */,
 			);
@@ -419,6 +407,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		B55DBAE61A2F6503001D90E8 /* Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B55DBAEF1A2F6503001D90E8 /* Build configuration list for PBXNativeTarget "Tests" */;
+			buildPhases = (
+				B55DBAE31A2F6503001D90E8 /* Sources */,
+				B55DBAE41A2F6503001D90E8 /* Frameworks */,
+				B55DBAE51A2F6503001D90E8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B55DBAEE1A2F6503001D90E8 /* PBXTargetDependency */,
+			);
+			name = Tests;
+			productName = Tests;
+			productReference = B55DBAE71A2F6503001D90E8 /* Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		B5730298199C6A0B00060D2E /* BlargBucket */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B57302B8199C6A0B00060D2E /* Build configuration list for PBXNativeTarget "BlargBucket" */;
@@ -439,30 +445,6 @@
 			productReference = B5730299199C6A0B00060D2E /* BlargBucket.app */;
 			productType = "com.apple.product-type.application";
 		};
-		B57302AD199C6A0B00060D2E /* BlargBucketTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B57302BB199C6A0B00060D2E /* Build configuration list for PBXNativeTarget "BlargBucketTests" */;
-			buildPhases = (
-				E26ACF061BA54A5095676A45 /* Check Pods Manifest.lock */,
-				B57302AA199C6A0B00060D2E /* Sources */,
-				B57302AB199C6A0B00060D2E /* Frameworks */,
-				B57302AC199C6A0B00060D2E /* Resources */,
-				5EA439A2827F46C4BA35EBB2 /* Copy Pods Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B57302B0199C6A0B00060D2E /* PBXTargetDependency */,
-				B50976CE19BD67C700513CC4 /* PBXTargetDependency */,
-				B50976D019BD67C800513CC4 /* PBXTargetDependency */,
-				B50976D619BD69B100513CC4 /* PBXTargetDependency */,
-				B50976D819BD69B600513CC4 /* PBXTargetDependency */,
-			);
-			name = BlargBucketTests;
-			productName = BlargBucketTests;
-			productReference = B57302AE199C6A0B00060D2E /* BlargBucketTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -472,12 +454,12 @@
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Luke Deniston";
 				TargetAttributes = {
+					B55DBAE61A2F6503001D90E8 = {
+						CreatedOnToolsVersion = 6.1;
+						TestTargetID = B5730298199C6A0B00060D2E;
+					};
 					B5730298199C6A0B00060D2E = {
 						CreatedOnToolsVersion = 6.0;
-					};
-					B57302AD199C6A0B00060D2E = {
-						CreatedOnToolsVersion = 6.0;
-						TestTargetID = B5730298199C6A0B00060D2E;
 					};
 				};
 			};
@@ -495,12 +477,19 @@
 			projectRoot = "";
 			targets = (
 				B5730298199C6A0B00060D2E /* BlargBucket */,
-				B57302AD199C6A0B00060D2E /* BlargBucketTests */,
+				B55DBAE61A2F6503001D90E8 /* Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		B55DBAE51A2F6503001D90E8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B5730297199C6A0B00060D2E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -518,31 +507,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B57302AC199C6A0B00060D2E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		5EA439A2827F46C4BA35EBB2 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-BlargBucketTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		84BE853F8E364FA998B4805D /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -584,27 +551,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-BlargBucket-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E26ACF061BA54A5095676A45 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BlargBucket/Pods-BlargBucket-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		B55DBAE31A2F6503001D90E8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B55DBAF31A2F655E001D90E8 /* UserTests.swift in Sources */,
+				B55DBAF41A2F6563001D90E8 /* BlargTest.swift in Sources */,
+				B55DBAF21A2F655A001D90E8 /* RepositoryTests.swift in Sources */,
+				B55DBAF51A2F6567001D90E8 /* Fixtures.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B5730295199C6A0B00060D2E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -613,6 +576,7 @@
 				B556333B19F408C500856D7A /* ReviewersViewController.swift in Sources */,
 				B5D17BBB19A84A770023C263 /* EventTableViewCell.swift in Sources */,
 				B5B4CA4419A07ADE00A4213A /* LoginViewController.swift in Sources */,
+				B585F4231A2FF08A00567A34 /* LocksmithRequest.swift in Sources */,
 				B5B4CA38199FE8B800A4213A /* MainTabBarViewController.swift in Sources */,
 				B5D17BBE19A957370023C263 /* RepositoryInfoViewController.swift in Sources */,
 				B594D90D19A53FFF000D6A10 /* EventsViewModel.swift in Sources */,
@@ -628,6 +592,7 @@
 				B5A9E73319A4648C001A25E8 /* Event.swift in Sources */,
 				B5314CDA19A3AAFE0066B402 /* Notifications.swift in Sources */,
 				B56D3BC519E98F05004A2504 /* DiffViewModel.swift in Sources */,
+				B585F4221A2FF08A00567A34 /* Locksmith.swift in Sources */,
 				B5D17BC019A9581F0023C263 /* RepositoryVM.swift in Sources */,
 				B5F52A0A19F21D2600468E35 /* InfoViewController.swift in Sources */,
 				B547AD2A19B398EE00AE2F5B /* Formatters.swift in Sources */,
@@ -651,58 +616,68 @@
 				B5B4CA09199FE07300A4213A /* RepositoriesTableViewController.swift in Sources */,
 				B5A9E73919A503D5001A25E8 /* PullRequest.swift in Sources */,
 				B564A9DA19AA57D400464885 /* NormalTableViewCell.swift in Sources */,
-				B5B4CA4819A07DB500A4213A /* KeychainService.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B57302AA199C6A0B00060D2E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B55210331A2249D600A184B7 /* Formatters.swift in Sources */,
-				B55210321A2249CB00A184B7 /* BlargManagedObject.swift in Sources */,
-				B540548B1A2D648F00974C75 /* BlargTest.swift in Sources */,
-				B561F69C1A2D9B920087D8CA /* UserTests.swift in Sources */,
-				B55210301A22499000A184B7 /* CoreDataStack.swift in Sources */,
-				B552102F1A22495400A184B7 /* RepositoryTests.swift in Sources */,
-				B54054881A2D62BE00974C75 /* Fixtures.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		B50976CE19BD67C700513CC4 /* PBXTargetDependency */ = {
+		B55DBAEE1A2F6503001D90E8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = B5730298199C6A0B00060D2E /* BlargBucket */;
-			targetProxy = B50976CD19BD67C700513CC4 /* PBXContainerItemProxy */;
-		};
-		B50976D019BD67C800513CC4 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B5730298199C6A0B00060D2E /* BlargBucket */;
-			targetProxy = B50976CF19BD67C800513CC4 /* PBXContainerItemProxy */;
-		};
-		B50976D619BD69B100513CC4 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B5730298199C6A0B00060D2E /* BlargBucket */;
-			targetProxy = B50976D519BD69B100513CC4 /* PBXContainerItemProxy */;
-		};
-		B50976D819BD69B600513CC4 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B5730298199C6A0B00060D2E /* BlargBucket */;
-			targetProxy = B50976D719BD69B600513CC4 /* PBXContainerItemProxy */;
-		};
-		B57302B0199C6A0B00060D2E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B5730298199C6A0B00060D2E /* BlargBucket */;
-			targetProxy = B57302AF199C6A0B00060D2E /* PBXContainerItemProxy */;
+			targetProxy = B55DBAED1A2F6503001D90E8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		B55DBAF01A2F6503001D90E8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"${SRCROOT}/Pods/Headers/Public/**",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+				);
+				INFOPLIST_FILE = Tests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BlargBucket.app/BlargBucket";
+			};
+			name = Debug;
+		};
+		B55DBAF11A2F6503001D90E8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"${SRCROOT}/Pods/Headers/Public/**",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+				);
+				INFOPLIST_FILE = Tests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BlargBucket.app/BlargBucket";
+			};
+			name = Release;
+		};
 		B57302B6199C6A0B00060D2E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B259516F5B724AE1B79BF5B4 /* Pods-BlargBucket.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -746,7 +721,6 @@
 		};
 		B57302B7199C6A0B00060D2E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B259516F5B724AE1B79BF5B4 /* Pods-BlargBucket.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -783,6 +757,7 @@
 		};
 		B57302B9199C6A0B00060D2E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EE9DFE0D8D53A187F38197E8 /* Pods-BlargBucket.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -801,6 +776,7 @@
 		};
 		B57302BA199C6A0B00060D2E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0A02CCCAA03C03640B1AFB46 /* Pods-BlargBucket.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -816,55 +792,18 @@
 			};
 			name = Release;
 		};
-		B57302BC199C6A0B00060D2E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 90234EC078E04131A447D304 /* Pods-BlargBucketTests.xcconfig */;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = Tests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
-				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "BlargBucket-Bridging-Header.h";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BlargBucket.app/BlargBucket";
-			};
-			name = Debug;
-		};
-		B57302BD199C6A0B00060D2E /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 90234EC078E04131A447D304 /* Pods-BlargBucketTests.xcconfig */;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = Tests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
-				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "BlargBucket-Bridging-Header.h";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BlargBucket.app/BlargBucket";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		B55DBAEF1A2F6503001D90E8 /* Build configuration list for PBXNativeTarget "Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B55DBAF01A2F6503001D90E8 /* Debug */,
+				B55DBAF11A2F6503001D90E8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		B5730294199C6A0B00060D2E /* Build configuration list for PBXProject "BlargBucket" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -879,15 +818,6 @@
 			buildConfigurations = (
 				B57302B9199C6A0B00060D2E /* Debug */,
 				B57302BA199C6A0B00060D2E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B57302BB199C6A0B00060D2E /* Build configuration list for PBXNativeTarget "BlargBucketTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B57302BC199C6A0B00060D2E /* Debug */,
-				B57302BD199C6A0B00060D2E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

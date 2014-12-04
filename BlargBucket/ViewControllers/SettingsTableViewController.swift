@@ -38,7 +38,7 @@ class SettingsTableViewController: UITableViewController {
 
 	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 		DataFetcher.clearAuthToken()
-		KeychainService.deleteToken()
+		Locksmith.deleteData(forKey: "password", inService:  "BlargService", forUserAccount: "BlargUser")
 		AppDelegate.sharedInstance().window?.rootViewController = LoginViewController()
 	}
 }

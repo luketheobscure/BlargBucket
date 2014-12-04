@@ -11,9 +11,9 @@ import CoreData
 
 private var _coreDataStackInstance = CoreDataStack()
 
-class CoreDataStack {
+public class CoreDataStack {
 
-	class var sharedInstance: CoreDataStack {
+	public class var sharedInstance: CoreDataStack {
 		return _coreDataStackInstance
 	}
 
@@ -23,7 +23,7 @@ class CoreDataStack {
 		return urls[urls.count-1] as NSURL
 		}()
 
-	lazy var managedObjectModel: NSManagedObjectModel = {
+	public lazy var managedObjectModel: NSManagedObjectModel = {
 		// The managed object model for the application. This property is not optional. It is a fatal error for the application not to be able to find and load its model.
 		let modelURL = NSBundle.mainBundle().URLForResource("Model", withExtension: "momd")
 		return NSManagedObjectModel(contentsOfURL: modelURL!)!
@@ -56,7 +56,7 @@ class CoreDataStack {
 		return coordinator
 	}()
 
-	lazy var managedObjectContext: NSManagedObjectContext = {
+	public lazy var managedObjectContext: NSManagedObjectContext = {
 		// Returns the managed object context for the application (which is already bound to the persistent store coordinator for the application.) This property is optional since there are legitimate error conditions that could cause the creation of the context to fail.
 		var coordinator = self.persistentStoreCoordinator
 		var managedObjectContext = NSManagedObjectContext()

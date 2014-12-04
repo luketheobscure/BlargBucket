@@ -1,4 +1,4 @@
 language: objective-c
 xcode_workspace: BlargBucket.xcworkspace
-xcode_scheme: BlargBucketTests
+xcode_scheme: BlargBucket
 xcode_sdk: iphonesimulator8.1

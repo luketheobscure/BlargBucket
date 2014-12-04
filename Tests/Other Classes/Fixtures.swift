@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import BlargBucket
 
 struct Fixtures {
 	var context: NSManagedObjectContext = ({

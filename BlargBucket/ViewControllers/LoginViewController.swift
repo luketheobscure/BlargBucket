@@ -46,10 +46,10 @@ class LoginViewController: UIViewController {
 		let data = hash.dataUsingEncoding(NSUTF8StringEncoding)
 		let base64Hash = data!.base64EncodedStringWithOptions(NSDataBase64EncodingOptions.Encoding64CharacterLineLength)
 
-		KeychainService.saveToken(base64Hash)
+		Locksmith.saveData(["password": base64Hash], forKey: "password", inService: "BlargService", forUserAccount: "BlargUser")
 
 		//TODO: Check auth first
-		DataFetcher.setAuthToken(KeychainService.loadToken()!)
+		DataFetcher.setAuthToken(base64Hash)
 		DataFetcher.loginAsUser()
 		AppDelegate.sharedInstance().window?.rootViewController = MainTabBarViewController()
 	}
