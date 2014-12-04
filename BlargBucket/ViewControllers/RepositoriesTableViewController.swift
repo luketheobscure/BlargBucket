@@ -59,14 +59,14 @@ class RepositoriesTableViewController: BlargTable, UISearchControllerDelegate, U
 
 		let repo = (fetchedResults as RepositoriesViewModel).repoAtIndexPath(indexPath)
 
-        cell.textLabel.text = repo.name
+        cell.textLabel?.text = repo.name
 		let language = repo.language ?? ""
 		cell.detailTextLabel!.text = language as NSString
-		cell.imageView.sd_setImageWithURL(NSURL(string: repo.logo ?? ""), placeholderImage: UIImage(named: "repoPlaceholder"))
-		cell.imageView.layer.cornerRadius = 22
-		cell.imageView.clipsToBounds = true
+		cell.imageView?.sd_setImageWithURL(NSURL(string: repo.logo ?? ""), placeholderImage: UIImage(named: "repoPlaceholder"))
+		cell.imageView?.layer.cornerRadius = 22
+		cell.imageView?.clipsToBounds = true
 
-		cell.textLabel.font = UIFont(name: "Avenir Next", size: 14)
+		cell.textLabel?.font = UIFont(name: "Avenir Next", size: 14)
 
         return cell
     }

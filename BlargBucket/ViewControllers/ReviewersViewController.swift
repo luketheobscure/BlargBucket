@@ -25,7 +25,7 @@ class ReviewersViewController: UICollectionViewController, UICollectionViewDeleg
 		reviewers = extractReviewers(aPullRequest)
 		pullRequest = aPullRequest
 
-		collectionView.registerNib(UINib(nibName: "ReviewerCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
+		collectionView?.registerNib(UINib(nibName: "ReviewerCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
 	}
 
 	deinit {
@@ -35,16 +35,16 @@ class ReviewersViewController: UICollectionViewController, UICollectionViewDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
 		let derp = UINib(nibName: "ReviewerCollectionViewCell", bundle: nil)
-		collectionView.registerNib(derp, forCellWithReuseIdentifier: reuseIdentifier)
-		collectionView.backgroundColor = UIColor.whiteColor()
+		collectionView?.registerNib(derp, forCellWithReuseIdentifier: reuseIdentifier)
+		collectionView?.backgroundColor = UIColor.whiteColor()
 
-		collectionView.dataSource = self
-		collectionView.delegate = self
+		collectionView?.dataSource = self
+		collectionView?.delegate = self
         observer = NSNotificationCenter.defaultCenter().addObserverForName(NSManagedObjectContextObjectsDidChangeNotification, object: CoreDataStack.sharedInstance.managedObjectContext, queue: nil, usingBlock: {  [unowned self](notification:NSNotification!) -> Void in
 			if notification.userInfo![NSUpdatedObjectsKey] != nil {
 				dispatch_async(dispatch_get_main_queue(), {
 					self.reviewers = self.extractReviewers(self.pullRequest!)
-					self.collectionView.reloadData()
+					self.collectionView!.reloadData()
 				})
 
 			}

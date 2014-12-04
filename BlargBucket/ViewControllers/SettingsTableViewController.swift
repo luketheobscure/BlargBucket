@@ -30,8 +30,8 @@ class SettingsTableViewController: UITableViewController {
 	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell
 
-		cell.textLabel.text = "Log Out"
-		cell.textLabel.textColor = UIColor.yellowish()
+		cell.textLabel?.text = "Log Out"
+		cell.textLabel?.textColor = UIColor.yellowish()
 
 		return cell
 	}

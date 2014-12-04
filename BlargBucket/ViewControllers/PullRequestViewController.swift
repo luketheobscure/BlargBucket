@@ -74,7 +74,7 @@ class PullRequestViewController: UITableViewController {
 		let cellModel = viewModel!.tableCellModelAtPath(indexPath)
         let cell = tableView.dequeueReusableCellWithIdentifier(cellModel.reuseIdentifier, forIndexPath: indexPath) as UITableViewCell
 
-        cell.textLabel.text = cellModel.title
+        cell.textLabel?.text = cellModel.title
 		cell.detailTextLabel?.text = cellModel.detailTitle
 
         return cell

@@ -72,7 +72,7 @@ class RepositoryInfoViewController: UITableViewController {
 	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell
 		let model = indexPath.section == 0 ? viewModel.info![indexPath.row] : viewModel.standardOptions[indexPath.row]
-		cell.textLabel.text = model.title
+		cell.textLabel?.text = model.title
 		cell.detailTextLabel!.text = model.detailTitle
 		return cell
 	}
