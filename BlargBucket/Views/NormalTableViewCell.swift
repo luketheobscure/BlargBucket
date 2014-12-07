@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// A normal `UITableViewCell`
 class NormalTableViewCell: UITableViewCell {
 	override var imageView: UIImageView {
 		get {
@@ -38,8 +39,6 @@ class NormalTableViewCell: UITableViewCell {
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
 }

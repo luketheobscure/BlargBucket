@@ -9,11 +9,19 @@
 import UIKit
 import QuartzCore
 
+/// The main log in view. This is the first view that's presented if you're not logged in.
 class LoginViewController: UIViewController {
+
+	///The user name field
 	@IBOutlet weak var usernameField: UITextField!
+
+	/// The password field
 	@IBOutlet weak var passwordField: UITextField!
+
+	/// The log in button
 	@IBOutlet weak var loginButton: UIButton!
 
+	/// Designated initializer
 	override init() {
 		super.init(nibName: "LoginView", bundle: nil)
 	}
@@ -40,7 +48,8 @@ class LoginViewController: UIViewController {
 		loginButton.layer.cornerRadius = 5
 		//loginButton.createShadow(UIColor.sharkFinGray(), radius: 5)
 	}
-    
+
+	/// Handles the action when the login button is pushed
 	@IBAction func loginButtonPushed(sender: AnyObject) {
 		var hash : NSString = "\(usernameField.text):\(passwordField.text)" as NSString
 		let data = hash.dataUsingEncoding(NSUTF8StringEncoding)

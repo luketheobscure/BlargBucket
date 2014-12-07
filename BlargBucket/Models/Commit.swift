@@ -9,24 +9,30 @@
 import Foundation
 import CoreData
 
-
+/// Represents a single git Commit
 class Commit: NSManagedObject {
 
     @NSManaged var commit_hash: String?
     @NSManaged var commit_description: String?
     @NSManaged var belongsToRepository: Repository?
 
+	/**
+		Creates a commit
+		
+		:param: hash The git hash ID
+		:param: description The git commit description
+	*/
 	class func commitWithHash(hash:String, description:String?) -> Commit {
 		var commit : Commit?
 		let request = NSFetchRequest()
-		request.entity = NSEntityDescription.entityForName("Commit", inManagedObjectContext: CoreDataStack.sharedInstance.managedObjectContext)
+		request.entity = NSEntityDescription.entityForName("Commit", inManagedObjectContext: NSManagedObjectContext.defaultContext())
 		request.predicate = NSPredicate(format: "commit_hash = '\(hash)'")
 		var error = NSErrorPointer()
-		let results = CoreDataStack.sharedInstance.managedObjectContext.executeFetchRequest(request, error: error) as Array?
+		let results = NSManagedObjectContext.defaultContext().executeFetchRequest(request, error: error) as Array?
 		commit = results!.last as? Commit
 
 		if commit == nil {
-			commit =  NSEntityDescription.insertNewObjectForEntityForName("Commit", inManagedObjectContext: CoreDataStack.sharedInstance.managedObjectContext) as? Commit
+			commit =  NSEntityDescription.insertNewObjectForEntityForName("Commit", inManagedObjectContext: NSManagedObjectContext.defaultContext()) as? Commit
 		}
 
 		if description != nil {

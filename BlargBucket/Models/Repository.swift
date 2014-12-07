@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 
+/// Represents a BitBucket repository
 public class Repository: BlargManagedObject {
 	@NSManaged public var logo: NSString?
 	@NSManaged public var is_private: NSNumber?
@@ -38,8 +39,13 @@ public class Repository: BlargManagedObject {
 	@NSManaged public var creator: NSString?
 	@NSManaged public var resource_uri: NSString?
 
+	/**
+		Creates a Repository (the model, not an actual repo)
 
-	public class func create(JSON: AnyObject, context: NSManagedObjectContext = CoreDataStack.sharedInstance.managedObjectContext) -> Repository {
+		:param: JSON A Dictionary object with all necessary info
+		:param: context An optional NSManagedObjectContext
+	*/
+	public class func create(JSON: AnyObject, context: NSManagedObjectContext = NSManagedObjectContext.defaultContext()) -> Repository {
 		var aRepo: Repository = Repository.repoWithURL(JSON["resource_uri"]!!, context: context)
 		aRepo.name = JSON["name"] as? NSString
 		for key in JSON as NSDictionary {
@@ -55,7 +61,13 @@ public class Repository: BlargManagedObject {
 		return aRepo
 	}
 
-	public class func repoWithURL(url:AnyObject, context: NSManagedObjectContext = CoreDataStack.sharedInstance.managedObjectContext) -> Repository {
+	/**
+		Returns a repo or creates one if it doesn't exist.
+		
+		:param: url The url of the repo
+		:param: context An optional NSManagedObjectContext
+	*/
+	public class func repoWithURL(url:AnyObject, context: NSManagedObjectContext = NSManagedObjectContext.defaultContext()) -> Repository {
 		var repo : Repository?
 		let request = NSFetchRequest()
 		request.entity = NSEntityDescription.entityForName(Repository.entityName(), inManagedObjectContext: context)
@@ -80,10 +92,16 @@ public class Repository: BlargManagedObject {
 		return repo!;
 	}
 
+	/// The string of the entity name
 	class func entityName() -> NSString {
 		return "Repository"
 	}
 
+	/**
+		Setter for `logo`. Fixes the url with `Formatters.fixImgeURL`
+		
+		:param: logo The logo url
+	*/
 	func setLogo(logo: NSString) {
 		let newLogo = Formatters.sharedInstance.fixImgeURL(logo)
 

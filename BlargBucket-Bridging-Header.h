@@ -5,3 +5,4 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <AFNetworking/AFNetworking.h>
 #import <RegExCategories/RegExCategories.h>
+#import <MagicalRecord/CoreData+MagicalRecord.h>

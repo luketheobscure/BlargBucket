@@ -17,21 +17,32 @@ private let _JSONManager: AFHTTPRequestOperationManager = {
 
 private let _plainTextManager: AFHTTPRequestOperationManager = {
 	let manager = AFHTTPRequestOperationManager(baseURL: NSURL(string: "https://bitbucket.org"))
-	//manager.requestSerializer = AFJSONRequestSerializer()
 	manager.responseSerializer = AFHTTPResponseSerializer()
 	return manager
 	}()
 
+/**
+	Handles all the networking operations, basically used as a singleton.
+	Most network operations getch a url, get some JSON, then parse it and populate our CoreData store
+*/
 class DataFetcher: NSObject {
 
+	/// Singleton access for our AFHTTPRequestOperationManager with an AFJSONRequestSerializer
 	class var JSONManager: AFHTTPRequestOperationManager {
 		return _JSONManager
 	}
 
+	/// Singleton access for our AFHTTPRequestOperationManager without a JSON serializer
 	class var plainTextManager: AFHTTPRequestOperationManager {
 		return _plainTextManager
 	}
 
+	/**
+		Most methods in this class call this to do the actual heavy lifting
+		
+		:param: url The url to get
+		:param: completion The completion block, gets passed the JSON from the network request
+	*/
 	class func fetchURL(url:String, completion: (JSON: AnyObject) -> () ){
 		println("Fetching URL: \(url)")
 		DataFetcher.JSONManager.GET(url, parameters: nil, success: { (operation, JSON) -> Void in
@@ -41,7 +52,7 @@ class DataFetcher: NSObject {
 			}
 			completion(JSON: JSON)
 			var error = NSErrorPointer()
-			CoreDataStack.sharedInstance.managedObjectContext.save(error)
+			NSManagedObjectContext.defaultContext().save(error)
 			if error != nil {
 				println("Core data error!")
 				println(error)
@@ -51,6 +62,12 @@ class DataFetcher: NSObject {
 		}
 	}
 
+	/**
+		Post methods in this class call this to do the heavy lifting
+
+		:param: url The url to post to
+		:param: completion The completion block, gets passed the JSON from the network request
+	*/
 	class func postURL(url:String, completion: (JSON: AnyObject) -> () ){
 		println("Posting URL: \(url)")
 		DataFetcher.JSONManager.POST(url, parameters: nil, success: { (operation, JSON) -> Void in
@@ -60,7 +77,7 @@ class DataFetcher: NSObject {
 			}
 			completion(JSON: JSON)
 			var error = NSErrorPointer()
-			CoreDataStack.sharedInstance.managedObjectContext.save(error)
+			NSManagedObjectContext.defaultContext().save(error)
 			if error != nil {
 				println("Core data error!")
 				println(error)
@@ -72,6 +89,10 @@ class DataFetcher: NSObject {
 
 	// MARK: - API Requests
 
+	/**
+		Gets the user info for the current user (based on the network authentication.
+		Sets the username in NSUserDefaults for the key path "Current User"
+	*/
 	class func loginAsUser() {
 		DataFetcher.fetchURL("/api/1.0/user") {
 			let userHash = $0["user"] as NSDictionary
@@ -85,6 +106,7 @@ class DataFetcher: NSObject {
 		}
 	}
 
+	/// Gets all the repositories
 	class func fetchRepoInfo(){
 		DataFetcher.fetchURL("/api/1.0/user/repositories/") {
 			var repos = $0 as NSArray
@@ -94,6 +116,11 @@ class DataFetcher: NSObject {
 		}
 	}
 
+	/**
+		Gets all the events for a repository
+		
+		:param: repo The repository to get the events for
+	*/
 	class func fetchEvents(repo: Repository){
 		DataFetcher.fetchURL("/api/1.0/repositories/\(repo.owner!)/\(repo.slug!)/events/") { (JSON:AnyObject) in
 			var events = JSON["events"] as NSArray
@@ -128,6 +155,11 @@ class DataFetcher: NSObject {
 
 	// MARK: Pull Request Stuff
 
+	/**
+		Gets all the pull requests for a given repo
+		
+		:param: repo The repository to get the pull requests for
+	*/
 	class func fetchPullRequests(repo: Repository){
 		DataFetcher.fetchURL("/api/2.0/repositories/\(repo.owner!)/\(repo.slug!)/pullrequests/") { (JSON:AnyObject) in
 			var pullRequests = JSON["values"] as NSArray
@@ -137,6 +169,11 @@ class DataFetcher: NSObject {
 		}
 	}
 
+	/**
+		Gets the reviewers for a pull request
+		
+		:param: pullRequest The pull request to get the reviewers for
+	*/
 	class func fetchPullRequestReviewers(pullRequest: PullRequest){
 		let repo = pullRequest.belongsToRepository!
 		DataFetcher.fetchURL("/api/1.0/repositories/\(repo.owner!)/\(repo.slug!)/pullrequests/\(pullRequest.id!)/participants") { (JSON:AnyObject) in
@@ -151,6 +188,12 @@ class DataFetcher: NSObject {
 		}
 	}
 
+	/**
+		Begins the process of getting the diff for a pull request. The request will error out, but it will give us the URL we need to get the 
+		real diff. Calls `DataFetcher.fetchDiff` with the url and pull request
+		
+		:param: pullRequest The pull request to get the diff for
+	*/
 	class func fetchPullRequestDiff(pullRequest: PullRequest){
 		let repo = pullRequest.belongsToRepository!
 		// We expect this to 'fail'. BB returns a 403 with the correct url
@@ -163,17 +206,28 @@ class DataFetcher: NSObject {
 		}
 	}
 
+	/**
+		Actually gets the diff for a pull request
+		
+		:param: diffURL The url of the real diff
+		:param: pullRequest The pull request of the diff
+	*/
 	class func fetchDiff(diffUrl:NSURL?, pullRequest: PullRequest){
 		DataFetcher.plainTextManager.GET("\(diffUrl!)", parameters: nil, success:  { (operation, response) -> Void in
 				var responseString = NSString(data: response as NSData, encoding: NSUTF8StringEncoding)
 				pullRequest.diff = responseString
-				CoreDataStack.sharedInstance.managedObjectContext.save(nil)
+				NSManagedObjectContext.defaultContext().save(nil)
 			})
 			 { (operation, error) -> Void in
 				println(operation)
 		}
 	}
 
+	/**
+		Marks a pull request as approved on BitBucket!
+		
+		:param: The pull request to approve
+	*/
 	class func approvePullRequest(pullRequest: PullRequest){
 		let repo = pullRequest.belongsToRepository!
 		DataFetcher.postURL("/api/2.0/repositories/\(repo.owner!)/\(repo.slug!)/pullrequests/\(pullRequest.id!)/approve") { (JSON:AnyObject) in
@@ -181,6 +235,11 @@ class DataFetcher: NSObject {
 		}
 	}
 
+	/**
+		Marks a pull request as unapproved on BitBucket! Fetches the list of approvers when it finishes
+
+		:param: The pull request to unapprove
+	*/
 	class func unaprovePullRequest(pullRequest: PullRequest){
 		let repo = pullRequest.belongsToRepository!
 		DataFetcher.JSONManager.DELETE("/api/2.0/repositories/\(repo.owner!)/\(repo.slug!)/pullrequests/\(pullRequest.id!)/approve", parameters: nil, success: { (operation, JSON) -> Void in
@@ -190,7 +249,7 @@ class DataFetcher: NSObject {
 			}
 			DataFetcher.fetchPullRequestReviewers(pullRequest)
 			var error = NSErrorPointer()
-			CoreDataStack.sharedInstance.managedObjectContext.save(error)
+			NSManagedObjectContext.defaultContext().save(error)
 			if error != nil {
 				println("Core data error!")
 				println(error)
@@ -201,11 +260,18 @@ class DataFetcher: NSObject {
 	}
 
 	// MARK: - Authorization
+
+	/**
+		Sets the authorization token for our two AFHTTPRequestOperationManager's
+		
+		:param: token The auth token to set. Should be a base 64 of "username:password"
+	*/
 	class func setAuthToken(token:String) {
 		DataFetcher.JSONManager.requestSerializer.setValue("Basic \(token)", forHTTPHeaderField: "Authorization")
 		DataFetcher.plainTextManager.requestSerializer.setValue("Basic \(token)", forHTTPHeaderField: "Authorization")
 	}
 
+	/// Not implemented yet. Should clear the auth tokens out
 	class func clearAuthToken() {
 		//TODO: Implement
 		//Alamofire.Manager.sharedInstance.defaultHeaders.removeValueForKey("Authorization")

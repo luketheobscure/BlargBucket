@@ -9,8 +9,12 @@
 import UIKit
 import CoreData
 
+/**
+	Eliminates some of the boilerplate of UITableViewController + NSFetchedResultsController
+*/
 class BlargTable: UITableViewController, NSFetchedResultsControllerDelegate {
 
+	/// The very important NSFetchedResultsController. Needs to be assigned when the class is instantiated.
 	var fetchedResults: NSFetchedResultsController?
 
     override func viewDidLoad() {

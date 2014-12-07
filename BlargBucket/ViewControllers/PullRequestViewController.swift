@@ -8,13 +8,26 @@
 
 import UIKit
 
+/// Shows the info about a single pullRequest
 class PullRequestViewController: UITableViewController {
 
+	/// The pull request
 	var pullRequest: PullRequest?
+
+	/// The info view shown at the top with all the pretty pictures
 	let infoView = InfoViewController()
+
+	/// The horizontal scrolling view with the reviewers
 	var	reviewersViewController: ReviewersViewController?
+
+	/// This isn't a BlargTable, but we still set up a viewModel
 	var viewModel: PullRequestViewModel?
 
+	/**
+		Designated initializer
+		
+		:param: aPullRequest The pull request to display
+	*/
     convenience init(aPullRequest: PullRequest){
 		self.init(style: .Grouped)
 		pullRequest = aPullRequest
@@ -23,6 +36,7 @@ class PullRequestViewController: UITableViewController {
 		self.addChildViewController(reviewersViewController!)
 	}
 
+	/// Registers the nibs and sets the title
 	override func viewDidLoad() {
 		title = "Details"
 		// TODO: Refactor into constants
@@ -30,6 +44,7 @@ class PullRequestViewController: UITableViewController {
 		tableView.registerNib(UINib(nibName: "ButtonTableViewCell", bundle: nil), forCellReuseIdentifier: "buttonCell")
 	}
 
+	/// Sets up the auxillary views
 	override func viewWillAppear(animated: Bool) {
 		tableView.tableHeaderView = infoView.view
 		infoView.titleLabel?.text = pullRequest?.title

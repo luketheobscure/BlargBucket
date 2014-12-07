@@ -11,60 +11,57 @@ import CoreData
 
 let reuseIdentifier = "Cell"
 
-
+/// Collection view that shows the list of reviewers on a pull request
 class ReviewersViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+	/// Array of reviewers
 	var reviewers: [Reviewer] = []
+
+	/// The pull request
 	var pullRequest: PullRequest?
+
+	/// Observer that uploads the reviewers after they load
 	var observer: NSObjectProtocol?
 
+	/**
+		Designated initializer
+
+		:param: aPullRequest The pull request to show the info for
+	*/
 	convenience init(aPullRequest:PullRequest) {
 		let flowLayout = UICollectionViewFlowLayout()
 		//flowLayout.minimumLineSpacing = 5
 		flowLayout.scrollDirection = .Horizontal
 		self.init(collectionViewLayout: flowLayout)
-		reviewers = extractReviewers(aPullRequest)
+		reviewers = aPullRequest.reviewersArray()
 		pullRequest = aPullRequest
 
 		collectionView?.registerNib(UINib(nibName: "ReviewerCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
 	}
 
+	/// Removes the observer
 	deinit {
 		NSNotificationCenter.defaultCenter().removeObserver(observer!)
 	}
 
+	/// Sets up the collection view and the observer
     override func viewDidLoad() {
         super.viewDidLoad()
-		let derp = UINib(nibName: "ReviewerCollectionViewCell", bundle: nil)
-		collectionView?.registerNib(derp, forCellWithReuseIdentifier: reuseIdentifier)
+		let nib = UINib(nibName: "ReviewerCollectionViewCell", bundle: nil)
+		collectionView?.registerNib(nib, forCellWithReuseIdentifier: reuseIdentifier)
 		collectionView?.backgroundColor = UIColor.whiteColor()
 
 		collectionView?.dataSource = self
 		collectionView?.delegate = self
-        observer = NSNotificationCenter.defaultCenter().addObserverForName(NSManagedObjectContextObjectsDidChangeNotification, object: CoreDataStack.sharedInstance.managedObjectContext, queue: nil, usingBlock: {  [unowned self](notification:NSNotification!) -> Void in
+        observer = NSNotificationCenter.defaultCenter().addObserverForName(NSManagedObjectContextObjectsDidChangeNotification, object: NSManagedObjectContext.defaultContext(), queue: nil, usingBlock: {  [unowned self](notification:NSNotification!) -> Void in
 			if notification.userInfo![NSUpdatedObjectsKey] != nil {
 				dispatch_async(dispatch_get_main_queue(), {
-					self.reviewers = self.extractReviewers(self.pullRequest!)
+					self.reviewers = self.pullRequest!.reviewersArray()
 					self.collectionView!.reloadData()
 				})
 
 			}
 		})
     }
-
-	func extractReviewers(pullRequest:PullRequest) -> [Reviewer] {
-		var tempReviewers:[Reviewer] = []
-		if pullRequest.hasReviewers != nil {
-			for user in pullRequest.hasReviewers! {
-				tempReviewers.append(user as Reviewer)
-			}
-		}
-		tempReviewers.sort({
-			var name1:String? = $0.belongsToUser.fullName().lowercaseString
-			var name2:String? = $1.belongsToUser.fullName().lowercaseString
-			return name1 < name2
-		})
-		return tempReviewers
-	}
 
     // MARK: UICollectionViewDataSource
 

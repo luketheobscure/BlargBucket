@@ -9,6 +9,7 @@
 import UIKit
 import QuartzCore
 
+/// A `UITableViewCell` with a pretty round image on the left
 class EventTableViewCell: UITableViewCell {
 	override var imageView: UIImageView {
 		get {
@@ -28,11 +29,14 @@ class EventTableViewCell: UITableViewCell {
 		}
 	}
 
+	/// Basically an alias for `imageView`
 	@IBOutlet weak var customImageView: UIImageView!
-	@IBOutlet weak var customTextLabel: UILabel!
-	@IBOutlet weak var customDetailLabel: UILabel!
 
-//	var height: CGFloat?
+	/// Basically and alias for `textLabel`
+	@IBOutlet weak var customTextLabel: UILabel!
+
+	/// Basically and alias for `detailTextLabel`
+	@IBOutlet weak var customDetailLabel: UILabel!
 
 	override func awakeFromNib() {
 		super.awakeFromNib()
@@ -43,25 +47,6 @@ class EventTableViewCell: UITableViewCell {
 		imageView.layer.borderWidth = 2
 		detailTextLabel.textColor = UIColor.seafoam()
 	}
-
-//	func layoutHeight() {
-//		let constraintSize = CGSizeMake(236, 9999)
-//		//var size = titleText.sizeWithAttributes([NSFontAttributeName: UIFont(name: "Avenir Next", size: 12)])
-//		let text = textLabel.text as NSString!
-//		var size = text.boundingRectWithSize(constraintSize, options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName: textLabel.font], context: nil)
-//		if size.height > 17.0 {
-//			height = 80
-//			detailTextLabel.frame = CGRectMake(
-//				CGRectGetMinX(detailTextLabel.frame),
-//				CGRectGetMinY(detailTextLabel.frame) + 16,
-//				CGRectGetWidth(detailTextLabel.frame),
-//				CGRectGetHeight(detailTextLabel.frame)
-//			)
-//		} else {
-//			height = 60
-//		}
-//	}
-
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

@@ -7,14 +7,23 @@
 //
 
 import UIKit
-@objc(InfoViewController)
+
+/// Shows a sweet info view with pictures and everything
 class InfoViewController: UIViewController {
 
+	/// The blurred out background image. Avoid setting this directly, use `setImage`
 	@IBOutlet weak var backgroundImageView: UIImageView!
+
+	/// The foreground image. Avoid setting this directly, use `setImage`
 	@IBOutlet weak var imageView: UIImageView!
-	@IBOutlet weak var descriptionLabel: UILabel!
+
+	/// The title label
 	@IBOutlet weak var titleLabel: UILabel!
 
+	/// The description label
+	@IBOutlet weak var descriptionLabel: UILabel!
+
+	/// Designated initializer
 	override init() {
 		super.init(nibName: "InfoView", bundle: nil)
 	}
@@ -31,6 +40,7 @@ class InfoViewController: UIViewController {
 		self.imageView?.layer.borderColor = UIColor.yellowish().CGColor
 	}
 
+	/// Sets both the foreground and background view.
 	func setImage(image:UIImage){
 		imageView.image = image
 		backgroundImageView.image = image

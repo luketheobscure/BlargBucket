@@ -8,6 +8,11 @@
 
 import Foundation
 
+/**
+	Struct for storing NSNotification names
+*/
 struct Notifications {
+
+	/// Repository changed notification
 	var RepoChanged = "NotificationrepoChanged"
 }

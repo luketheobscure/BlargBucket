@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Represents a single line in a diff
 struct Line {
 	var prevNumber: String = ""
 	var newNumber: String = ""
@@ -15,10 +16,20 @@ struct Line {
 	var backgroundColor: UIColor = UIColor.whiteColor()
 }
 
+/// The diff for a single file
 class FileDiffViewModel: NSObject {
+
+	/// An array of `Line`s
 	var lines: [Line] = []
+
+	/// The name of the file
 	var title: String?
 
+	/**
+		Designated initializer
+		
+		:param: diff A diff string to get parsed
+	*/
 	init(diff:String) {
 		super.init()
 
@@ -27,6 +38,7 @@ class FileDiffViewModel: NSObject {
 		lines = parseLines(tempLines)
 	}
 
+	/// Finds the title
 	func findTitle(tempLines:[String]) -> String? {
 		// TODO: Figure out if file moved
 		if tempLines.count <= 1 {
@@ -38,6 +50,11 @@ class FileDiffViewModel: NSObject {
 		return tempLines[2].substringFromIndex(advance(tempLines[2].startIndex, 6))
 	}
 
+	/**
+		Turns a string into an array of `Line`s
+		
+		:param: tempLines An array of strings to get parsed
+	*/
 	func parseLines(tempLines:[String]) -> [Line] {
 		var processedLines:[Line] = []
 

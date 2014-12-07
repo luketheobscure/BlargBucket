@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// The main tab bar that's used everywhere
 class MainTabBarViewController: UITabBarController {
 
     override func viewDidLoad() {

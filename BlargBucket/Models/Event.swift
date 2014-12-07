@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 
+/// An event in the BitBucket activity stream
 class Event: BlargManagedObject {
    @NSManaged var event: NSString?
    @NSManaged var event_description: NSString?
@@ -19,8 +20,9 @@ class Event: BlargManagedObject {
    @NSManaged var belongsToRepository: Repository?
    @NSManaged var hasCommits: NSSet?
 
+	/// Creates a new event
 	class func newEvent() -> Event {
-		return NSEntityDescription.insertNewObjectForEntityForName("Event", inManagedObjectContext: CoreDataStack.sharedInstance.managedObjectContext) as Event
+		return NSEntityDescription.insertNewObjectForEntityForName("Event", inManagedObjectContext: NSManagedObjectContext.defaultContext()) as Event
 	}
 
 	func setUtc_created_on(date: AnyObject){

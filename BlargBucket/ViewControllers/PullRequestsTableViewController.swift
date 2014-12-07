@@ -8,8 +8,10 @@
 
 import UIKit
 
+/// Lists all the pull requests
 class PullRequestsTableViewController: BlargTable {
 
+	/// Sets up the view model based on the `AppDelegate.sharedInstance().activeRepo`
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
 		if AppDelegate.sharedInstance().activeRepo != nil {
@@ -52,11 +54,11 @@ class PullRequestsTableViewController: BlargTable {
 		return cell
 	}
 
+	/// Pushes a `PullRequestViewController` based on the selected row, but does some network calls first
 	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 		let pullRequest = viewModel().modelAtIndexPath(indexPath)
 		DataFetcher.fetchPullRequestDiff(pullRequest)
 		DataFetcher.fetchPullRequestReviewers(pullRequest)
-		//self.navigationController?.pushViewController(DiffViewController(aPullRequest: pullRequest), animated: true)
 		self.navigationController?.pushViewController(PullRequestViewController(aPullRequest: pullRequest), animated: true)
 	}
 

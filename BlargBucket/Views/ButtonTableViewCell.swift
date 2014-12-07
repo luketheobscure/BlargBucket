@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// An actionable UITableViewCell
 class ButtonTableViewCell: UITableViewCell {
 	override var imageView: UIImageView {
 		get {

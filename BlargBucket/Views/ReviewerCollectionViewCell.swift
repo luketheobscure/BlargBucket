@@ -8,9 +8,13 @@
 
 import UIKit
 
+/// A `UICollectionViewCell` with a round image and a small label
 class ReviewerCollectionViewCell: UICollectionViewCell {
 
+	/// The image
 	@IBOutlet weak var avatarImageView: UIImageView?
+
+	/// The label
 	@IBOutlet weak var titleLabel: UILabel!
 
     override func awakeFromNib() {

@@ -8,8 +8,10 @@
 
 import UIKit
 
+/// Shows the activity stream of a repo
 class EventsViewController: BlargTable {
 
+	/// Sets up the viewModel from the AppDelegate.sharedInstance().activeRepo
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
 		if AppDelegate.sharedInstance().activeRepo != nil {
@@ -17,10 +19,10 @@ class EventsViewController: BlargTable {
 			fetchedResults?.delegate = self
 			var error = NSErrorPointer()
 			fetchedResults!.performFetch(error)
-			tableView.registerNib(UINib(nibName: "EventTableViewCell", bundle: nil), forCellReuseIdentifier: "reuseIdentifier")
 			if error != nil {
 				println(error.debugDescription)
 			}
+			tableView.registerNib(UINib(nibName: "EventTableViewCell", bundle: nil), forCellReuseIdentifier: "reuseIdentifier")
 		}
 
 		tableView.rowHeight = UITableViewAutomaticDimension
@@ -28,11 +30,13 @@ class EventsViewController: BlargTable {
 		title = "Events"
 	}
 
+	/// Convenience, just so you don't have to cast
 	func viewModel() -> EventsViewModel{
 		return fetchedResults as EventsViewModel
 	}
 
 	// MARK: - Table view data source
+	
 	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		let event = viewModel().modelAtIndexPath(indexPath)
 		let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as EventTableViewCell

@@ -24,6 +24,20 @@ class UserTests: BlargTest {
 		XCTAssertEqual(oldCount + 1, allUsers()!.count, "User count changed and it shouldn't have")
 	}
 
+	func testFullName(){
+		let userName = "derpMcDerp" as NSString
+		let user = User.userWithUsername(userName, context: fixtures.context)
+		user.first_name = "Luke"
+		user.last_name = "McAwesomePants"
+		XCTAssertEqual("Luke McAwesomePants", user.fullName())
+	}
+
+	func testEmptyFullName(){
+		let userName = "derpMcDerp" as NSString
+		let user = User.userWithUsername(userName, context: fixtures.context)
+		XCTAssertEqual("derpMcDerp ", user.fullName())
+	}
+
 	func allUsers() -> [AnyObject]? {
 		return fixtures.context.executeFetchRequest(NSFetchRequest(entityName: "User"), error: nil)
 	}

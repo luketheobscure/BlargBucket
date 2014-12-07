@@ -8,11 +8,20 @@
 
 import UIKit
 
+/// A mostly static list of `TableCellModel`s for a pull request view
 class PullRequestViewModel {
 
+	/// A dreaded array of arrays that have `TableCellModel`s. The top tier of the array corresponds to tableView sections
 	var sections: [[TableCellModel]] = []
+
+	/// The pull request
 	var pullRequest: PullRequest?
 
+	/**
+		Designated initializer. Populates self.sections
+		
+		:param: aPullRequest Gets set to self.pullRequest
+	*/
 	init(aPullRequest:PullRequest){
 		pullRequest = aPullRequest
 		let section1 = [
@@ -47,10 +56,20 @@ class PullRequestViewModel {
 		sections = [section1, section2]
 	}
 
+	/**
+		Finds a `TableCellModel` in self.sections at an indexPath
+
+		:param: indexPath The indexPath to look at
+	*/
 	func tableCellModelAtPath(indexPath:NSIndexPath) -> TableCellModel {
 		return sections[indexPath.section][indexPath.row]
 	}
 
+	/**
+		Returns a cell to either approve of unapprove a pull request. Checks if the current user has already approved it
+		
+		:param: pullRequest The pull request in question
+	*/
 	func approveCell(pullRequest: PullRequest) -> TableCellModel {
 		if User.currentUser()!.hasApprovedPullRequest(pullRequest) {
 			return TableCellModel(

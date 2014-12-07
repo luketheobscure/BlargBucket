@@ -8,10 +8,20 @@
 
 import UIKit
 
+/// View model for a diff.
 class DiffViewModel: NSObject, UITableViewDataSource {
+
+	/// The pull request to get the diff for
 	var pullRequest: PullRequest
+
+	/// An array of `FileDiffViewModel`s
 	var sections: [FileDiffViewModel]
 
+	/**
+		Designated initializer. Parses the raw diff string, then creates `FileDiffViewModel`s of the pieces. Finally populates `self.sections` with the result.
+		
+		:param: aPullRequest Gets assigned to `self.pullRequest`
+	*/
 	init(aPullRequest: PullRequest) {
 		pullRequest = aPullRequest
 		var expression = NSRegularExpression(pattern: "^diff", options: .AnchorsMatchLines, error: nil)
@@ -29,6 +39,8 @@ class DiffViewModel: NSObject, UITableViewDataSource {
 		super.init()
 	}
 
+	// MARK - UITableViewDataSource Protocol
+
 	func numberOfSectionsInTableView(tableView: UITableView) -> Int {
 		return sections.count
 	}
@@ -38,7 +50,6 @@ class DiffViewModel: NSObject, UITableViewDataSource {
 	}
 
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		//let cell = UITableViewCell(style: .Value1, reuseIdentifier: "Derp")
 		let cell = tableView.dequeueReusableCellWithIdentifier("DiffCell", forIndexPath: indexPath) as DiffTableViewCell
 		let line: Line = sections[indexPath.section].lines[indexPath.row]
 		cell.textLabel.text = line.text

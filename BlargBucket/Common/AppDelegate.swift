@@ -10,12 +10,15 @@ import UIKit
 import Security
 import CoreData
 
+/**
+	BlargBucket's AppDelegate. Sets up all the things.
+*/
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-                            
+    /// Main window
 	var window: UIWindow?
 
-	/// The selected repository
+	/// The currently selected repository
 	var activeRepo : Repository? {
 		didSet {
 			if activeRepo!.resource_uri == nil {
@@ -27,10 +30,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		}
 	}
 
-
+	/**
+		Post launch setup.
+			- Applies appearance
+			- Sets up CoreData stack
+			- Checks if you're logged in and redirects you accordingly
+	*/
 	func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
 
 		BlargAppearance.apply()
+		MagicalRecord.setupCoreDataStackWithAutoMigratingSqliteStoreNamed("BlargData.sqlite")
 
 		window = UIWindow(frame: UIScreen.mainScreen().bounds)
 		window?.makeKeyAndVisible()
@@ -56,12 +65,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		return true
 	}
 
+	/**
+		Convenience method so you don't have to cast
+		
+		@return The shared application delegate
+	*/
 	class func sharedInstance() -> AppDelegate {
 		return UIApplication.sharedApplication().delegate as AppDelegate
 	}
 
+	/// Cleans up the CoreData store
 	func applicationWillTerminate(application: UIApplication!) {
-		CoreDataStack.sharedInstance.saveContext()
+		MagicalRecord.cleanUp()
 	}
 
 }

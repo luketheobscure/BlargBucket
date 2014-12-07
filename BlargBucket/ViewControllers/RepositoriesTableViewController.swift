@@ -8,8 +8,10 @@
 
 import UIKit
 
+/// Lists all the repositorues
 class RepositoriesTableViewController: BlargTable, UISearchControllerDelegate, UISearchResultsUpdating {
 
+	/// The search controller for the search box
 	let searchController: UISearchController = ({
 		let controller = UISearchController(searchResultsController: nil)
 		controller.dimsBackgroundDuringPresentation = true
@@ -17,6 +19,7 @@ class RepositoriesTableViewController: BlargTable, UISearchControllerDelegate, U
 		return controller
 	})()
 
+	/// Sets up the view model, the search controller, and fetched the relevant ingo.
     override func viewDidLoad() {
         super.viewDidLoad()
 		DataFetcher.fetchRepoInfo()
@@ -71,6 +74,7 @@ class RepositoriesTableViewController: BlargTable, UISearchControllerDelegate, U
         return cell
     }
 
+	/// Updates the viewModel based on the search term, then reloads the table view
 	func updateSearchResultsForSearchController(searchController: UISearchController){
 		self.viewModel().searchTerm = searchController.searchBar.text
 		self.tableView.reloadData()

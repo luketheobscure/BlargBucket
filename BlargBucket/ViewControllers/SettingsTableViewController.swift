@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Shows all the settings
 class SettingsTableViewController: UITableViewController {
 
 	override func viewDidLoad() {
@@ -36,6 +37,7 @@ class SettingsTableViewController: UITableViewController {
 		return cell
 	}
 
+	/// There's only one setting right now, so this just logs you out.
 	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 		DataFetcher.clearAuthToken()
 		Locksmith.deleteData(forKey: "password", inService:  "BlargService", forUserAccount: "BlargUser")

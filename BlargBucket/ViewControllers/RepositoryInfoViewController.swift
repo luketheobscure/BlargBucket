@@ -9,12 +9,15 @@
 import UIKit
 import QuartzCore
 
+// TODO: Add documentation after we refactor
+
+/// Shows the info about a single repository
 class RepositoryInfoViewController: UITableViewController {
 
 	var viewModel = RepositoryVM()
 	var observer: AnyObject?
 	var backgroundImage: UIImageView?
-	// TODO: This is half refactored... lots of onnecesary stuff in here (like self.imageView, self.backgroungImage, etc)
+	// TODO: This is half refactored... lots of unnecesary stuff in here (like self.imageView, self.backgroungImage, etc)
 	let topView = InfoViewController()
 	var imageView: UIImageView?
 

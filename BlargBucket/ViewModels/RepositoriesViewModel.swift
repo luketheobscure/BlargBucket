@@ -9,8 +9,10 @@
 import UIKit
 import CoreData
 
+/// Finds all the repositories.
 class RepositoriesViewModel: NSFetchedResultsController {
 
+	/// String to filter the repository name by. Updates the fetch request predicate.
 	var searchTerm: String? {
 		set {
 			if newValue != nil && newValue != ""{
@@ -27,13 +29,15 @@ class RepositoriesViewModel: NSFetchedResultsController {
 		}
 	}
 
+	/// Designated initializer
 	override init() {
 		let fetchRequest = NSFetchRequest(entityName: "Repository")
 		fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "name", ascending: true, selector: "localizedCaseInsensitiveCompare:") ]
-		super.init(fetchRequest: fetchRequest, managedObjectContext: CoreDataStack.sharedInstance.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+		super.init(fetchRequest: fetchRequest, managedObjectContext: NSManagedObjectContext.defaultContext(), sectionNameKeyPath: nil, cacheName: nil)
 		DataFetcher.fetchRepoInfo()
 	}
 
+	/// Returns the repository at the index path
 	func repoAtIndexPath(indexPath: NSIndexPath) -> Repository! {
 		return objectAtIndexPath(indexPath) as Repository
 	}

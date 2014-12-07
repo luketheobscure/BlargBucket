@@ -8,22 +8,25 @@
 
 import UIKit
 
+/// Displays the diff of a pull request
 class DiffViewController: UITableViewController {
 
-	var pullRequest: PullRequest?
+	/// Set as the table view dataSource
 	var viewModel: DiffViewModel?
 
+	/**
+		Deisgnated initializer
+		
+		:param: aPullRequest The pull request to show the diff for
+	*/
 	init(aPullRequest:PullRequest) {
 		super.init(style: .Grouped)
 		title = "Diff"
-		pullRequest = aPullRequest
 		viewModel = DiffViewModel(aPullRequest: aPullRequest)
 		tableView.dataSource = viewModel
 		tableView.separatorStyle = .None
-		//tableView.separatorColor = UIColor.lightGrayColor()
 		tableView.registerNib(UINib(nibName: "DiffTableViewCell", bundle: nil), forCellReuseIdentifier: "DiffCell")
 		tableView.estimatedRowHeight = 24
-		//tableView.separatorInset = UIEdgeInsetsZero
 	}
 
 	override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
