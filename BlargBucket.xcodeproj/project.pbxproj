@@ -350,13 +350,13 @@
 				B594D90A19A53FD5000D6A10 /* EventsViewController.swift */,
 				B5F52A0819F21D2600468E35 /* InfoViewController.swift */,
 				B5B4CA4219A07ADE00A4213A /* LoginViewController.swift */,
+				B5B4CA37199FE8B800A4213A /* MainTabBarViewController.swift */,
 				B567B94819B189B500D4430B /* PullRequestsTableViewController.swift */,
 				B5997C9819F0CE0400441BD5 /* PullRequestViewController.swift */,
 				B5B4CA08199FE07300A4213A /* RepositoriesTableViewController.swift */,
 				B5D17BBD19A957370023C263 /* RepositoryInfoViewController.swift */,
 				B556333A19F408C500856D7A /* ReviewersViewController.swift */,
 				B5B4CA3E199FFA2300A4213A /* SettingsTableViewController.swift */,
-				B5B4CA37199FE8B800A4213A /* MainTabBarViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";

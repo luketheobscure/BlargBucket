@@ -223,6 +223,8 @@ class DataFetcher: NSObject {
 		}
 	}
 
+	// MARK: Actions
+
 	/**
 		Marks a pull request as approved on BitBucket!
 		

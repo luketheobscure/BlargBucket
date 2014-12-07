@@ -19,7 +19,7 @@ class ReviewersViewController: UICollectionViewController, UICollectionViewDeleg
 	/// The pull request
 	var pullRequest: PullRequest?
 
-	/// Observer that uploads the reviewers after they load
+	/// Observer that updates the reviewers after they load
 	var observer: NSObjectProtocol?
 
 	/**
