@@ -21,4 +21,8 @@ public class BlargManagedObject: NSManagedObject {
 		self.setPrimitiveValue(utc, forKey: key )
 		self.didChangeValueForKey(key)
 	}
+
+	public override class func importFromObject(data:AnyObject!) -> AnyObject {
+		return super.importFromObject(data)
+	}
 }

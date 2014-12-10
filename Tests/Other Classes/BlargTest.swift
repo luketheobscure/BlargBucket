@@ -10,4 +10,9 @@ import BlargBucket
 
 class BlargTest: XCTestCase {
 	var fixtures = Fixtures()
+
+	override func setUp() {
+		MagicalRecord.cleanUp()
+		MagicalRecord.setupCoreDataStackWithInMemoryStore()
+	}
 }

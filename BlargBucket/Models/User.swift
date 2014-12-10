@@ -10,36 +10,13 @@ import UIKit
 import CoreData
 
 /// A user on bitbucket
-public class User: NSManagedObject {
+public class User: BlargManagedObject {
 
 	@NSManaged public var avatar: NSString?
 	@NSManaged public var display_name: NSString?
 	@NSManaged public var last_name: NSString?
 	@NSManaged public var first_name: NSString?
 	@NSManaged public var username: NSString?
-
-	/**
-		Gets a user or creates one if necessary
-		
-		:param: username The users username. Used to lookup an existing user
-		:param: context Optional NSManagedObjectContext
-	*/
-	public class func userWithUsername(username:AnyObject, context: NSManagedObjectContext = NSManagedObjectContext.defaultContext()) -> User {
-		var user : User?
-		let request = NSFetchRequest()
-		request.entity = NSEntityDescription.entityForName("User", inManagedObjectContext: context)
-		request.predicate = NSPredicate(format: "username = '\(username)'")
-		var error = NSErrorPointer()
-		let results = context.executeFetchRequest(request, error: nil) as Array?
-		user = results?.last as? User
-
-		if user == nil {
-			user =  NSEntityDescription.insertNewObjectForEntityForName("User", inManagedObjectContext: context) as? User
-			user!.username = username as? NSString
-		}
-
-		return user!
-	}
 
 	/// Gets the current user based on NSUserDefaults.standardUserDefaults
 	class func currentUser() -> User? {
@@ -84,6 +61,11 @@ public class User: NSManagedObject {
 		}
 		return false
 
+	}
+
+	/// Workaround for a MagicalRecord bug
+	class func MR_entityName() -> String{
+		return "User"
 	}
 
 }

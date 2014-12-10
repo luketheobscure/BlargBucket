@@ -43,6 +43,8 @@
 		B5A9E73319A4648C001A25E8 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A9E73219A4648C001A25E8 /* Event.swift */; };
 		B5A9E73519A50226001A25E8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A9E73419A50226001A25E8 /* User.swift */; };
 		B5A9E73919A503D5001A25E8 /* PullRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A9E73819A503D5001A25E8 /* PullRequest.swift */; };
+		B5AA7B901A380CAD00A2BFF7 /* CommitsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AA7B8F1A380CAD00A2BFF7 /* CommitsViewModel.swift */; };
+		B5AA7B921A380EF900A2BFF7 /* CommitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AA7B911A380EF900A2BFF7 /* CommitsViewController.swift */; };
 		B5AC00AD199FD11F00FEC3A3 /* RepositoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AC00AC199FD11F00FEC3A3 /* RepositoriesViewModel.swift */; };
 		B5B4CA09199FE07300A4213A /* RepositoriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B4CA08199FE07300A4213A /* RepositoriesTableViewController.swift */; };
 		B5B4CA38199FE8B800A4213A /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B4CA37199FE8B800A4213A /* MainTabBarViewController.swift */; };
@@ -125,6 +127,8 @@
 		B5A9E73219A4648C001A25E8 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Event.swift; path = Models/Event.swift; sourceTree = "<group>"; };
 		B5A9E73419A50226001A25E8 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Models/User.swift; sourceTree = "<group>"; };
 		B5A9E73819A503D5001A25E8 /* PullRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PullRequest.swift; path = Models/PullRequest.swift; sourceTree = "<group>"; };
+		B5AA7B8F1A380CAD00A2BFF7 /* CommitsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommitsViewModel.swift; path = ViewModels/CommitsViewModel.swift; sourceTree = "<group>"; };
+		B5AA7B911A380EF900A2BFF7 /* CommitsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommitsViewController.swift; path = ViewControllers/CommitsViewController.swift; sourceTree = "<group>"; };
 		B5AC00AC199FD11F00FEC3A3 /* RepositoriesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RepositoriesViewModel.swift; path = ViewModels/RepositoriesViewModel.swift; sourceTree = "<group>"; };
 		B5B4CA08199FE07300A4213A /* RepositoriesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RepositoriesTableViewController.swift; path = ViewControllers/RepositoriesTableViewController.swift; sourceTree = "<group>"; };
 		B5B4CA37199FE8B800A4213A /* MainTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainTabBarViewController.swift; path = ViewControllers/MainTabBarViewController.swift; sourceTree = "<group>"; };
@@ -331,13 +335,14 @@
 			isa = PBXGroup;
 			children = (
 				B587B4701A0D2BB3007F7F10 /* Base Classes */,
-				B5AC00AC199FD11F00FEC3A3 /* RepositoriesViewModel.swift */,
+				B5AA7B8F1A380CAD00A2BFF7 /* CommitsViewModel.swift */,
+				B56D3BC419E98F05004A2504 /* DiffViewModel.swift */,
 				B594D90C19A53FFF000D6A10 /* EventsViewModel.swift */,
+				B5DE805A19EAD82200645DD3 /* FileDiffViewModel.swift */,
+				B5AC00AC199FD11F00FEC3A3 /* RepositoriesViewModel.swift */,
 				B5D17BBF19A9581F0023C263 /* RepositoryVM.swift */,
 				B587B4731A0D2C7E007F7F10 /* PullRequestViewModel.swift */,
 				B567B94A19B18A6D00D4430B /* PullRequestsViewModel.swift */,
-				B56D3BC419E98F05004A2504 /* DiffViewModel.swift */,
-				B5DE805A19EAD82200645DD3 /* FileDiffViewModel.swift */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -346,6 +351,7 @@
 			isa = PBXGroup;
 			children = (
 				B564A9D719AA4A7800464885 /* Base Classes */,
+				B5AA7B911A380EF900A2BFF7 /* CommitsViewController.swift */,
 				B56D3BC219E98E5E004A2504 /* DiffViewController.swift */,
 				B594D90A19A53FD5000D6A10 /* EventsViewController.swift */,
 				B5F52A0819F21D2600468E35 /* InfoViewController.swift */,
@@ -587,7 +593,9 @@
 				B5AC00AD199FD11F00FEC3A3 /* RepositoriesViewModel.swift in Sources */,
 				B567B94B19B18A6D00D4430B /* PullRequestsViewModel.swift in Sources */,
 				B57302C6199C6DCF00060D2E /* DataFetcher.swift in Sources */,
+				B5AA7B921A380EF900A2BFF7 /* CommitsViewController.swift in Sources */,
 				B5DE805E19EB274300645DD3 /* DiffTableViewCell.swift in Sources */,
+				B5AA7B901A380CAD00A2BFF7 /* CommitsViewModel.swift in Sources */,
 				B5B4CA3B199FEA7900A4213A /* UIColorExtension.swift in Sources */,
 				B5A9E73319A4648C001A25E8 /* Event.swift in Sources */,
 				B5314CDA19A3AAFE0066B402 /* Notifications.swift in Sources */,
@@ -632,6 +640,7 @@
 /* Begin XCBuildConfiguration section */
 		B55DBAF01A2F6503001D90E8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EE9DFE0D8D53A187F38197E8 /* Pods-BlargBucket.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (

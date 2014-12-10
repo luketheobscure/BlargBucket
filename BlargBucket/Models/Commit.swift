@@ -10,11 +10,12 @@ import Foundation
 import CoreData
 
 /// Represents a single git Commit
-class Commit: NSManagedObject {
+class Commit: BlargManagedObject {
 
     @NSManaged var commit_hash: String?
     @NSManaged var commit_description: String?
     @NSManaged var belongsToRepository: Repository?
+	@NSManaged var belongsToPullRequest: PullRequest?
 
 	/**
 		Creates a commit
@@ -40,6 +41,11 @@ class Commit: NSManagedObject {
 		}
 
 		return commit!
+	}
+
+	/// Workaround for a MagicalRecord bug
+	class func MR_entityName() -> String{
+		return "Commit"
 	}
 
 }

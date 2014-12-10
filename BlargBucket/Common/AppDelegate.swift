@@ -39,7 +39,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
 
 		BlargAppearance.apply()
-		MagicalRecord.setupCoreDataStackWithAutoMigratingSqliteStoreNamed("BlargData.sqlite")
+		let storeName = "BlargData.sqlite"
+		MagicalRecord.setupCoreDataStackWithAutoMigratingSqliteStoreNamed(storeName)
+		println("The database is here: \(NSPersistentStore.urlForStoreName(storeName))")
 
 		window = UIWindow(frame: UIScreen.mainScreen().bounds)
 		window?.makeKeyAndVisible()

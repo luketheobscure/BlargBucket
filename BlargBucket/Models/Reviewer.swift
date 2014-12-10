@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 /// Represents a user reviewer on a pull request
-public class Reviewer: NSManagedObject {
+public class Reviewer: BlargManagedObject {
 
 	/// Has the user approved the PR
     @NSManaged var approved: NSNumber

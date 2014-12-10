@@ -24,7 +24,7 @@ class PullRequestViewController: UITableViewController {
 	var viewModel: PullRequestViewModel?
 
 	/**
-		Designated initializer
+		Designated initializer. Grabs the commits since it's in here already
 		
 		:param: aPullRequest The pull request to display
 	*/
@@ -32,6 +32,7 @@ class PullRequestViewController: UITableViewController {
 		self.init(style: .Grouped)
 		pullRequest = aPullRequest
 		viewModel = PullRequestViewModel(aPullRequest: aPullRequest)
+		DataFetcher.fetchPullRequestCommits(aPullRequest)
 		reviewersViewController = ReviewersViewController(aPullRequest: aPullRequest)
 		self.addChildViewController(reviewersViewController!)
 	}

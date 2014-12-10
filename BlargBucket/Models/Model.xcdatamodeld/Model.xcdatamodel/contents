@@ -1,11 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6252" systemVersion="14B25" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6254" systemVersion="14B25" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Commit" representedClassName="BlargBucket.Commit" syncable="YES">
-        <attribute name="commit_description" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="commit_hash" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="commit_description" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="mappedKeyName" value="message"/>
+            </userInfo>
+        </attribute>
+        <attribute name="commit_hash" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="mappedKeyName" value="hash"/>
+                <entry key="mappedKeyName2" value="commitID"/>
+            </userInfo>
+        </attribute>
         <relationship name="belongsToEvent" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="hasCommits" inverseEntity="Event" syncable="YES"/>
         <relationship name="belongsToPullRequest" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PullRequest" inverseName="hasCommits" inverseEntity="PullRequest" syncable="YES"/>
-        <relationship name="belongsToRepository" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Repository" inverseName="hasCommits" inverseEntity="Repository" syncable="YES"/>
+        <relationship name="belongsToRepository" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Repository" inverseName="hasCommits" inverseEntity="Repository" syncable="YES"/>
+        <userInfo>
+            <entry key="relatedByAttribute" value="commit_hash"/>
+        </userInfo>
     </entity>
     <entity name="Event" representedClassName="BlargBucket.Event" syncable="YES">
         <attribute name="event" optional="YES" attributeType="String" syncable="YES"/>
@@ -77,9 +89,12 @@
         <relationship name="hasEvents" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="belongsToUser" inverseEntity="Event" syncable="YES"/>
         <relationship name="hasPullRequestReviews" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Reviewer" inverseName="belongsToUser" inverseEntity="Reviewer" syncable="YES"/>
         <relationship name="hasPullRequests" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PullRequest" inverseName="belongsToUser" inverseEntity="PullRequest" syncable="YES"/>
+        <userInfo>
+            <entry key="relatedByAttribute" value="username"/>
+        </userInfo>
     </entity>
     <elements>
-        <element name="Commit" positionX="-243" positionY="135" width="128" height="118"/>
+        <element name="Commit" positionX="-243" positionY="135" width="128" height="120"/>
         <element name="Event" positionX="-380" positionY="21" width="128" height="150"/>
         <element name="PullRequest" positionX="-425" positionY="153" width="128" height="238"/>
         <element name="Repository" positionX="-63" positionY="-18" width="128" height="493"/>

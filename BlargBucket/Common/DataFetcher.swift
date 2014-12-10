@@ -51,12 +51,12 @@ class DataFetcher: NSObject {
 				return
 			}
 			completion(JSON: JSON)
-			var error = NSErrorPointer()
-			NSManagedObjectContext.defaultContext().save(error)
-			if error != nil {
-				println("Core data error!")
-				println(error)
-			}
+			NSManagedObjectContext.defaultContext().saveToPersistentStoreWithCompletion({ (success, error) -> Void in
+				if (error != nil) {
+					println("Core data error!")
+					println(error)
+				}
+			})
 			}) { (operation, error) -> Void in
 				println(error)
 		}
@@ -76,13 +76,12 @@ class DataFetcher: NSObject {
 				return
 			}
 			completion(JSON: JSON)
-			var error = NSErrorPointer()
-			NSManagedObjectContext.defaultContext().save(error)
-			if error != nil {
-				println("Core data error!")
-				println(error)
-			}
-			}) { (operation, error) -> Void in
+			NSManagedObjectContext.defaultContext().saveToPersistentStoreWithCompletion({ (success, error) -> Void in
+				if (error != nil) {
+					println("Core data error!")
+					println(error)
+				}
+			})			}) { (operation, error) -> Void in
 				println(error)
 		}
 	}
@@ -96,13 +95,9 @@ class DataFetcher: NSObject {
 	class func loginAsUser() {
 		DataFetcher.fetchURL("/api/1.0/user") {
 			let userHash = $0["user"] as NSDictionary
-			let userName = userHash["username"] as NSString
-			var user = User.userWithUsername(userName)
-			user.last_name = userHash["last_name"] as NSString?
-			user.first_name = userHash["first_name"] as NSString?
-			user.avatar = userHash["avatar"] as NSString?
+			var user = User.importFromObject(userHash) as User
 			// TODO: Constantize "current user"
-			NSUserDefaults.standardUserDefaults().setValue(userName, forKeyPath: "Current User")
+			NSUserDefaults.standardUserDefaults().setValue(user.username, forKeyPath: "Current User")
 		}
 	}
 
@@ -129,11 +124,7 @@ class DataFetcher: NSObject {
 				anEvent.event = event["event"] as NSString?
 
 				let userHash = event["user"] as NSDictionary
-				let userName = userHash["username"] as NSString
-				var user = User.userWithUsername(userName)
-				user.last_name = userHash["last_name"] as NSString?
-				user.first_name = userHash["first_name"] as NSString?
-				user.avatar = userHash["avatar"] as NSString?
+				var user = User.importFromObject(userHash) as User
 
 				anEvent.belongsToUser = user
 				anEvent.belongsToRepository = repo
@@ -179,12 +170,34 @@ class DataFetcher: NSObject {
 		DataFetcher.fetchURL("/api/1.0/repositories/\(repo.owner!)/\(repo.slug!)/pullrequests/\(pullRequest.id!)/participants") { (JSON:AnyObject) in
 			var reviewers: [Reviewer] = []
 			for reviewJSON in JSON as NSArray {
-				let user = User.userWithUsername(reviewJSON["username"] as NSString)
+				let user = User.importFromObject(reviewJSON) as User
 				var reviewer = Reviewer(user: user, pullRequest: pullRequest)
 				reviewer.approved = reviewJSON["approved"] as NSNumber
 				reviewers.append(reviewer)
 			}
 			pullRequest.hasReviewers = NSSet(array: reviewers)
+		}
+	}
+
+	/**
+	Gets the commits for a pull request
+
+	:param: pullRequest The pull request to get the commits for
+	*/
+	class func fetchPullRequestCommits(pullRequest: PullRequest){
+		let repo = pullRequest.belongsToRepository!
+		DataFetcher.fetchURL("/api/2.0/repositories/\(repo.owner!)/\(repo.slug!)/pullrequests/\(pullRequest.id!)/commits") { (JSON:AnyObject) in
+			var backgroundContext = NSManagedObjectContext.contextForCurrentThread()
+			var commits: [Commit] = []
+
+//			var commits = Commit.importFromArray(JSON["values"] as NSArray)
+
+			for commitJSON in JSON["values"] as NSArray {
+				var commit : Commit = Commit.createEntity() as Commit
+				commit.importValuesForKeysWithObject(commitJSON)
+				commits.append(commit)
+			}
+			pullRequest.hasCommits = NSSet(array: commits)
 		}
 	}
 
@@ -214,12 +227,16 @@ class DataFetcher: NSObject {
 	*/
 	class func fetchDiff(diffUrl:NSURL?, pullRequest: PullRequest){
 		DataFetcher.plainTextManager.GET("\(diffUrl!)", parameters: nil, success:  { (operation, response) -> Void in
-				var responseString = NSString(data: response as NSData, encoding: NSUTF8StringEncoding)
-				pullRequest.diff = responseString
-				NSManagedObjectContext.defaultContext().save(nil)
+			var responseString = NSString(data: response as NSData, encoding: NSUTF8StringEncoding)
+			pullRequest.diff = responseString
+			NSManagedObjectContext.defaultContext().saveToPersistentStoreWithCompletion({ (success, error) -> Void in
+				if (error != nil) {
+					println("Core data error!")
+					println(error)
+				}
 			})
-			 { (operation, error) -> Void in
-				println(operation)
+		}) { (operation, error) -> Void in
+			println(operation)
 		}
 	}
 
@@ -250,14 +267,14 @@ class DataFetcher: NSObject {
 				return
 			}
 			DataFetcher.fetchPullRequestReviewers(pullRequest)
-			var error = NSErrorPointer()
-			NSManagedObjectContext.defaultContext().save(error)
-			if error != nil {
-				println("Core data error!")
-				println(error)
-			}
-			}) { (operation, error) -> Void in
-				println(error)
+			NSManagedObjectContext.defaultContext().saveToPersistentStoreWithCompletion({ (success, error) -> Void in
+				if (error != nil) {
+					println("Core data error!")
+					println(error)
+				}
+			})
+		}) { (operation, error) -> Void in
+			println(error)
 		}
 	}
 

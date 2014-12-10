@@ -22,4 +22,13 @@ public class CoreDataStack {
 		return NSManagedObjectModel(contentsOfURL: modelURL!)!
 	}()
 
+	public class func toggleTestStack() {
+//		MagicalRecord.setupCoreDataStackWithInMemoryStore()
+//		NSManagedObjectContext.newMainQueueContext()
+	}
+
+	public class func defaultContext() -> NSManagedObjectContext {
+		return NSManagedObjectContext.defaultContext()
+	}
+
 }

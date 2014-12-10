@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 /// A BitBucket Pull Request
-public class PullRequest: NSManagedObject {
+public class PullRequest: BlargManagedObject {
 
 	@NSManaged var id: NSNumber?
 	@NSManaged var title: String?
@@ -38,11 +38,11 @@ public class PullRequest: NSManagedObject {
 		pullRequest.title = JSON["title"] as? String
 		pullRequest.pr_description = JSON["description"] as? String
 		pullRequest.belongsToRepository = repo
-		
-		var author = JSON.valueForKeyPath("author.username") as String?
-		if author != nil{
-			pullRequest.belongsToUser = User.userWithUsername(author!)
+
+		if JSON["author"] != nil{
+			pullRequest.belongsToUser = User.importFromObject(JSON["author"]) as User
 		}
+		
 		pullRequest.source_branch = JSON.valueForKeyPath("source.branch.name") as? String
 		pullRequest.destination_branch = JSON.valueForKeyPath("destination.branch.name") as? String
 

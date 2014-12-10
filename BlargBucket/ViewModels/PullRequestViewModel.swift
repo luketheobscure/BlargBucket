@@ -37,7 +37,7 @@ class PullRequestViewModel {
 				detailTitle: nil,
 				imageView: nil,
 				reuseIdentifier: "optionCell",
-				action: nil
+				action: { $0.navigationController!.pushViewController(CommitsViewController(aPullRequest: aPullRequest), animated: true) }
 			),
 			TableCellModel(
 				title:NSLocalizedString("Activity",
