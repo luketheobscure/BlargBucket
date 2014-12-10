@@ -12,9 +12,20 @@
                 <entry key="mappedKeyName2" value="commitID"/>
             </userInfo>
         </attribute>
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES">
+            <userInfo>
+                <entry key="dateFormat" value="yyyy-mm-dd'T'HH:mm:ssZ"/>
+            </userInfo>
+        </attribute>
         <relationship name="belongsToEvent" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="hasCommits" inverseEntity="Event" syncable="YES"/>
         <relationship name="belongsToPullRequest" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PullRequest" inverseName="hasCommits" inverseEntity="PullRequest" syncable="YES"/>
         <relationship name="belongsToRepository" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Repository" inverseName="hasCommits" inverseEntity="Repository" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="commits" inverseEntity="User" syncable="YES">
+            <userInfo>
+                <entry key="mappedKeyName" value="author.user"/>
+                <entry key="relatedByAttributeName" value="username"/>
+            </userInfo>
+        </relationship>
         <userInfo>
             <entry key="relatedByAttribute" value="commit_hash"/>
         </userInfo>
@@ -86,6 +97,7 @@
         <attribute name="first_name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="last_name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="commits" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Commit" inverseName="user" inverseEntity="Commit" syncable="YES"/>
         <relationship name="hasEvents" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="belongsToUser" inverseEntity="Event" syncable="YES"/>
         <relationship name="hasPullRequestReviews" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Reviewer" inverseName="belongsToUser" inverseEntity="Reviewer" syncable="YES"/>
         <relationship name="hasPullRequests" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PullRequest" inverseName="belongsToUser" inverseEntity="PullRequest" syncable="YES"/>
@@ -94,11 +106,11 @@
         </userInfo>
     </entity>
     <elements>
-        <element name="Commit" positionX="-243" positionY="135" width="128" height="120"/>
+        <element name="Commit" positionX="-243" positionY="135" width="128" height="150"/>
         <element name="Event" positionX="-380" positionY="21" width="128" height="150"/>
         <element name="PullRequest" positionX="-425" positionY="153" width="128" height="238"/>
         <element name="Repository" positionX="-63" positionY="-18" width="128" height="493"/>
         <element name="Reviewer" positionX="-243" positionY="135" width="128" height="88"/>
-        <element name="User" positionX="-342" positionY="281" width="128" height="165"/>
+        <element name="User" positionX="-342" positionY="281" width="128" height="178"/>
     </elements>
 </model>

@@ -10,12 +10,14 @@ import Foundation
 import CoreData
 
 /// Represents a single git Commit
-class Commit: BlargManagedObject {
+public class Commit: BlargManagedObject {
 
-    @NSManaged var commit_hash: String?
-    @NSManaged var commit_description: String?
-    @NSManaged var belongsToRepository: Repository?
-	@NSManaged var belongsToPullRequest: PullRequest?
+	@NSManaged public var commit_hash: String?
+	@NSManaged public var commit_description: String?
+	@NSManaged public var date: NSDate?
+    @NSManaged public var belongsToRepository: Repository?
+	@NSManaged public var belongsToPullRequest: PullRequest?
+	@NSManaged public var user: User?
 
 	/**
 		Creates a commit

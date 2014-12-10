@@ -21,6 +21,7 @@
 		B55DBAF31A2F655E001D90E8 /* UserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B561F69B1A2D9B920087D8CA /* UserTests.swift */; };
 		B55DBAF41A2F6563001D90E8 /* BlargTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54054891A2D645C00974C75 /* BlargTest.swift */; };
 		B55DBAF51A2F6567001D90E8 /* Fixtures.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54054861A2D615C00974C75 /* Fixtures.swift */; };
+		B562CD3C1A38346A009C3D66 /* CommitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AA7B931A382A2900A2BFF7 /* CommitTests.swift */; };
 		B564A9DA19AA57D400464885 /* NormalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B564A9D819AA57D400464885 /* NormalTableViewCell.swift */; };
 		B567B94919B189B500D4430B /* PullRequestsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B567B94819B189B500D4430B /* PullRequestsTableViewController.swift */; };
 		B567B94B19B18A6D00D4430B /* PullRequestsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B567B94A19B18A6D00D4430B /* PullRequestsViewModel.swift */; };
@@ -129,6 +130,7 @@
 		B5A9E73819A503D5001A25E8 /* PullRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PullRequest.swift; path = Models/PullRequest.swift; sourceTree = "<group>"; };
 		B5AA7B8F1A380CAD00A2BFF7 /* CommitsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommitsViewModel.swift; path = ViewModels/CommitsViewModel.swift; sourceTree = "<group>"; };
 		B5AA7B911A380EF900A2BFF7 /* CommitsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommitsViewController.swift; path = ViewControllers/CommitsViewController.swift; sourceTree = "<group>"; };
+		B5AA7B931A382A2900A2BFF7 /* CommitTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommitTests.swift; path = Models/CommitTests.swift; sourceTree = "<group>"; };
 		B5AC00AC199FD11F00FEC3A3 /* RepositoriesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RepositoriesViewModel.swift; path = ViewModels/RepositoriesViewModel.swift; sourceTree = "<group>"; };
 		B5B4CA08199FE07300A4213A /* RepositoriesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RepositoriesTableViewController.swift; path = ViewControllers/RepositoriesTableViewController.swift; sourceTree = "<group>"; };
 		B5B4CA37199FE8B800A4213A /* MainTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainTabBarViewController.swift; path = ViewControllers/MainTabBarViewController.swift; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 			children = (
 				B547AD2F19B3C83700AE2F5B /* RepositoryTests.swift */,
 				B561F69B1A2D9B920087D8CA /* UserTests.swift */,
+				B5AA7B931A382A2900A2BFF7 /* CommitTests.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -571,6 +574,7 @@
 				B55DBAF41A2F6563001D90E8 /* BlargTest.swift in Sources */,
 				B55DBAF21A2F655A001D90E8 /* RepositoryTests.swift in Sources */,
 				B55DBAF51A2F6567001D90E8 /* Fixtures.swift in Sources */,
+				B562CD3C1A38346A009C3D66 /* CommitTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

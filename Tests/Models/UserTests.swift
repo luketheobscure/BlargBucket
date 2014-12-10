@@ -16,7 +16,7 @@ class UserTests: BlargTest {
 		let oldCount = allUsers()!.count
 		let user = User.importFromObject(Fixtures.Users().Luke) as User
 
-		XCTAssertEqual("luketheobscure", user.username!, "Username doesn't match")
+		XCTAssertEqual("lukederp", user.username!, "Username doesn't match")
 		XCTAssertEqual(oldCount + 1, allUsers()!.count, "User count didn't change and it should have")
 
 		let user2: AnyObject = User.importFromObject(Fixtures.Users().Luke)
