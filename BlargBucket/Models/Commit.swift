@@ -45,9 +45,4 @@ public class Commit: BlargManagedObject {
 		return commit!
 	}
 
-	/// Workaround for a MagicalRecord bug
-	class func MR_entityName() -> String{
-		return "Commit"
-	}
-
 }

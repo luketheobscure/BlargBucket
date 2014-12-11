@@ -25,4 +25,10 @@ public class BlargManagedObject: NSManagedObject {
 	public override class func importFromObject(data:AnyObject!) -> AnyObject {
 		return super.importFromObject(data)
 	}
+
+	/// Workaround for a MagicalRecord bug
+	class func MR_entityName() -> String{
+		return NSStringFromClass(self).componentsSeparatedByString(".").last as String!
+	}
+	
 }

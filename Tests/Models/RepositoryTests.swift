@@ -13,63 +13,69 @@ import BlargBucket
 
 class RepositoryTests: BlargTest {
 
-    func testCreateAndGet() {
-		var JSON: AnyObject = [
-			"created_on": "2013-09-27T22:08:47.506",
-			"creator": "dirk_gently",
-			"description": "Blarg Bucket",
-			"email_mailinglist": "",
-			"email_writers": 1,
-			"fork_of": "<null>",
-			"has_issues": 0,
-			"has_wiki": 0,
-			"is_fork": 0,
-			"is_mq": 0,
-			"is_private": 1,
-			"language": "ruby",
-			"last_updated": "2013-09-27T22:10:29.341",
-			"logo": "https://d3oaxc4q5k2d6q.cloudfront.net/m/d2f44dcd176d/img/language-avatars/ruby_16.png",
-			"mq_of": "<null>",
-			"name": "blarg_bucket",
-			"no_forks": 0,
-			"no_public_forks": 1,
-			"owner": "agrian",
-			"read_only": 0,
-			"resource_uri": "derp/derp/derp",
-			"scm": "git",
-			"size": 139703,
-			"slug": "blarg_bucket",
-			"state": "available",
-			"utc_created_on": "2013-09-27 20:08:47+00:00",
-			"utc_last_updated": "2013-09-27 20:10:29+00:00",
-			"website": ""
-		]
+	let repo1: Repository = Repository.importFromObject(Fixtures.Repos().Repo1) as Repository
 
-		let repository = Repository.create(JSON, context: fixtures.context)
-		fixtures.context.save(nil)
+	func testName(){
+		XCTAssertEqual(repo1.name!, "blarg_bucket", "Name not equal")
+	}
 
-		XCTAssertEqual(JSON["name"] as NSString, repository.name!, "Repo name not correct.")
-		XCTAssertEqual(JSON["description"] as NSString, repository.repo_description!, "Repo description not correct.")
-		XCTAssertEqual(JSON["language"] as NSString, repository.language!, "Repo description not correct.")
-		XCTAssertEqual(JSON["scm"] as NSString, repository.scm!, "Repo scm not correct.")
-		XCTAssertEqual(JSON["state"] as NSString, repository.state!, "Repo state not correct.")
-		XCTAssertEqual(JSON["scm"] as NSString, repository.scm!, "Repo scm not correct.")
+	func testDescription(){
+		XCTAssertEqual(repo1.name!, "blarg_bucket", "Description not equal")
+	}
 
-		XCTAssertNotNil(repository.utc_created_on, "Created on is nil")
-		XCTAssertNotNil(repository.utc_last_updated, "Updated on is nil")
+	func testLanguage(){
+		XCTAssertEqual("ruby", repo1.language!, "Repo description not correct.")
+	}
 
-		let repository2 = Repository.repoWithURL(JSON["resource_uri"] as String, context: fixtures.context)
+	func testScm(){
+		XCTAssertEqual("git", repo1.scm!, "Repo scm not correct.")
+	}
 
-		XCTAssertEqual(JSON["name"] as NSString, repository2.name!, "Repo name not correct.")
-		XCTAssertEqual(JSON["description"] as NSString, repository2.repo_description!, "Repo description not correct.")
-		XCTAssertEqual(JSON["language"] as NSString, repository2.language!, "Repo description not correct.")
-		XCTAssertEqual(JSON["scm"] as NSString, repository2.scm!, "Repo scm not correct.")
-		XCTAssertEqual(JSON["state"] as NSString, repository2.state!, "Repo state not correct.")
-		XCTAssertEqual(JSON["scm"] as NSString, repository2.scm!, "Repo scm not correct.")
+	func testState(){
+		XCTAssertEqual("available", repo1.state!, "Repo state not correct.")
+	}
 
-		XCTAssertNotNil(repository2.utc_created_on, "Created on is nil")
-		XCTAssertNotNil(repository2.utc_last_updated, "Updated on is nil")
+	func testCount() {
+		let firstCount = allRepos()!.count
+		let repository = Repository.importFromObject(Fixtures.Repos().Repo1) as Repository
+		XCTAssertEqual(firstCount + 1, allRepos()!.count, "Count didn't go up and it should have")
 
-    }
+		let repository2 = Repository.importFromObject(Fixtures.Repos().Repo1) as Repository
+		XCTAssertEqual(firstCount + 1, allRepos()!.count, "Count went up and it shouldn't have")
+
+		let repository3 = Repository.importFromObject(Fixtures.Repos().Repo2) as Repository
+		XCTAssertEqual(firstCount + 2, allRepos()!.count, "Count didn't go up and it should have")
+	}
+
+	func testRepoWithURL(){
+		let url = "deroderodero"
+		let name = "Secret Chord Before The Lord" as NSString
+
+		let secretRepo = Repository.repoWithURL(url, context: NSManagedObjectContext.defaultContext())
+		secretRepo.name = name
+		NSManagedObjectContext.defaultContext().save(nil)
+
+		let blankRepo = Repository.repoWithURL("derp", context: NSManagedObjectContext.defaultContext())
+		XCTAssertNil(blankRepo.name, "The name should be blank")
+
+		let secretRepo2 = Repository.repoWithURL(url, context: NSManagedObjectContext.defaultContext())
+		XCTAssertEqual(secretRepo2.name!, name, "The names don't match")
+	}
+
+	func testSetFullName(){
+		repo1.full_name = "derp/mcderp"
+		XCTAssertEqual(repo1.owner!, "derp", "Setting full name didn't set the owner")
+		XCTAssertEqual(repo1.slug!, "mcderp", "Setting full name didn't set the slug")
+	}
+
+	func testGetFullName(){
+		repo1.owner = "herp"
+		repo1.slug = "mcherp"
+		XCTAssertEqual(repo1.full_name, "herp/mcherp", "Setting full name didn't set the owner")
+	}
+
+	func allRepos() -> [AnyObject]? {
+		return NSManagedObjectContext.defaultContext().executeFetchRequest(NSFetchRequest(entityName: "Repository"), error: nil)
+	}
 
 }

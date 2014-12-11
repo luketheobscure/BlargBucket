@@ -81,10 +81,14 @@
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="utc_created_on" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="utc_last_updated" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="website" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="hasCommits" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Commit" inverseName="belongsToRepository" inverseEntity="Commit" syncable="YES"/>
         <relationship name="hasEvents" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Event" inverseName="belongsToRepository" inverseEntity="Event" syncable="YES"/>
         <relationship name="hasPullRequests" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PullRequest" inverseName="belongsToRepository" inverseEntity="PullRequest" syncable="YES"/>
+        <userInfo>
+            <entry key="relatedByAttribute" value="resource_uri"/>
+        </userInfo>
     </entity>
     <entity name="Reviewer" representedClassName="BlargBucket.Reviewer" syncable="YES">
         <attribute name="approved" optional="YES" attributeType="Boolean" syncable="YES"/>
@@ -109,7 +113,7 @@
         <element name="Commit" positionX="-243" positionY="135" width="128" height="150"/>
         <element name="Event" positionX="-380" positionY="21" width="128" height="150"/>
         <element name="PullRequest" positionX="-425" positionY="153" width="128" height="238"/>
-        <element name="Repository" positionX="-63" positionY="-18" width="128" height="493"/>
+        <element name="Repository" positionX="-63" positionY="-18" width="128" height="508"/>
         <element name="Reviewer" positionX="-243" positionY="135" width="128" height="88"/>
         <element name="User" positionX="-342" positionY="281" width="128" height="178"/>
     </elements>

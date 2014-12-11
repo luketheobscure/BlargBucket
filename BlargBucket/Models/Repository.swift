@@ -38,27 +38,20 @@ public class Repository: BlargManagedObject {
 	@NSManaged public var no_public_forks: NSNumber?
 	@NSManaged public var creator: NSString?
 	@NSManaged public var resource_uri: NSString?
+	@NSManaged public var uuid: String?
 
-	/**
-		Creates a Repository (the model, not an actual repo)
-
-		:param: JSON A Dictionary object with all necessary info
-		:param: context An optional NSManagedObjectContext
-	*/
-	public class func create(JSON: AnyObject, context: NSManagedObjectContext = NSManagedObjectContext.defaultContext()) -> Repository {
-		var aRepo: Repository = Repository.repoWithURL(JSON["resource_uri"]!!, context: context)
-		aRepo.name = JSON["name"] as? NSString
-		for key in JSON as NSDictionary {
-			if !(key.value is NSNull) {
-				if key.key as NSString == "description" {
-					aRepo.setValue(key.value, forKey: "repo_description")
-				} else if aRepo.respondsToSelector(Selector(key.key as String)){
-					aRepo.setValue(key.value, forKey: key.key as String)
-				}
+	public var full_name: String {
+		get {
+			if self.owner != nil && self.slug != nil {
+				return "\(self.owner!)/\(self.slug!)"
 			}
+			return ""
 		}
-
-		return aRepo
+		set {
+			var array = newValue.componentsSeparatedByString("/")
+			self.owner = array[0]
+			self.slug = array[1]
+		}
 	}
 
 	/**
@@ -68,33 +61,13 @@ public class Repository: BlargManagedObject {
 		:param: context An optional NSManagedObjectContext
 	*/
 	public class func repoWithURL(url:AnyObject, context: NSManagedObjectContext = NSManagedObjectContext.defaultContext()) -> Repository {
-		var repo : Repository?
-		let request = NSFetchRequest()
-		request.entity = NSEntityDescription.entityForName(Repository.entityName(), inManagedObjectContext: context)
-		request.predicate = NSPredicate(format: "resource_uri = '\(url)'")
-		request.sortDescriptors = [NSSortDescriptor(key: "resource_uri", ascending: true)]
-		var error = NSErrorPointer()
-		var results = context.executeFetchRequest(request, error: error)
-		if results?.count != 0 {
-			var derp: AnyObject = results!.last!
-			repo = derp as? Repository
-		}
-
-		if error != nil {
-			println(error)
-		}
-
+		var repo = Repository.findFirstByAttribute("resource_uri", withValue: url) as? Repository
 		if repo == nil {
-			let entity = NSEntityDescription.entityForName(Repository.entityName(), inManagedObjectContext: context)
-			repo =  Repository(entity: entity!, insertIntoManagedObjectContext: context)
+			repo = Repository.createEntity() as Repository?
+			repo!.resource_uri = url as? NSString
 		}
-
-		return repo!;
-	}
-
-	/// The string of the entity name
-	class func entityName() -> NSString {
-		return "Repository"
+		
+		return repo!
 	}
 
 	/**

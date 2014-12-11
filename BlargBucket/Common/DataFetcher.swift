@@ -106,7 +106,7 @@ class DataFetcher: NSObject {
 		DataFetcher.fetchURL("/api/1.0/user/repositories/") {
 			var repos = $0 as NSArray
 			for repo in repos {
-				var aRepo: Repository = Repository.create(repo)
+				var aRepo: Repository = Repository.importFromObject(repo) as Repository
 			}
 		}
 	}

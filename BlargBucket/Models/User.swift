@@ -63,9 +63,4 @@ public class User: BlargManagedObject {
 
 	}
 
-	/// Workaround for a MagicalRecord bug
-	class func MR_entityName() -> String{
-		return "User"
-	}
-
 }

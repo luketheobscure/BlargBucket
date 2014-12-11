@@ -6,6 +6,8 @@
 // Copyright (c) 2014 Luke Deniston. All rights reserved.
 //
 
+// TODO: This class is kind of gross. I'd much rather use a YAML file or something
+
 import Foundation
 import CoreData
 import BlargBucket
@@ -69,6 +71,73 @@ struct Fixtures {
 				"name": "reposlug",
 				"uuid": "[632ff045-382b-46b5-a820-c7b840dcf90d]",
 			]
+		]
+	}
+
+	struct Repos {
+		var Repo1 = [
+			"uuid":"123456",
+			// TODO: Test the dates!
+//			"created_on": "2013-09-27T22:08:47.506",
+			"creator": "dirk_gently",
+			"description": "Blarg Bucket",
+			"email_mailinglist": "",
+			"email_writers": 1,
+			"fork_of": "<null>",
+			"has_issues": 0,
+			"has_wiki": 0,
+			"is_fork": 0,
+			"is_mq": 0,
+			"is_private": 1,
+			"language": "ruby",
+//			"last_updated": "2013-09-27T22:10:29.341",
+			"logo": "https://d3oaxc4q5k2d6q.cloudfront.net/m/d2f44dcd176d/img/language-avatars/ruby_16.png",
+			"mq_of": "<null>",
+			"name": "blarg_bucket",
+			"no_forks": 0,
+			"no_public_forks": 1,
+			"owner": "agrian",
+			"read_only": 0,
+			"resource_uri": "derp/derp/derp",
+			"scm": "git",
+			"size": 139703,
+			"slug": "blarg_bucket",
+			"state": "available",
+//			"utc_created_on": "2013-09-27 20:08:47+00:00",
+//			"utc_last_updated": "2013-09-27 20:10:29+00:00",
+			"website": ""
+		]
+
+		var Repo2 = [
+			"uuid":"12e3456",
+			//			"created_on": "2013-09-27T22:08:47.506",
+			"creator": "dirk_gently",
+			"description": "Blarg Bucket 2",
+			"email_mailinglist": "",
+			"email_writers": 1,
+			"fork_of": "<null>",
+			"has_issues": 0,
+			"has_wiki": 0,
+			"is_fork": 0,
+			"is_mq": 0,
+			"is_private": 1,
+			"language": "ruby",
+			//			"last_updated": "2013-09-27T22:10:29.341",
+			"logo": "https://d3oaxc4q5k2d6q.cloudfront.net/m/d2f44dcd176d/img/language-avatars/ruby_16.png",
+			"mq_of": "<null>",
+			"name": "blarg_bucket2",
+			"no_forks": 0,
+			"no_public_forks": 1,
+			"owner": "agrian",
+			"read_only": 0,
+			"resource_uri": "derp/derp/derp2",
+			"scm": "git",
+			"size": 139703,
+			"slug": "blarg_bucket2",
+			"state": "available",
+			//			"utc_created_on": "2013-09-27 20:08:47+00:00",
+			//			"utc_last_updated": "2013-09-27 20:10:29+00:00",
+			"website": ""
 		]
 	}
 }
