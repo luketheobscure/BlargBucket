@@ -31,8 +31,12 @@ class RepositoryTests: BlargTest {
 		XCTAssertEqual("git", repo1.scm!, "Repo scm not correct.")
 	}
 
-	func testState(){
-		XCTAssertEqual("available", repo1.state!, "Repo state not correct.")
+	func testLastUpdated(){
+		XCTAssertNotNil(repo1.utc_last_updated, "Last updated was nil")
+	}
+
+	func testCreated(){
+		XCTAssertNotNil(repo1.utc_created_on, "Last updated was nil")
 	}
 
 	func testCount() {

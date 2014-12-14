@@ -17,18 +17,18 @@ class DiffViewController: UITableViewController {
 	/// Observer that updates the table after the diff loads
 	var observer: NSObjectProtocol?
 
-	var pullRequest: PullRequest?
+	var diffable: Diffable?
 
 	/**
 		Deisgnated initializer
 		
-		:param: aPullRequest The pull request to show the diff for
+		:param: adiffable The pull request to show the diff for
 	*/
-	init(aPullRequest:PullRequest) {
+	init(aDiffable:Diffable) {
 		super.init(style: .Grouped)
 		title = "Diff"
-		pullRequest = aPullRequest
-		setupViewModel(aPullRequest)
+		diffable = aDiffable
+		setupViewModel(aDiffable)
 		tableView.separatorStyle = .None
 		tableView.registerNib(UINib(nibName: "DiffTableViewCell", bundle: nil), forCellReuseIdentifier: "DiffCell")
 		tableView.estimatedRowHeight = 24
@@ -37,9 +37,9 @@ class DiffViewController: UITableViewController {
 	/// Sets up the observer
 	override func viewDidLoad() {
 		observer = NSNotificationCenter.defaultCenter().addObserverForName(NSManagedObjectContextObjectsDidChangeNotification, object: NSManagedObjectContext.defaultContext(), queue: nil, usingBlock: {  [unowned self](notification:NSNotification!) -> Void in
-			if notification.userInfo![NSUpdatedObjectsKey] != nil && (notification.userInfo![NSUpdatedObjectsKey] as NSSet).containsObject(self.pullRequest!){
+			if notification.userInfo![NSUpdatedObjectsKey] != nil && (notification.userInfo![NSUpdatedObjectsKey] as NSSet).containsObject(self.diffable!){
 				dispatch_async(dispatch_get_main_queue(), {
-					self.setupViewModel(self.pullRequest!)
+					self.setupViewModel(self.diffable!)
 					self.tableView.reloadData()
 				})
 
@@ -58,10 +58,10 @@ class DiffViewController: UITableViewController {
 	/**
 		Sets up the viewModel and sets the `tableview.datasource`
 		
-		:param: aPullRequest The pull request to be passed to the viewModel
+		:param: aDiffable The pull request to be passed to the viewModel
 	*/
-	func setupViewModel(aPullRequest:PullRequest){
-		viewModel = DiffViewModel(aPullRequest: aPullRequest)
+	func setupViewModel(aDiffable:Diffable){
+		viewModel = DiffViewModel(aDiffable: aDiffable)
 		tableView.dataSource = viewModel
 	}
 

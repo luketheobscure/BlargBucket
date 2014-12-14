@@ -10,13 +10,15 @@ import Foundation
 import CoreData
 
 /// A BitBucket Pull Request
-public class PullRequest: BlargManagedObject {
+public class PullRequest: BlargManagedObject, Diffable {
 
+	// MARK: - Properties
 	@NSManaged var id: NSNumber?
 	@NSManaged var title: String?
 	@NSManaged var pr_description: String?
 	@NSManaged var source_branch: String?
 	@NSManaged var destination_branch: String?
+	@NSManaged var diff_url: String?
 	@NSManaged var diff: String?
 	@NSManaged var string: String
 	@NSManaged var created_on: NSDate
@@ -27,6 +29,27 @@ public class PullRequest: BlargManagedObject {
 	@NSManaged var hasCommits: NSSet?
 	@NSManaged var hasReviewers: NSSet?
 
+	// MARK: - Diffable protocol
+	// See note in Diffable.swift
+	public var diffUrlString: String? {
+		get {
+			return self.diff_url
+		}
+		set {
+			self.diff_url = newValue
+		}
+	}
+
+	public var diffString: String? {
+		get {
+			return self.diff
+		}
+		set {
+			println(newValue)
+			self.diff = newValue
+		}
+	}
+
 	/**
 		Creates a PullRequest (the model, not an actual PR)
 		
@@ -34,10 +57,12 @@ public class PullRequest: BlargManagedObject {
 		:param: repo The repository for the pull request
 	*/
 	class func createPullRequest(JSON: AnyObject, repo: Repository?) -> PullRequest {
+		// TODO: Convert to MagicRecord
 		var pullRequest = PullRequest.pullRequest(JSON["id"])
 		pullRequest.title = JSON["title"] as? String
 		pullRequest.pr_description = JSON["description"] as? String
 		pullRequest.belongsToRepository = repo
+		pullRequest.diff_url = JSON.valueForKeyPath("links.diff.href") as? String
 
 		if JSON["author"] != nil{
 			pullRequest.belongsToUser = User.importFromObject(JSON["author"]) as User
@@ -50,6 +75,8 @@ public class PullRequest: BlargManagedObject {
 
 		return pullRequest
 	}
+
+	// MARK: - Functions
 
 	/**
 		Gets a local pull request

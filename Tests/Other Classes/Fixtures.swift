@@ -77,8 +77,7 @@ struct Fixtures {
 	struct Repos {
 		var Repo1 = [
 			"uuid":"123456",
-			// TODO: Test the dates!
-//			"created_on": "2013-09-27T22:08:47.506",
+			"created_on": "2013-09-27T22:08:47.506",
 			"creator": "dirk_gently",
 			"description": "Blarg Bucket",
 			"email_mailinglist": "",
@@ -90,7 +89,7 @@ struct Fixtures {
 			"is_mq": 0,
 			"is_private": 1,
 			"language": "ruby",
-//			"last_updated": "2013-09-27T22:10:29.341",
+			"last_updated": "2013-09-27T22:10:29.341",
 			"logo": "https://d3oaxc4q5k2d6q.cloudfront.net/m/d2f44dcd176d/img/language-avatars/ruby_16.png",
 			"mq_of": "<null>",
 			"name": "blarg_bucket",
@@ -103,14 +102,14 @@ struct Fixtures {
 			"size": 139703,
 			"slug": "blarg_bucket",
 			"state": "available",
-//			"utc_created_on": "2013-09-27 20:08:47+00:00",
-//			"utc_last_updated": "2013-09-27 20:10:29+00:00",
+			"utc_created_on": "2013-09-27 20:08:47+00:00",
+			"utc_last_updated": "2013-09-27 20:10:29+00:00",
 			"website": ""
 		]
 
 		var Repo2 = [
 			"uuid":"12e3456",
-			//			"created_on": "2013-09-27T22:08:47.506",
+			"created_on": "2013-09-27T22:08:47.506",
 			"creator": "dirk_gently",
 			"description": "Blarg Bucket 2",
 			"email_mailinglist": "",
@@ -122,7 +121,7 @@ struct Fixtures {
 			"is_mq": 0,
 			"is_private": 1,
 			"language": "ruby",
-			//			"last_updated": "2013-09-27T22:10:29.341",
+			"last_updated": "2013-09-27T22:10:29.341",
 			"logo": "https://d3oaxc4q5k2d6q.cloudfront.net/m/d2f44dcd176d/img/language-avatars/ruby_16.png",
 			"mq_of": "<null>",
 			"name": "blarg_bucket2",
@@ -135,8 +134,8 @@ struct Fixtures {
 			"size": 139703,
 			"slug": "blarg_bucket2",
 			"state": "available",
-			//			"utc_created_on": "2013-09-27 20:08:47+00:00",
-			//			"utc_last_updated": "2013-09-27 20:10:29+00:00",
+			"utc_created_on": "2013-09-27 20:08:47+00:00",
+			"utc_last_updated": "2013-09-27 20:10:29+00:00",
 			"website": ""
 		]
 	}

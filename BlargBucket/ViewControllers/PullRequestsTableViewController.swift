@@ -59,7 +59,7 @@ class PullRequestsTableViewController: BlargTable {
 	/// Pushes a `PullRequestViewController` based on the selected row, but does some network calls first
 	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 		let pullRequest = viewModel().modelAtIndexPath(indexPath)
-		DataFetcher.fetchPullRequestDiff(pullRequest)
+		DataFetcher.fetchDiff(pullRequest!)
 		DataFetcher.fetchPullRequestReviewers(pullRequest)
 		self.navigationController?.pushViewController(PullRequestViewController(aPullRequest: pullRequest), animated: true)
 	}

@@ -17,13 +17,19 @@
                 <entry key="dateFormat" value="yyyy-mm-dd'T'HH:mm:ssZ"/>
             </userInfo>
         </attribute>
+        <attribute name="diff" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="diff_url" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="mappedKeyName" value="links.diff.href"/>
+            </userInfo>
+        </attribute>
         <relationship name="belongsToEvent" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="hasCommits" inverseEntity="Event" syncable="YES"/>
         <relationship name="belongsToPullRequest" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PullRequest" inverseName="hasCommits" inverseEntity="PullRequest" syncable="YES"/>
         <relationship name="belongsToRepository" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Repository" inverseName="hasCommits" inverseEntity="Repository" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="commits" inverseEntity="User" syncable="YES">
             <userInfo>
                 <entry key="mappedKeyName" value="author.user"/>
-                <entry key="relatedByAttributeName" value="username"/>
+                <entry key="relatedByAttribute" value="username"/>
             </userInfo>
         </relationship>
         <userInfo>
@@ -43,6 +49,7 @@
         <attribute name="created_on" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="destination_branch" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="diff" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="diff_url" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="pr_description" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="source_branch" optional="YES" attributeType="String" syncable="YES"/>
@@ -79,8 +86,16 @@
         <attribute name="slug" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="utc_created_on" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="utc_last_updated" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="utc_created_on" optional="YES" attributeType="Date" syncable="YES">
+            <userInfo>
+                <entry key="dateFormat" value="yyyy-mm-dd'T'HH:mm:ssZ"/>
+            </userInfo>
+        </attribute>
+        <attribute name="utc_last_updated" optional="YES" attributeType="Date" syncable="YES">
+            <userInfo>
+                <entry key="dateFormat" value="yyyy-mm-dd'T'HH:mm:ssZ"/>
+            </userInfo>
+        </attribute>
         <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="website" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="hasCommits" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Commit" inverseName="belongsToRepository" inverseEntity="Commit" syncable="YES"/>
@@ -110,9 +125,9 @@
         </userInfo>
     </entity>
     <elements>
-        <element name="Commit" positionX="-243" positionY="135" width="128" height="150"/>
+        <element name="Commit" positionX="-243" positionY="135" width="128" height="180"/>
         <element name="Event" positionX="-380" positionY="21" width="128" height="150"/>
-        <element name="PullRequest" positionX="-425" positionY="153" width="128" height="238"/>
+        <element name="PullRequest" positionX="-425" positionY="153" width="128" height="253"/>
         <element name="Repository" positionX="-63" positionY="-18" width="128" height="508"/>
         <element name="Reviewer" positionX="-243" positionY="135" width="128" height="88"/>
         <element name="User" positionX="-342" positionY="281" width="128" height="178"/>

@@ -171,6 +171,7 @@ class DataFetcher: NSObject {
 			var reviewers: [Reviewer] = []
 			for reviewJSON in JSON as NSArray {
 				let user = User.importFromObject(reviewJSON) as User
+				//TODO: This creates a new reviewer everytime. That's bad, mmmm'K?
 				var reviewer = Reviewer(user: user, pullRequest: pullRequest)
 				reviewer.approved = reviewJSON["approved"] as NSNumber
 				reviewers.append(reviewer)
@@ -202,33 +203,15 @@ class DataFetcher: NSObject {
 	}
 
 	/**
-		Begins the process of getting the diff for a pull request. The request will error out, but it will give us the URL we need to get the 
-		real diff. Calls `DataFetcher.fetchDiff` with the url and pull request
+		Gets the diff for a pull request, commit or other object. For PullRequests, Bitbucket will send us a 403 with the real URL in the response, so we set that to the diffUrlString then try this again.
 		
-		:param: pullRequest The pull request to get the diff for
+		:param: diffable The object to get the diff for. Usually a pull request or a commit.
 	*/
-	class func fetchPullRequestDiff(pullRequest: PullRequest){
-		let repo = pullRequest.belongsToRepository!
+	class func fetchDiff(diffable: Diffable){
 		// We expect this to 'fail'. BB returns a 403 with the correct url
-		DataFetcher.JSONManager.GET("/api/2.0/repositories/\(repo.owner!)/\(repo.slug!)/pullrequests/\(pullRequest.id!)/diff", parameters: nil, success: nil) { (operation, error) -> Void in
-			if operation.response != nil && operation.response.statusCode == 403 {
-				DataFetcher.fetchDiff(operation.response.URL, pullRequest:pullRequest)
-			} else {
-				println(error)
-			}
-		}
-	}
-
-	/**
-		Actually gets the diff for a pull request
-		
-		:param: diffURL The url of the real diff
-		:param: pullRequest The pull request of the diff
-	*/
-	class func fetchDiff(diffUrl:NSURL?, pullRequest: PullRequest){
-		DataFetcher.plainTextManager.GET("\(diffUrl!)", parameters: nil, success:  { (operation, response) -> Void in
+		DataFetcher.plainTextManager.GET(diffable.diffUrlString!, parameters: nil, success: { (operation, response) -> Void in
 			var responseString = NSString(data: response as NSData, encoding: NSUTF8StringEncoding)
-			pullRequest.diff = responseString
+			diffable.diffString = responseString
 			NSManagedObjectContext.defaultContext().saveToPersistentStoreWithCompletion({ (success, error) -> Void in
 				if (error != nil) {
 					println("Core data error!")
@@ -236,7 +219,12 @@ class DataFetcher: NSObject {
 				}
 			})
 		}) { (operation, error) -> Void in
-			println(operation)
+			if operation.response != nil && operation.response.statusCode == 403 {
+				diffable.diffUrlString = operation.response.URL?.absoluteString
+				DataFetcher.fetchDiff(diffable)
+			} else {
+				println(error)
+			}
 		}
 	}
 

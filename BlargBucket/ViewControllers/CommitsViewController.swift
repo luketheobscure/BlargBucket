@@ -43,12 +43,15 @@ class CommitsViewController: BlargTable {
 	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		let commit = viewModel().modelAtIndexPath(indexPath)
 		let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as EventTableViewCell
+		cell.accessoryType = .DisclosureIndicator
 
-		cell.textLabel.text = commit.commit_hash
-		cell.detailTextLabel.text = commit.commit_description
+		cell.textLabel.text = commit.commit_description
+		// TODO: Check first
+		// TODO: Make the date look nice
+		cell.detailTextLabel.text = "By \(commit.user!.display_name!) on \(commit.date!)"
 
-//		let url = pullRequest.belongsToUser.avatar ?? ""
-//		cell.imageView.sd_setImageWithURL(NSURL(string: url), placeholderImage: UIImage(named: "repoPlaceholder"))
+		let url = commit.user?.avatar ?? ""
+		cell.imageView.sd_setImageWithURL(NSURL(string: url), placeholderImage: UIImage(named: "user"))
 
 		cell.setNeedsUpdateConstraints()
 		cell.updateConstraintsIfNeeded()
@@ -56,12 +59,10 @@ class CommitsViewController: BlargTable {
 		return cell
 	}
 
-	/// Pushes a `PullRequestViewController` based on the selected row, but does some network calls first
-//	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//		let pullRequest = viewModel().modelAtIndexPath(indexPath)
-//		DataFetcher.fetchPullRequestDiff(pullRequest)
-//		DataFetcher.fetchPullRequestReviewers(pullRequest)
-//		self.navigationController?.pushViewController(PullRequestViewController(aPullRequest: pullRequest), animated: true)
-//	}
-
+	/// Pushes a `DiffViewController` based on the selected row, but does some network calls first
+	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+		let commit = viewModel().modelAtIndexPath(indexPath)
+		DataFetcher.fetchDiff(commit)
+		navigationController?.pushViewController(DiffViewController(aDiffable: commit), animated: true)
+	}
 }

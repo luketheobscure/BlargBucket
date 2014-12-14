@@ -57,6 +57,7 @@
 		B5B4CA4B19A1691F00A4213A /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B4CA4919A1677B00A4213A /* UIButtonExtension.swift */; };
 		B5B6DC8D19A1C0660086BE5D /* BlargNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B6DC8C19A1C0660086BE5D /* BlargNav.swift */; };
 		B5B93D1E19A6399200E5976E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B5B93D1D19A6399200E5976E /* Localizable.strings */; };
+		B5C57E911A3D0ACA0094E3BA /* Diffable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C57E901A3D0ACA0094E3BA /* Diffable.swift */; };
 		B5CEDE2B19A5A7460013E4E4 /* Commit.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CEDE2A19A5A7460013E4E4 /* Commit.swift */; };
 		B5D17BBB19A84A770023C263 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D17BB919A84A770023C263 /* EventTableViewCell.swift */; };
 		B5D17BBC19A84A770023C263 /* EventTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5D17BBA19A84A770023C263 /* EventTableViewCell.xib */; };
@@ -143,6 +144,7 @@
 		B5B4CA4C19A16C6500A4213A /* BlargBucket-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BlargBucket-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		B5B6DC8C19A1C0660086BE5D /* BlargNav.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BlargNav.swift; path = "ViewControllers/Base Classes/BlargNav.swift"; sourceTree = "<group>"; };
 		B5B93D1D19A6399200E5976E /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = "Supporting Files/Localizable.strings"; sourceTree = "<group>"; };
+		B5C57E901A3D0ACA0094E3BA /* Diffable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Diffable.swift; path = "Models/Base Classes/Diffable.swift"; sourceTree = "<group>"; };
 		B5CEDE2A19A5A7460013E4E4 /* Commit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Commit.swift; path = Models/Commit.swift; sourceTree = "<group>"; };
 		B5D17BB919A84A770023C263 /* EventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventTableViewCell.swift; path = Views/EventTableViewCell.swift; sourceTree = "<group>"; };
 		B5D17BBA19A84A770023C263 /* EventTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EventTableViewCell.xib; path = Views/EventTableViewCell.xib; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				B547AD2B19B3AA1D00AE2F5B /* BlargManagedObject.swift */,
+				B5C57E901A3D0ACA0094E3BA /* Diffable.swift */,
 			);
 			name = "Base Classes";
 			sourceTree = "<group>";
@@ -223,9 +226,9 @@
 		B547AD2E19B3B05300AE2F5B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B5AA7B931A382A2900A2BFF7 /* CommitTests.swift */,
 				B547AD2F19B3C83700AE2F5B /* RepositoryTests.swift */,
 				B561F69B1A2D9B920087D8CA /* UserTests.swift */,
-				B5AA7B931A382A2900A2BFF7 /* CommitTests.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -600,6 +603,7 @@
 				B5AA7B921A380EF900A2BFF7 /* CommitsViewController.swift in Sources */,
 				B5DE805E19EB274300645DD3 /* DiffTableViewCell.swift in Sources */,
 				B5AA7B901A380CAD00A2BFF7 /* CommitsViewModel.swift in Sources */,
+				B5C57E911A3D0ACA0094E3BA /* Diffable.swift in Sources */,
 				B5B4CA3B199FEA7900A4213A /* UIColorExtension.swift in Sources */,
 				B5A9E73319A4648C001A25E8 /* Event.swift in Sources */,
 				B5314CDA19A3AAFE0066B402 /* Notifications.swift in Sources */,

@@ -30,7 +30,7 @@ class PullRequestViewModel {
 				detailTitle: nil,
 				imageView: nil,
 				reuseIdentifier: "optionCell",
-				action: { $0.navigationController!.pushViewController(DiffViewController(aPullRequest: aPullRequest), animated: true) }
+				action: { $0.navigationController!.pushViewController(DiffViewController(aDiffable: aPullRequest), animated: true) }
 			),
 			TableCellModel(
 				title:NSLocalizedString("Commits", comment: "Commits"),

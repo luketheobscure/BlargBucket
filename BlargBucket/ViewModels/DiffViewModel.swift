@@ -12,7 +12,7 @@ import UIKit
 class DiffViewModel: NSObject, UITableViewDataSource {
 
 	/// The pull request to get the diff for
-	var pullRequest: PullRequest
+	var diffable: Diffable
 
 	/// An array of `FileDiffViewModel`s
 	var sections: [FileDiffViewModel]
@@ -20,13 +20,13 @@ class DiffViewModel: NSObject, UITableViewDataSource {
 	/**
 		Designated initializer. Parses the raw diff string, then creates `FileDiffViewModel`s of the pieces. Finally populates `self.sections` with the result.
 		
-		:param: aPullRequest Gets assigned to `self.pullRequest`
+		:param: aDiffable Gets assigned to `self.diffable`
 	*/
-	init(aPullRequest: PullRequest) {
-		pullRequest = aPullRequest
+	init(aDiffable: Diffable) {
+		diffable = aDiffable
 		var expression = NSRegularExpression(pattern: "^diff", options: .AnchorsMatchLines, error: nil)
-		if pullRequest.diff != nil {
-			let diff = pullRequest.diff! as NSString
+		if diffable.diffString != nil {
+			let diff = diffable.diffString! as NSString
 			let tempSections = diff.split(expression)
 			for derp in tempSections {
 				FileDiffViewModel(diff: derp as String)
