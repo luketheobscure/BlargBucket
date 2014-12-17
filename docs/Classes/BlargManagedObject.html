@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Formatters Class Reference</title>
+    <title>BlargManagedObject Class Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -20,8 +20,8 @@
     <script src="../js/jazzy.js" defer></script>
   </head>
   <body id="reference" class="Swift">
-    <a name="//apple_ref/swift/Class/Formatters" class="dashAnchor"></a>
-    <a title="Formatters Class Reference"></a>
+    <a name="//apple_ref/swift/Class/BlargManagedObject" class="dashAnchor"></a>
+    <a title="BlargManagedObject Class Reference"></a>
     <header>
       <div class="content-wrapper">
         <p class="header-text"><a href="../index.html">Blarg Bucket Docs</a> (43% documented)</p>
@@ -33,7 +33,7 @@
         <p id="hierarchial_navigation">
         <a href="../index.html" id="design_resources_link">Blarg Bucket Reference</a>
         <img id="carat" src="../img/carat.png" height="10px" width="6px" />
-        Formatters Class Reference
+        BlargManagedObject Class Reference
         </p>
       </div>
     </section>
@@ -192,10 +192,10 @@
       <div class="rubber-band-gap"></div>
       <article class="chapter">
       <a name="/"></a>
-        <h1 class="chapter-name">Formatters</h1>
+        <h1 class="chapter-name">BlargManagedObject</h1>
         <section>
           <section class="section">
-            <p class="para">Date or string formatters</p>
+            <p class="para">Main NSManagedObject subclass that all models should inherit from.</p>
           </section>
           <section class="section task-group-section">
             <div class="task-group">
@@ -208,9 +208,9 @@
                 <li class="item symbol">
                   <div class="task-group-term">
                     <code>
-                    <a name="/s:vC11BlargBucket10Formatters14sharedInstanceS0_">
-                    <a name="//apple_ref/swift/Property/sharedInstance" class="dashAnchor"></a>
-                    <a class="x-instance-method Swift" href="#/s:vC11BlargBucket10Formatters14sharedInstanceS0_">sharedInstance</a>
+                    <a name="/s:FC11BlargBucket18BlargManagedObject15checkAndSetDateFS0_FTPSs9AnyObject_3keySS_T_">
+                    <a name="//apple_ref/swift/Method/checkAndSetDate(_:key:)" class="dashAnchor"></a>
+                    <a class="x-instance-method Swift" href="#/s:FC11BlargBucket18BlargManagedObject15checkAndSetDateFS0_FTPSs9AnyObject_3keySS_T_">checkAndSetDate(_:key:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -218,14 +218,14 @@
                     <section class="section instance-method">
                       <div class="pointy-thing"></div>
                       <div class="abstract">
-                        <p class="para">Singleton Instance</p>
+                        <p class="para">DEPRECATED since we moved to MagicalRecord. This will get refactored out at some point.</p>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
             
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">class</span> <span class="k">var</span> <span class="nv">sharedInstance</span><span class="p">:</span> <span class="kt">Formatters</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">checkAndSetDate</span><span class="p">(</span><span class="nv">date</span><span class="p">:</span> <span class="kt">AnyObject</span><span class="p">,</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -235,9 +235,9 @@
                 <li class="item symbol">
                   <div class="task-group-term">
                     <code>
-                    <a name="/s:vC11BlargBucket10Formatters7utcDateCSo15NSDateFormatter">
-                    <a name="//apple_ref/swift/Property/utcDate" class="dashAnchor"></a>
-                    <a class="x-instance-method Swift" href="#/s:vC11BlargBucket10Formatters7utcDateCSo15NSDateFormatter">utcDate</a>
+                    <a name="/s:FC11BlargBucket18BlargManagedObject16importFromObjectFMS0_FGSQPSs9AnyObject__PS1__">
+                    <a name="//apple_ref/swift/Method/importFromObject(_:)" class="dashAnchor"></a>
+                    <a class="x-instance-method Swift" href="#/s:FC11BlargBucket18BlargManagedObject16importFromObjectFMS0_FGSQPSs9AnyObject__PS1__">importFromObject(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -245,14 +245,14 @@
                     <section class="section instance-method">
                       <div class="pointy-thing"></div>
                       <div class="abstract">
-                        <p class="para">Date formaetter for utc dates</p>
+                        <p class="para">Makes this available to our test host. Just calls the MagicalRecord function <code>importFromObject</code> with the same arguments.</p>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
             
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="k">let</span> <span class="nv">utcDate</span><span class="p">:</span> <span class="kt">NSDateFormatter</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">override</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">importFromObject</span><span class="p">(</span><span class="nv">data</span><span class="p">:</span> <span class="kt">AnyObject</span><span class="o">!</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">AnyObject</span></code></pre>
 
                         </div>
                       </div>
@@ -262,9 +262,9 @@
                 <li class="item symbol">
                   <div class="task-group-term">
                     <code>
-                    <a name="/s:FC11BlargBucket10Formatters10fixImgeURLFS0_FSSSS">
-                    <a name="//apple_ref/swift/Method/fixImgeURL(_:)" class="dashAnchor"></a>
-                    <a class="x-instance-method Swift" href="#/s:FC11BlargBucket10Formatters10fixImgeURLFS0_FSSSS">fixImgeURL(_:)</a>
+                    <a name="/s:FC11BlargBucket18BlargManagedObject13MR_entityNameFMS0_FT_SS">
+                    <a name="//apple_ref/swift/Method/MR_entityName()" class="dashAnchor"></a>
+                    <a class="x-instance-method Swift" href="#/s:FC11BlargBucket18BlargManagedObject13MR_entityNameFMS0_FT_SS">MR_entityName()</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -272,14 +272,14 @@
                     <section class="section instance-method">
                       <div class="pointy-thing"></div>
                       <div class="abstract">
-                        <p class="para">Fixes image url&rsquo;s from BitBucket to get the full size url&rsquo;s</p>
+                        <p class="para">Workaround for a MagicalRecord bug.When magical record tries to get the entity name for a Swift class, it gets the full <q>BlargBucket.EntityName</q> which later causes issues. This splits that string and only returns the <q>EntityName</q> part.</p>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
             
                         <div class="Swift">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">fixImgeURL</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">class</span> <span class="kd">func</span> <span class="kt">MR_entityName</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">String</span></code></pre>
 
                         </div>
                       </div>
