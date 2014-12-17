@@ -50,7 +50,25 @@ class PullRequestViewModel {
 		]
 		let section2 = [
 			self.approveCell(aPullRequest),
-			TableCellModel(title:NSLocalizedString("Decline", comment: "Decline"), detailTitle: nil, imageView: nil, reuseIdentifier: "buttonCell", action: nil),
+			TableCellModel(
+				title:NSLocalizedString("Decline", comment: "Decline"),
+				detailTitle: nil,
+				imageView: nil,
+				reuseIdentifier: "buttonCell",
+				action: {
+					let alertController = UIAlertController(title: "Decline", message: "Decline pull request \"\(aPullRequest.title!)\"?", preferredStyle: .Alert)
+					let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+					alertController.addAction(cancelAction)
+					let viewController = $0
+					let OKAction = UIAlertAction(title: "Decline", style: .Default) { (action) in
+						DataFetcher.declinePullRequest(aPullRequest)
+						aPullRequest.deleteEntity()
+						viewController.navigationController?.popViewControllerAnimated(true)
+					}
+					alertController.addAction(OKAction)
+					$0.presentViewController(alertController, animated: true, completion: nil)
+				}
+			),
 			TableCellModel(title:NSLocalizedString("Merge", comment: "Merge"), detailTitle: nil, imageView: nil, reuseIdentifier: "buttonCell", action: nil)
 		]
 		sections = [section1, section2]

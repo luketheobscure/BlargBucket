@@ -266,6 +266,20 @@ class DataFetcher: NSObject {
 		}
 	}
 
+	/**
+		Declines a pull request on BitBucket, then refetched all the PR's to make sure everything is kosher.
+
+		:param: The pull request to decline
+	*/
+	class func declinePullRequest(pullRequest: PullRequest){
+		let repo = pullRequest.belongsToRepository!
+		DataFetcher.JSONManager.POST("/api/2.0/repositories/\(repo.owner!)/\(repo.slug!)/pullrequests/\(pullRequest.id!)/decline", parameters: nil, success: { (operation, JSON) -> Void in
+			DataFetcher.fetchPullRequests(repo)
+			}) { (operation, error) -> Void in
+				println(error)
+		}
+	}
+
 	// MARK: - Authorization
 
 	/**
