@@ -5,6 +5,8 @@ A nice bucket for your blargs.
 
 Not even remotely ready for prime time
 
+[http://luketheobscure.github.io/BlargBucket/](http://luketheobscure.github.io/BlargBucket/) for docs.
+
 
 
 ## Getting Started ##
