@@ -20,22 +20,28 @@ PODS:
   - AFNetworking/UIKit (2.5.0):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - LibYAML (0.1.4)
   - MagicalRecord/Shorthand (2.2)
   - RegExCategories (1.0)
   - SDWebImage (3.7.1):
     - SDWebImage/Core (= 3.7.1)
   - SDWebImage/Core (3.7.1)
+  - YAML-Framework (0.0.2):
+    - LibYAML (~> 0.1.4)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
   - MagicalRecord/Shorthand (~> 2.2)
   - RegExCategories (~> 1.0)
   - SDWebImage (~> 3.6)
+  - YAML-Framework (~> 0.0)
 
 SPEC CHECKSUMS:
   AFNetworking: 0f54cb5d16ce38c1b76948faffb8d5fb705021c7
+  LibYAML: d447960375d9114187bfddba6e6c24d69bff11f8
   MagicalRecord: 2b471584fc9e3137f3d0a56967917baa4979e224
   RegExCategories: a6410301023ff81bd047c05fd8691d24ca5c7ea9
   SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
+  YAML-Framework: 65dfb647479445c4446681966064fcb56cc9fc7c
 
 COCOAPODS: 0.35.0

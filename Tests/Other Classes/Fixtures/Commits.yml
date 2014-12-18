@@ -1,0 +1,21 @@
+LukesCommit:
+  author: 
+    raw: Luke <luke@gmail.com>
+    user: 
+      display_name: Luke Derp
+      links: 
+        avatar: 
+          href: "https://secure.gravatar.com/avatar/b2d7ce5%2Fimg%2Fdefault_avatar%2F32%2Fuser_blue.png&s=32"
+        html: 
+          href: https://bitbucket.org/lukederp
+        self: 
+          href: https://bitbucket.org/api/2.0/users/lukederp
+      username: lukederp
+      uuid: 07062011-699b-416d-949f-d8f88d89dba8
+  date: 2014-11-24T16:39:44+00:00
+  hash: 835c27b49faf87d62f2947348821562b83580c
+  message: coffee-lint cleanup
+  repository: 
+  full_name: blargsoft/reposlug
+  name: reposlug
+  uuid: 632ff045-382b-46b5-a820-c7b840dcf90d

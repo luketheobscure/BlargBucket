@@ -11,7 +11,7 @@ import BlargBucket
 
 class CommitTests: BlargTest {
 
-	let commit: Commit = Commit.importFromObject(Fixtures.Commits().LukesCommit) as Commit
+	let commit: Commit = Commit.importFromObject(Fixtures.fixtureForClass("Commits", name: "LukesCommit")) as Commit
 
 	func testMessage(){
 		XCTAssertEqual(commit.commit_description!, "coffee-lint cleanup", "Message not equal")

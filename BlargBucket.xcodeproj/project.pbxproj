@@ -46,6 +46,9 @@
 		B5A9E73919A503D5001A25E8 /* PullRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A9E73819A503D5001A25E8 /* PullRequest.swift */; };
 		B5AA7B901A380CAD00A2BFF7 /* CommitsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AA7B8F1A380CAD00A2BFF7 /* CommitsViewModel.swift */; };
 		B5AA7B921A380EF900A2BFF7 /* CommitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AA7B911A380EF900A2BFF7 /* CommitsViewController.swift */; };
+		B5AB39E91A4315A9005F4AFB /* Users.yml in Resources */ = {isa = PBXBuildFile; fileRef = B5AB39E81A4315A9005F4AFB /* Users.yml */; };
+		B5AB39EB1A4317F4005F4AFB /* Commits.yml in Resources */ = {isa = PBXBuildFile; fileRef = B5AB39EA1A4317F4005F4AFB /* Commits.yml */; };
+		B5AB39ED1A431925005F4AFB /* Repositories.yml in Resources */ = {isa = PBXBuildFile; fileRef = B5AB39EC1A431925005F4AFB /* Repositories.yml */; };
 		B5AC00AD199FD11F00FEC3A3 /* RepositoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AC00AC199FD11F00FEC3A3 /* RepositoriesViewModel.swift */; };
 		B5B4CA09199FE07300A4213A /* RepositoriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B4CA08199FE07300A4213A /* RepositoriesTableViewController.swift */; };
 		B5B4CA38199FE8B800A4213A /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B4CA37199FE8B800A4213A /* MainTabBarViewController.swift */; };
@@ -104,6 +107,7 @@
 		B556333A19F408C500856D7A /* ReviewersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReviewersViewController.swift; path = ViewControllers/ReviewersViewController.swift; sourceTree = "<group>"; };
 		B55DBAE71A2F6503001D90E8 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B561F69B1A2D9B920087D8CA /* UserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserTests.swift; path = Models/UserTests.swift; sourceTree = "<group>"; };
+		B56353451A4297E400FACE6A /* Tests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Bridging-Header.h"; sourceTree = "<group>"; };
 		B564A9D819AA57D400464885 /* NormalTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NormalTableViewCell.swift; path = Views/NormalTableViewCell.swift; sourceTree = "<group>"; };
 		B567B94819B189B500D4430B /* PullRequestsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PullRequestsTableViewController.swift; path = ViewControllers/PullRequestsTableViewController.swift; sourceTree = "<group>"; };
 		B567B94A19B18A6D00D4430B /* PullRequestsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PullRequestsViewModel.swift; path = ViewModels/PullRequestsViewModel.swift; sourceTree = "<group>"; };
@@ -132,6 +136,9 @@
 		B5AA7B8F1A380CAD00A2BFF7 /* CommitsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommitsViewModel.swift; path = ViewModels/CommitsViewModel.swift; sourceTree = "<group>"; };
 		B5AA7B911A380EF900A2BFF7 /* CommitsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommitsViewController.swift; path = ViewControllers/CommitsViewController.swift; sourceTree = "<group>"; };
 		B5AA7B931A382A2900A2BFF7 /* CommitTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommitTests.swift; path = Models/CommitTests.swift; sourceTree = "<group>"; };
+		B5AB39E81A4315A9005F4AFB /* Users.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Users.yml; path = "Other Classes/Fixtures/Users.yml"; sourceTree = "<group>"; };
+		B5AB39EA1A4317F4005F4AFB /* Commits.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Commits.yml; path = "Other Classes/Fixtures/Commits.yml"; sourceTree = "<group>"; };
+		B5AB39EC1A431925005F4AFB /* Repositories.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Repositories.yml; path = "Other Classes/Fixtures/Repositories.yml"; sourceTree = "<group>"; };
 		B5AC00AC199FD11F00FEC3A3 /* RepositoriesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RepositoriesViewModel.swift; path = ViewModels/RepositoriesViewModel.swift; sourceTree = "<group>"; };
 		B5B4CA08199FE07300A4213A /* RepositoriesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RepositoriesTableViewController.swift; path = ViewControllers/RepositoriesTableViewController.swift; sourceTree = "<group>"; };
 		B5B4CA37199FE8B800A4213A /* MainTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainTabBarViewController.swift; path = ViewControllers/MainTabBarViewController.swift; sourceTree = "<group>"; };
@@ -208,6 +215,7 @@
 		B540548C1A2D650100974C75 /* Other Classes */ = {
 			isa = PBXGroup;
 			children = (
+				B5AB39E71A431572005F4AFB /* Fixtures */,
 				B54054891A2D645C00974C75 /* BlargTest.swift */,
 				B54054861A2D615C00974C75 /* Fixtures.swift */,
 			);
@@ -300,6 +308,7 @@
 		B57302B2199C6A0B00060D2E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B56353451A4297E400FACE6A /* Tests-Bridging-Header.h */,
 				B57302B3199C6A0B00060D2E /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -335,6 +344,16 @@
 				B587B4711A0D2BDB007F7F10 /* TableCellModel.swift */,
 			);
 			name = "Base Classes";
+			sourceTree = "<group>";
+		};
+		B5AB39E71A431572005F4AFB /* Fixtures */ = {
+			isa = PBXGroup;
+			children = (
+				B5AB39E81A4315A9005F4AFB /* Users.yml */,
+				B5AB39EA1A4317F4005F4AFB /* Commits.yml */,
+				B5AB39EC1A431925005F4AFB /* Repositories.yml */,
+			);
+			name = Fixtures;
 			sourceTree = "<group>";
 		};
 		B5AC00AB199FD0CE00FEC3A3 /* ViewModels */ = {
@@ -499,6 +518,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5AB39ED1A431925005F4AFB /* Repositories.yml in Resources */,
+				B5AB39EB1A4317F4005F4AFB /* Commits.yml in Resources */,
+				B5AB39E91A4315A9005F4AFB /* Users.yml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -651,6 +673,7 @@
 			baseConfigurationReference = EE9DFE0D8D53A187F38197E8 /* Pods-BlargBucket.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -668,6 +691,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Tests/Tests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BlargBucket.app/BlargBucket";
 			};
 			name = Debug;
@@ -676,6 +701,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -689,6 +715,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Tests/Tests-Bridging-Header.h";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BlargBucket.app/BlargBucket";
 			};
 			name = Release;

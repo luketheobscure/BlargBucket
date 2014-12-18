@@ -6,4 +6,5 @@ target "BlargBucket" do
 	pod 'AFNetworking', '~> 2.0'
 	pod 'RegExCategories', '~> 1.0'
 	pod 'MagicalRecord/Shorthand', '~> 2.2'
+	pod 'YAML-Framework', '~> 0.0'
 end

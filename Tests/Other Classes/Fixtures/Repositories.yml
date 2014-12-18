@@ -1,0 +1,33 @@
+Repo1:
+  uuid: 123456
+  created_on: "2013-09-27T22:08:47.506"
+  creator: dirk_gently
+  description: Blarg Bucket
+  language: ruby
+  last_updated: 2013-09-27T22:10:29.341
+  logo: "https://d3oaxc4q5k2d6q.cloudfront.net/m/d2f44dcd176d/img/language-avatars/ruby_16.png"
+  name: blarg_bucket
+  resource_uri: derp/derp/derp
+  scm: git
+  slug: blarg_bucket
+  state: available
+  utc_created_on: "2013-09-27 20:08:47+00:00"
+  utc_last_updated: "2013-09-27 20:10:29+00:00"
+
+Repo2:
+  uuid: 12e3456
+  created_on: "2013-09-27T22:08:47.506"
+  creator: dirk_gently
+  description: Blarg Bucket 2
+  language: ruby
+  last_updated: 2013-09-27T22:10:29.341
+  logo: "https://d3oaxc4q5k2d6q.cloudfront.net/m/d2f44dcd176d/img/language-avatars/ruby_16.png"
+  name: blarg_bucket2
+  owner: agrian
+  resource_uri: derp/derp/derp2
+  scm: git
+  size: 139703
+  slug: blarg_bucket2
+  state: available
+  utc_created_on: "2013-09-27 20:08:47+00:00"
+  utc_last_updated: "2013-09-27 20:10:29+00:00"

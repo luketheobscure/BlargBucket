@@ -13,16 +13,17 @@ import CoreData
 class UserTests: BlargTest {
 
 	func testUserWithUserName(){
+		let luke = Fixtures.fixtureForClass("Users", name:"Luke")
 		let oldCount = allUsers()!.count
-		let user = User.importFromObject(Fixtures.Users().Luke) as User
+		let user = User.importFromObject(Fixtures.fixtureForClass("Users", name: "Luke")) as User
 
 		XCTAssertEqual("lukederp", user.username!, "Username doesn't match")
 		XCTAssertEqual(oldCount + 1, allUsers()!.count, "User count didn't change and it should have")
 
-		let user2: AnyObject = User.importFromObject(Fixtures.Users().Luke)
+		let user2: AnyObject = User.importFromObject(Fixtures.fixtureForClass("Users", name: "Luke"))
 		XCTAssertEqual(oldCount + 1, allUsers()!.count, "User count changed and it shouldn't have")
 
-		let user3: AnyObject = User.importFromObject(Fixtures.Users().Nick)
+		let user3: AnyObject = User.importFromObject(Fixtures.fixtureForClass("Users", name: "Nick"))
 		XCTAssertEqual(oldCount + 2, allUsers()!.count, "User count didn't change and it should have")
 	}
 
