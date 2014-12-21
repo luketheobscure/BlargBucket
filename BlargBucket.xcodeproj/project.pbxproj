@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		9C82EA889C8E46E78D2F6E0A /* libPods-BlargBucket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E5939069ECF049F5958530A3 /* libPods-BlargBucket.a */; };
+		B50261101A43DC9900FE4F44 /* Events.yml in Resources */ = {isa = PBXBuildFile; fileRef = B502610F1A43DC9900FE4F44 /* Events.yml */; };
+		B50261121A43DEFB00FE4F44 /* EventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50261111A43DEFB00FE4F44 /* EventTests.swift */; };
 		B52FD1A11A0EC3CA00D7324F /* ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52FD19F1A0EC3CA00D7324F /* ButtonTableViewCell.swift */; };
 		B52FD1A21A0EC3CA00D7324F /* ButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B52FD1A01A0EC3CA00D7324F /* ButtonTableViewCell.xib */; };
 		B5314CDA19A3AAFE0066B402 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5314CD919A3AAFE0066B402 /* Notifications.swift */; };
@@ -46,9 +48,9 @@
 		B5A9E73919A503D5001A25E8 /* PullRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A9E73819A503D5001A25E8 /* PullRequest.swift */; };
 		B5AA7B901A380CAD00A2BFF7 /* CommitsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AA7B8F1A380CAD00A2BFF7 /* CommitsViewModel.swift */; };
 		B5AA7B921A380EF900A2BFF7 /* CommitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AA7B911A380EF900A2BFF7 /* CommitsViewController.swift */; };
-		B5AB39E91A4315A9005F4AFB /* Users.yml in Resources */ = {isa = PBXBuildFile; fileRef = B5AB39E81A4315A9005F4AFB /* Users.yml */; };
-		B5AB39EB1A4317F4005F4AFB /* Commits.yml in Resources */ = {isa = PBXBuildFile; fileRef = B5AB39EA1A4317F4005F4AFB /* Commits.yml */; };
-		B5AB39ED1A431925005F4AFB /* Repositories.yml in Resources */ = {isa = PBXBuildFile; fileRef = B5AB39EC1A431925005F4AFB /* Repositories.yml */; };
+		B5AB39F91A4336FA005F4AFB /* Commits.yml in Resources */ = {isa = PBXBuildFile; fileRef = B5AB39F61A4336FA005F4AFB /* Commits.yml */; };
+		B5AB39FA1A4336FA005F4AFB /* Repositories.yml in Resources */ = {isa = PBXBuildFile; fileRef = B5AB39F71A4336FA005F4AFB /* Repositories.yml */; };
+		B5AB39FB1A4336FA005F4AFB /* Users.yml in Resources */ = {isa = PBXBuildFile; fileRef = B5AB39F81A4336FA005F4AFB /* Users.yml */; };
 		B5AC00AD199FD11F00FEC3A3 /* RepositoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AC00AC199FD11F00FEC3A3 /* RepositoriesViewModel.swift */; };
 		B5B4CA09199FE07300A4213A /* RepositoriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B4CA08199FE07300A4213A /* RepositoriesTableViewController.swift */; };
 		B5B4CA38199FE8B800A4213A /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B4CA37199FE8B800A4213A /* MainTabBarViewController.swift */; };
@@ -91,6 +93,8 @@
 		3A68715FD87B4DBD972D83A0 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F33C1EE740E4029A551673B /* libPods-Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A92B1606B64A41DCA1A82776 /* libPods-BlargBucketTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BlargBucketTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B502610F1A43DC9900FE4F44 /* Events.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Events.yml; sourceTree = "<group>"; };
+		B50261111A43DEFB00FE4F44 /* EventTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventTests.swift; path = Models/EventTests.swift; sourceTree = "<group>"; };
 		B50976D119BD687000513CC4 /* libPods-BlargBucket.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-BlargBucket.a"; path = "Pods/build/Debug-iphoneos/libPods-BlargBucket.a"; sourceTree = "<group>"; };
 		B50976D319BD687300513CC4 /* libPods-BlargBucket-SDWebImage.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-BlargBucket-SDWebImage.a"; path = "Pods/build/Debug-iphoneos/libPods-BlargBucket-SDWebImage.a"; sourceTree = "<group>"; };
 		B52FD19F1A0EC3CA00D7324F /* ButtonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ButtonTableViewCell.swift; path = Views/ButtonTableViewCell.swift; sourceTree = "<group>"; };
@@ -136,9 +140,9 @@
 		B5AA7B8F1A380CAD00A2BFF7 /* CommitsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommitsViewModel.swift; path = ViewModels/CommitsViewModel.swift; sourceTree = "<group>"; };
 		B5AA7B911A380EF900A2BFF7 /* CommitsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommitsViewController.swift; path = ViewControllers/CommitsViewController.swift; sourceTree = "<group>"; };
 		B5AA7B931A382A2900A2BFF7 /* CommitTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommitTests.swift; path = Models/CommitTests.swift; sourceTree = "<group>"; };
-		B5AB39E81A4315A9005F4AFB /* Users.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Users.yml; path = "Other Classes/Fixtures/Users.yml"; sourceTree = "<group>"; };
-		B5AB39EA1A4317F4005F4AFB /* Commits.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Commits.yml; path = "Other Classes/Fixtures/Commits.yml"; sourceTree = "<group>"; };
-		B5AB39EC1A431925005F4AFB /* Repositories.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Repositories.yml; path = "Other Classes/Fixtures/Repositories.yml"; sourceTree = "<group>"; };
+		B5AB39F61A4336FA005F4AFB /* Commits.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Commits.yml; sourceTree = "<group>"; };
+		B5AB39F71A4336FA005F4AFB /* Repositories.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Repositories.yml; sourceTree = "<group>"; };
+		B5AB39F81A4336FA005F4AFB /* Users.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Users.yml; sourceTree = "<group>"; };
 		B5AC00AC199FD11F00FEC3A3 /* RepositoriesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RepositoriesViewModel.swift; path = ViewModels/RepositoriesViewModel.swift; sourceTree = "<group>"; };
 		B5B4CA08199FE07300A4213A /* RepositoriesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RepositoriesTableViewController.swift; path = ViewControllers/RepositoriesTableViewController.swift; sourceTree = "<group>"; };
 		B5B4CA37199FE8B800A4213A /* MainTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainTabBarViewController.swift; path = ViewControllers/MainTabBarViewController.swift; sourceTree = "<group>"; };
@@ -215,7 +219,6 @@
 		B540548C1A2D650100974C75 /* Other Classes */ = {
 			isa = PBXGroup;
 			children = (
-				B5AB39E71A431572005F4AFB /* Fixtures */,
 				B54054891A2D645C00974C75 /* BlargTest.swift */,
 				B54054861A2D615C00974C75 /* Fixtures.swift */,
 			);
@@ -235,6 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				B5AA7B931A382A2900A2BFF7 /* CommitTests.swift */,
+				B50261111A43DEFB00FE4F44 /* EventTests.swift */,
 				B547AD2F19B3C83700AE2F5B /* RepositoryTests.swift */,
 				B561F69B1A2D9B920087D8CA /* UserTests.swift */,
 			);
@@ -308,6 +312,7 @@
 		B57302B2199C6A0B00060D2E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B5AB39F51A4336FA005F4AFB /* Fixtures */,
 				B56353451A4297E400FACE6A /* Tests-Bridging-Header.h */,
 				B57302B3199C6A0B00060D2E /* Info.plist */,
 			);
@@ -346,14 +351,15 @@
 			name = "Base Classes";
 			sourceTree = "<group>";
 		};
-		B5AB39E71A431572005F4AFB /* Fixtures */ = {
+		B5AB39F51A4336FA005F4AFB /* Fixtures */ = {
 			isa = PBXGroup;
 			children = (
-				B5AB39E81A4315A9005F4AFB /* Users.yml */,
-				B5AB39EA1A4317F4005F4AFB /* Commits.yml */,
-				B5AB39EC1A431925005F4AFB /* Repositories.yml */,
+				B5AB39F61A4336FA005F4AFB /* Commits.yml */,
+				B502610F1A43DC9900FE4F44 /* Events.yml */,
+				B5AB39F71A4336FA005F4AFB /* Repositories.yml */,
+				B5AB39F81A4336FA005F4AFB /* Users.yml */,
 			);
-			name = Fixtures;
+			path = Fixtures;
 			sourceTree = "<group>";
 		};
 		B5AC00AB199FD0CE00FEC3A3 /* ViewModels */ = {
@@ -518,9 +524,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5AB39ED1A431925005F4AFB /* Repositories.yml in Resources */,
-				B5AB39EB1A4317F4005F4AFB /* Commits.yml in Resources */,
-				B5AB39E91A4315A9005F4AFB /* Users.yml in Resources */,
+				B5AB39FA1A4336FA005F4AFB /* Repositories.yml in Resources */,
+				B5AB39FB1A4336FA005F4AFB /* Users.yml in Resources */,
+				B5AB39F91A4336FA005F4AFB /* Commits.yml in Resources */,
+				B50261101A43DC9900FE4F44 /* Events.yml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -599,6 +606,7 @@
 				B55DBAF41A2F6563001D90E8 /* BlargTest.swift in Sources */,
 				B55DBAF21A2F655A001D90E8 /* RepositoryTests.swift in Sources */,
 				B55DBAF51A2F6567001D90E8 /* Fixtures.swift in Sources */,
+				B50261121A43DEFB00FE4F44 /* EventTests.swift in Sources */,
 				B562CD3C1A38346A009C3D66 /* CommitTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

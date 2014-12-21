@@ -38,12 +38,30 @@
     </entity>
     <entity name="Event" representedClassName="BlargBucket.Event" syncable="YES">
         <attribute name="event" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="event_description" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="eventID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="node" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="utc_created_on" optional="YES" attributeType="Date" syncable="YES"/>
-        <relationship name="belongsToRepository" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Repository" inverseName="hasEvents" inverseEntity="Repository" syncable="YES"/>
-        <relationship name="belongsToUser" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="hasEvents" inverseEntity="User" syncable="YES"/>
-        <relationship name="hasCommits" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Commit" inverseName="belongsToEvent" inverseEntity="Commit" syncable="YES"/>
+        <attribute name="utc_created_on" optional="YES" attributeType="Date" syncable="YES">
+            <userInfo>
+                <entry key="dateFormat" value="yyyy-mm-dd HH:mm:ssZ"/>
+            </userInfo>
+        </attribute>
+        <relationship name="belongsToRepository" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Repository" inverseName="hasEvents" inverseEntity="Repository" syncable="YES">
+            <userInfo>
+                <entry key="mappedKeyName" value="repository"/>
+                <entry key="relatedByAttribute" value="name"/>
+            </userInfo>
+        </relationship>
+        <relationship name="belongsToUser" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="hasEvents" inverseEntity="User" syncable="YES">
+            <userInfo>
+                <entry key="mappedKeyName" value="user"/>
+                <entry key="relatedByAttribute" value="username"/>
+            </userInfo>
+        </relationship>
+        <relationship name="hasCommits" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Commit" inverseName="belongsToEvent" inverseEntity="Commit" syncable="YES">
+            <userInfo>
+                <entry key="mappedKeyName" value="description.commits"/>
+            </userInfo>
+        </relationship>
     </entity>
     <entity name="PullRequest" representedClassName="BlargBucket.PullRequest" syncable="YES">
         <attribute name="created_on" optional="YES" attributeType="Date" syncable="YES"/>
@@ -64,21 +82,21 @@
     <entity name="Repository" representedClassName="BlargBucket.Repository" syncable="YES">
         <attribute name="creator" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="email_mailinglist" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="email_writers" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="email_writers" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="fork_of" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="has_issues" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="has_wiki" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="is_fork" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="is_mq" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="is_private" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="has_issues" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="has_wiki" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="is_fork" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="is_mq" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="is_private" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="language" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="logo" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="mq_of" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="no_forks" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="no_public_forks" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="no_forks" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="no_public_forks" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="owner" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="read_only" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="read_only" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="repo_description" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="resource_uri" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="scm" optional="YES" attributeType="String" syncable="YES"/>
@@ -126,9 +144,9 @@
     </entity>
     <elements>
         <element name="Commit" positionX="-243" positionY="135" width="128" height="180"/>
-        <element name="Event" positionX="-380" positionY="21" width="128" height="150"/>
+        <element name="Event" positionX="-380" positionY="21" width="128" height="148"/>
         <element name="PullRequest" positionX="-425" positionY="153" width="128" height="253"/>
-        <element name="Repository" positionX="-63" positionY="-18" width="128" height="508"/>
+        <element name="Repository" positionX="-63" positionY="-18" width="128" height="30"/>
         <element name="Reviewer" positionX="-243" positionY="135" width="128" height="88"/>
         <element name="User" positionX="-342" positionY="281" width="128" height="178"/>
     </elements>

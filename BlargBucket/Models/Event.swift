@@ -10,24 +10,35 @@ import UIKit
 import CoreData
 
 /// An event in the BitBucket activity stream
-class Event: BlargManagedObject {
-   @NSManaged var event: NSString?
-   @NSManaged var event_description: NSString?
-   @NSManaged var node: NSString?
-   @NSManaged var utc_created_on: NSDate?
+public class Event: BlargManagedObject {
 
-   @NSManaged var belongsToUser: User?
-   @NSManaged var belongsToRepository: Repository?
-   @NSManaged var hasCommits: NSSet?
+	/// Not a real value returning from Bitbucket. We're faking it
+	@NSManaged public var eventID: NSString?
+	@NSManaged public var event: NSString?
+	@NSManaged public var node: NSString?
+	@NSManaged public var utc_created_on: NSDate?
 
-	/// Creates a new event
-	class func newEvent() -> Event {
-		return NSEntityDescription.insertNewObjectForEntityForName("Event", inManagedObjectContext: NSManagedObjectContext.defaultContext()) as Event
+	@NSManaged public var belongsToUser: User?
+	@NSManaged public var belongsToRepository: Repository?
+	@NSManaged public var hasCommits: NSSet?
+
+	/**
+	Deletes all the events for a repo. Bitbucket doesn't give events an ID, so we just blow it away each time we need to fetch it. :(
+
+	:param: repo The repository to get the events for.
+	*/
+	class func deleteAll(repo: Repository) {
+		let events = Event.findByAttribute("belongsToRepository", withValue: repo)
+		for event in events {
+			event.deleteEntity()
+		}
 	}
 
-	func setUtc_created_on(date: AnyObject){
-		let createdOnKey: String = "utc_created_on"
-		checkAndSetDate(date, key: createdOnKey)
+	/// Fakes a primary key for magical record
+	func willImport(data:NSDictionary){
+		if let createdOn = data["utc_created_on"] as? String {
+			self.eventID = createdOn
+		}
 	}
 
 }

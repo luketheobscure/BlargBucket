@@ -47,7 +47,7 @@ class DataFetcher: NSObject {
 		println("Fetching URL: \(url)")
 		DataFetcher.JSONManager.GET(url, parameters: nil, success: { (operation, JSON) -> Void in
 			if JSON == nil {
-				print("Error getting events: ")
+				print("Error getting JSON: ")
 				return
 			}
 			completion(JSON: JSON)
@@ -72,7 +72,7 @@ class DataFetcher: NSObject {
 		println("Posting URL: \(url)")
 		DataFetcher.JSONManager.POST(url, parameters: nil, success: { (operation, JSON) -> Void in
 			if JSON == nil {
-				print("Error getting events: ")
+				print("Error getting JSON: ")
 				return
 			}
 			completion(JSON: JSON)
@@ -118,28 +118,10 @@ class DataFetcher: NSObject {
 	*/
 	class func fetchEvents(repo: Repository){
 		DataFetcher.fetchURL("/api/1.0/repositories/\(repo.owner!)/\(repo.slug!)/events/") { (JSON:AnyObject) in
+			Event.deleteAll(repo)
 			var events = JSON["events"] as NSArray
 			for event in events {
-				var anEvent = Event.newEvent()
-				anEvent.event = event["event"] as NSString?
-
-				let userHash = event["user"] as NSDictionary
-				var user = User.importFromObject(userHash) as User
-
-				anEvent.belongsToUser = user
-				anEvent.belongsToRepository = repo
-				anEvent.setValue(event["utc_created_on"], forKey: "utc_created_on")
-
-				let description: NSDictionary? = event["description"] as? NSDictionary
-				let commits: NSArray? = description?["commits"] as? NSArray
-				if commits != nil {
-					var commitsForEvent:[Commit] = Array()
-					for commit in commits! {
-						let aCommit = Commit.commitWithHash(commit["hash"] as NSString, description: commit["description"] as NSString)
-						commitsForEvent.append(aCommit)
-					}
-					anEvent.hasCommits = NSSet(array: commitsForEvent)
-				}
+				Event.importFromObject(event) as Event
 			}
 		}
 	}
@@ -152,10 +134,12 @@ class DataFetcher: NSObject {
 		:param: repo The repository to get the pull requests for
 	*/
 	class func fetchPullRequests(repo: Repository){
-		DataFetcher.fetchURL("/api/2.0/repositories/\(repo.owner!)/\(repo.slug!)/pullrequests/") { (JSON:AnyObject) in
-			var pullRequests = JSON["values"] as NSArray
-			for pullRequestJSON in pullRequests {
-				var pullRequest = PullRequest.createPullRequest(pullRequestJSON, repo: repo)
+		if let owner = repo.owner {
+			DataFetcher.fetchURL("/api/2.0/repositories/\(owner)/\(repo.slug!)/pullrequests/") { (JSON:AnyObject) in
+				var pullRequests = JSON["values"] as NSArray
+				for pullRequestJSON in pullRequests {
+					var pullRequest = PullRequest.createPullRequest(pullRequestJSON, repo: repo)
+				}
 			}
 		}
 	}
