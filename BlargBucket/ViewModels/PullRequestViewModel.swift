@@ -69,7 +69,26 @@ class PullRequestViewModel {
 					$0.presentViewController(alertController, animated: true, completion: nil)
 				}
 			),
-			TableCellModel(title:NSLocalizedString("Merge", comment: "Merge"), detailTitle: nil, imageView: nil, reuseIdentifier: "buttonCell", action: nil)
+			TableCellModel(
+				title:NSLocalizedString("Merge", comment: "Merge"),
+				detailTitle: nil,
+				imageView: nil,
+				reuseIdentifier: "buttonCell",
+				action: {
+					//TODO: Add ability to customize the merge message (using the message currently hardcoded in DataFetcher.mergePullRequest as a default)
+					let alertController = UIAlertController(title: "Merge", message: "Merge pull request \"\(aPullRequest.title!)\"?", preferredStyle: .Alert)
+					let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+					alertController.addAction(cancelAction)
+					let viewController = $0
+					let OKAction = UIAlertAction(title: "Merge", style: .Default) { (action) in
+						DataFetcher.mergePullRequest(aPullRequest)
+						aPullRequest.deleteEntity()
+						viewController.navigationController?.popViewControllerAnimated(true)
+					}
+					alertController.addAction(OKAction)
+					$0.presentViewController(alertController, animated: true, completion: nil)
+				}
+			)
 		]
 		sections = [section1, section2]
 	}
