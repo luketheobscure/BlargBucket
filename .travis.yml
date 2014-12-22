@@ -2,3 +2,4 @@ language: objective-c
 xcode_workspace: BlargBucket.xcworkspace
 xcode_scheme: BlargBucket
 xcode_sdk: iphonesimulator8.1
+osx_image: xcode611
