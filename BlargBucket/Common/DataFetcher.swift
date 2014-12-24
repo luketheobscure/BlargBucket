@@ -273,9 +273,9 @@ class DataFetcher: NSObject {
 	*/
 	class func mergePullRequest(pullRequest: PullRequest){
 		let repo = pullRequest.belongsToRepository!
-		let message = "Merged in \(pullRequest.source_branch!) (pull request #\(pullRequest.id!))\n\n\(pullRequest.title!)\n\nMerged from BlargBucket"
+		let message = "Merged in \(pullRequest.source_branch!) (pull request #\(pullRequest.pullRequestID!))\n\n\(pullRequest.title!)\n\nMerged from BlargBucket"
 		let params = ["message":"\(message)"]
-		DataFetcher.JSONManager.POST("/api/2.0/repositories/\(repo.owner!)/\(repo.slug!)/pullrequests/\(pullRequest.id!)/merge", parameters: params, success: { (operation, JSON) -> Void in
+		DataFetcher.JSONManager.POST("/api/2.0/repositories/\(repo.owner!)/\(repo.slug!)/pullrequests/\(pullRequest.pullRequestID!)/merge", parameters: params, success: { (operation, JSON) -> Void in
 			DataFetcher.fetchPullRequests(repo)
 			}) { (operation, error) -> Void in
 				println(error)
