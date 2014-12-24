@@ -42,6 +42,8 @@
 		B587B4741A0D2C7E007F7F10 /* PullRequestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B587B4731A0D2C7E007F7F10 /* PullRequestViewModel.swift */; };
 		B594D90B19A53FD5000D6A10 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B594D90A19A53FD5000D6A10 /* EventsViewController.swift */; };
 		B594D90D19A53FFF000D6A10 /* EventsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B594D90C19A53FFF000D6A10 /* EventsViewModel.swift */; };
+		B596D8921A47451000B87320 /* PullRequests.yml in Resources */ = {isa = PBXBuildFile; fileRef = B596D8911A47451000B87320 /* PullRequests.yml */; };
+		B596D8941A4745FA00B87320 /* PullRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B596D8931A4745FA00B87320 /* PullRequestTests.swift */; };
 		B5997C9919F0CE0400441BD5 /* PullRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5997C9819F0CE0400441BD5 /* PullRequestViewController.swift */; };
 		B5A9E73319A4648C001A25E8 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A9E73219A4648C001A25E8 /* Event.swift */; };
 		B5A9E73519A50226001A25E8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A9E73419A50226001A25E8 /* User.swift */; };
@@ -133,6 +135,8 @@
 		B587B4731A0D2C7E007F7F10 /* PullRequestViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PullRequestViewModel.swift; path = ViewModels/PullRequestViewModel.swift; sourceTree = "<group>"; };
 		B594D90A19A53FD5000D6A10 /* EventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventsViewController.swift; path = ViewControllers/EventsViewController.swift; sourceTree = "<group>"; };
 		B594D90C19A53FFF000D6A10 /* EventsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventsViewModel.swift; path = ViewModels/EventsViewModel.swift; sourceTree = "<group>"; };
+		B596D8911A47451000B87320 /* PullRequests.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PullRequests.yml; sourceTree = "<group>"; };
+		B596D8931A4745FA00B87320 /* PullRequestTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullRequestTests.swift; sourceTree = "<group>"; };
 		B5997C9819F0CE0400441BD5 /* PullRequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PullRequestViewController.swift; path = ViewControllers/PullRequestViewController.swift; sourceTree = "<group>"; };
 		B5A9E73219A4648C001A25E8 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Event.swift; path = Models/Event.swift; sourceTree = "<group>"; };
 		B5A9E73419A50226001A25E8 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Models/User.swift; sourceTree = "<group>"; };
@@ -241,6 +245,7 @@
 				B50261111A43DEFB00FE4F44 /* EventTests.swift */,
 				B547AD2F19B3C83700AE2F5B /* RepositoryTests.swift */,
 				B561F69B1A2D9B920087D8CA /* UserTests.swift */,
+				B596D8931A4745FA00B87320 /* PullRequestTests.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -356,6 +361,7 @@
 			children = (
 				B5AB39F61A4336FA005F4AFB /* Commits.yml */,
 				B502610F1A43DC9900FE4F44 /* Events.yml */,
+				B596D8911A47451000B87320 /* PullRequests.yml */,
 				B5AB39F71A4336FA005F4AFB /* Repositories.yml */,
 				B5AB39F81A4336FA005F4AFB /* Users.yml */,
 			);
@@ -528,6 +534,7 @@
 				B5AB39FB1A4336FA005F4AFB /* Users.yml in Resources */,
 				B5AB39F91A4336FA005F4AFB /* Commits.yml in Resources */,
 				B50261101A43DC9900FE4F44 /* Events.yml in Resources */,
+				B596D8921A47451000B87320 /* PullRequests.yml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -608,6 +615,7 @@
 				B55DBAF51A2F6567001D90E8 /* Fixtures.swift in Sources */,
 				B50261121A43DEFB00FE4F44 /* EventTests.swift in Sources */,
 				B562CD3C1A38346A009C3D66 /* CommitTests.swift in Sources */,
+				B596D8941A4745FA00B87320 /* PullRequestTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

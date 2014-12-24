@@ -19,7 +19,7 @@ class EventsViewModel: NSFetchedResultsController {
 	*/
 	convenience init(repository:Repository){
 		let fetchRequest = NSFetchRequest(entityName: "Event")
-		fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "utc_created_on", ascending: true) ]
+		fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "utc_created_on", ascending: false) ]
 		fetchRequest.predicate = NSPredicate(format: "belongsToRepository = %@", repository)
 		fetchRequest.relationshipKeyPathsForPrefetching = ["hasCommits", "belongsToUser", "user"]
 		self.init(fetchRequest: fetchRequest, managedObjectContext: NSManagedObjectContext.defaultContext(), sectionNameKeyPath: nil, cacheName: nil)

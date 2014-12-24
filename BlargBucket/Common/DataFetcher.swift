@@ -120,8 +120,9 @@ class DataFetcher: NSObject {
 		DataFetcher.fetchURL("/api/1.0/repositories/\(repo.owner!)/\(repo.slug!)/events/") { (JSON:AnyObject) in
 			Event.deleteAll(repo)
 			var events = JSON["events"] as NSArray
-			for event in events {
-				Event.importFromObject(event) as Event
+			for eventJSON in events {
+				var event = Event.importFromObject(eventJSON) as Event
+				event.belongsToRepository = repo
 			}
 		}
 	}
@@ -138,7 +139,8 @@ class DataFetcher: NSObject {
 			DataFetcher.fetchURL("/api/2.0/repositories/\(owner)/\(repo.slug!)/pullrequests/") { (JSON:AnyObject) in
 				var pullRequests = JSON["values"] as NSArray
 				for pullRequestJSON in pullRequests {
-					var pullRequest = PullRequest.createPullRequest(pullRequestJSON, repo: repo)
+					var pullRequest = PullRequest.importFromObject(pullRequestJSON) as PullRequest
+					pullRequest.belongsToRepository = repo
 				}
 			}
 		}
@@ -151,7 +153,7 @@ class DataFetcher: NSObject {
 	*/
 	class func fetchPullRequestReviewers(pullRequest: PullRequest){
 		let repo = pullRequest.belongsToRepository!
-		DataFetcher.fetchURL("/api/1.0/repositories/\(repo.owner!)/\(repo.slug!)/pullrequests/\(pullRequest.id!)/participants") { (JSON:AnyObject) in
+		DataFetcher.fetchURL("/api/1.0/repositories/\(repo.owner!)/\(repo.slug!)/pullrequests/\(pullRequest.pullRequestID!)/participants") { (JSON:AnyObject) in
 			var reviewers: [Reviewer] = []
 			for reviewJSON in JSON as NSArray {
 				let user = User.importFromObject(reviewJSON) as User
@@ -171,7 +173,7 @@ class DataFetcher: NSObject {
 	*/
 	class func fetchPullRequestCommits(pullRequest: PullRequest){
 		let repo = pullRequest.belongsToRepository!
-		DataFetcher.fetchURL("/api/2.0/repositories/\(repo.owner!)/\(repo.slug!)/pullrequests/\(pullRequest.id!)/commits") { (JSON:AnyObject) in
+		DataFetcher.fetchURL("/api/2.0/repositories/\(repo.owner!)/\(repo.slug!)/pullrequests/\(pullRequest.pullRequestID!)/commits") { (JSON:AnyObject) in
 			var backgroundContext = NSManagedObjectContext.contextForCurrentThread()
 			var commits: [Commit] = []
 
@@ -221,7 +223,7 @@ class DataFetcher: NSObject {
 	*/
 	class func approvePullRequest(pullRequest: PullRequest){
 		let repo = pullRequest.belongsToRepository!
-		DataFetcher.postURL("/api/2.0/repositories/\(repo.owner!)/\(repo.slug!)/pullrequests/\(pullRequest.id!)/approve") { (JSON:AnyObject) in
+		DataFetcher.postURL("/api/2.0/repositories/\(repo.owner!)/\(repo.slug!)/pullrequests/\(pullRequest.pullRequestID!)/approve") { (JSON:AnyObject) in
 			DataFetcher.fetchPullRequestReviewers(pullRequest)
 		}
 	}
@@ -233,7 +235,7 @@ class DataFetcher: NSObject {
 	*/
 	class func unaprovePullRequest(pullRequest: PullRequest){
 		let repo = pullRequest.belongsToRepository!
-		DataFetcher.JSONManager.DELETE("/api/2.0/repositories/\(repo.owner!)/\(repo.slug!)/pullrequests/\(pullRequest.id!)/approve", parameters: nil, success: { (operation, JSON) -> Void in
+		DataFetcher.JSONManager.DELETE("/api/2.0/repositories/\(repo.owner!)/\(repo.slug!)/pullrequests/\(pullRequest.pullRequestID!)/approve", parameters: nil, success: { (operation, JSON) -> Void in
 			if JSON == nil {
 				print("Error getting events: ")
 				return
@@ -257,7 +259,7 @@ class DataFetcher: NSObject {
 	*/
 	class func declinePullRequest(pullRequest: PullRequest){
 		let repo = pullRequest.belongsToRepository!
-		DataFetcher.JSONManager.POST("/api/2.0/repositories/\(repo.owner!)/\(repo.slug!)/pullrequests/\(pullRequest.id!)/decline", parameters: nil, success: { (operation, JSON) -> Void in
+		DataFetcher.JSONManager.POST("/api/2.0/repositories/\(repo.owner!)/\(repo.slug!)/pullrequests/\(pullRequest.pullRequestID!)/decline", parameters: nil, success: { (operation, JSON) -> Void in
 			DataFetcher.fetchPullRequests(repo)
 			}) { (operation, error) -> Void in
 				println(error)

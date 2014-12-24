@@ -31,11 +31,6 @@ class EventTests: BlargTest {
 		XCTAssertEqual(event.belongsToUser!.username!, "derp", "Name wrong.")
 	}
 
-	func testRepo(){
-		XCTAssertNotNil(event.belongsToRepository, "Repo was nil")
-		XCTAssertEqual(event.belongsToRepository!.name!, "derpRepo", "Repo name wrong")
-	}
-
 	func testCommits(){
 		XCTAssertNotNil(event.hasCommits, "No commits")
 		XCTAssertEqual(event.hasCommits!.count, 2, "Wrong number of commits.")

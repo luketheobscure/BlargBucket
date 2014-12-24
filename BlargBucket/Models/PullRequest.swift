@@ -13,21 +13,21 @@ import CoreData
 public class PullRequest: BlargManagedObject, Diffable {
 
 	// MARK: - Properties
-	@NSManaged var id: NSNumber?
-	@NSManaged var title: String?
-	@NSManaged var pr_description: String?
-	@NSManaged var source_branch: String?
-	@NSManaged var destination_branch: String?
-	@NSManaged var diff_url: String?
-	@NSManaged var diff: String?
-	@NSManaged var string: String
-	@NSManaged var created_on: NSDate
-	@NSManaged var updated_on: NSDate
+	@NSManaged public var pullRequestID: NSNumber?
+	@NSManaged public var title: String?
+	@NSManaged public var pr_description: String?
+	@NSManaged public var source_branch: String?
+	@NSManaged public var destination_branch: String?
+	@NSManaged public var diff_url: String?
+	@NSManaged public var diff: String?
+	@NSManaged public var string: String
+	@NSManaged public var created_on: NSDate
+	@NSManaged public var updated_on: NSDate
 
-	@NSManaged var belongsToUser: User
-	@NSManaged var belongsToRepository: Repository?
-	@NSManaged var hasCommits: NSSet?
-	@NSManaged var hasReviewers: NSSet?
+	@NSManaged public var belongsToUser: User
+	@NSManaged public var belongsToRepository: Repository?
+	@NSManaged public var hasCommits: NSSet?
+	@NSManaged public var hasReviewers: NSSet?
 
 	// MARK: - Diffable protocol
 	// See note in Diffable.swift
@@ -45,60 +45,8 @@ public class PullRequest: BlargManagedObject, Diffable {
 			return self.diff
 		}
 		set {
-			println(newValue)
 			self.diff = newValue
 		}
-	}
-
-	/**
-		Creates a PullRequest (the model, not an actual PR)
-		
-		:param: JSON A Dictionary object with all necessary info
-		:param: repo The repository for the pull request
-	*/
-	class func createPullRequest(JSON: AnyObject, repo: Repository?) -> PullRequest {
-		// TODO: Convert to MagicRecord
-		var pullRequest = PullRequest.pullRequest(JSON["id"])
-		pullRequest.title = JSON["title"] as? String
-		pullRequest.pr_description = JSON["description"] as? String
-		pullRequest.belongsToRepository = repo
-		pullRequest.diff_url = JSON.valueForKeyPath("links.diff.href") as? String
-
-		if JSON["author"] != nil{
-			pullRequest.belongsToUser = User.importFromObject(JSON["author"]) as User
-		}
-		
-		pullRequest.source_branch = JSON.valueForKeyPath("source.branch.name") as? String
-		pullRequest.destination_branch = JSON.valueForKeyPath("destination.branch.name") as? String
-
-		//TODO: Dates!!!!@!##*&
-
-		return pullRequest
-	}
-
-	// MARK: - Functions
-
-	/**
-		Gets a local pull request
-		
-		:param: id The ID of the pull request
-	*/
-	class func pullRequest(id:AnyObject?) -> PullRequest {
-		var user : PullRequest?
-		let request = NSFetchRequest()
-		request.entity = NSEntityDescription.entityForName("PullRequest", inManagedObjectContext: NSManagedObjectContext.defaultContext())
-		request.predicate = NSPredicate(format: "id = '\(id!)'")
-		var error = NSErrorPointer()
-		let results = NSManagedObjectContext.defaultContext().executeFetchRequest(request, error: error) as Array?
-		user = results?.last as? PullRequest
-
-		if user == nil {
-			let derp: AnyObject! = NSEntityDescription.insertNewObjectForEntityForName("PullRequest", inManagedObjectContext: NSManagedObjectContext.defaultContext())
-			user =  derp as? PullRequest
-			user!.id = id as? Int
-		}
-
-		return user!;
 	}
 
 	/**
