@@ -4,14 +4,19 @@
 //
 //  Created by Luke Deniston on 12/9/14.
 //  Copyright (c) 2014 Luke Deniston. All rights reserved.
-//
+
 
 import XCTest
 import BlargBucket
 
 class CommitTests: BlargTest {
 
-	let commit: Commit = Commit.importFromObject(Fixtures.fixtureForClass("Commits", name: "LukesCommit")) as Commit
+	let commit: Commit = {
+		// We're doing some weird things here as a temporary fix for XCTool/Travis
+		MagicalRecord.setupCoreDataStackWithInMemoryStore()
+		var data = Fixtures.fixtureForClass("Commits", name: "LukesCommit")
+		return Commit.testImportFromObject(data) as Commit
+	}()
 
 	func testMessage(){
 		XCTAssertEqual(commit.commit_description!, "coffee-lint cleanup", "Message not equal")

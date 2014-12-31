@@ -35,6 +35,11 @@ public class BlargManagedObject: NSManagedObject {
 		return super.importFromObject(data)
 	}
 
+	/// Temporary hack for XCTool tests (Travis)
+	public class func testImportFromObject(data:AnyObject!) -> AnyObject {
+		return super.MR_importFromObject(data)
+	}
+
 	/** 
 		Workaround for a MagicalRecord bug.
 	
