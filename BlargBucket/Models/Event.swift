@@ -34,11 +34,33 @@ public class Event: BlargManagedObject {
 		}
 	}
 
-	/// Fakes a primary key for magical record
+	/// Fakes a primary key. Called internally by MagicalRecord.
 	func willImport(data:NSDictionary){
 		if let createdOn = data["utc_created_on"] as? String {
 			self.eventID = createdOn
 		}
+
+	}
+
+	/**
+		Called internally by MagicalRecord. Returning false will stop the import process.
+
+		Sometimes BitBucket returns a Dictionary for the key "description", sometimes it returns a string. This causes issues when MagicalRecord tries to parse it. This method will block import if needed, throw away the bad value, then try to import again.
+		
+		:param: data The data MagicalRecord is trying to import
+
+		:returns: False if data["description"] isn't a dictionary or null, true if it is
+	*/
+	func shouldImport(data:AnyObject) -> Bool {
+		if let description:AnyObject = data["description"] {
+			if !(description.isKindOfClass(NSDictionary) || description.isKindOfClass(NSNull)) {
+				var newData = NSMutableDictionary(dictionary: data as Dictionary)
+				newData["description"] = NSNull()
+				Event.importFromObject(newData)
+				return false
+			}
+		}
+		return true
 	}
 
 }
