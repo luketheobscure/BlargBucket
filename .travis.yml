@@ -3,3 +3,6 @@ xcode_workspace: BlargBucket.xcworkspace
 xcode_scheme: BlargBucket
 xcode_sdk: iphonesimulator8.1
 osx_image: xcode611
+env:
+  global:
+    secure: eJiDNK64f16xPGruIukLjtxb/GXRSWlaVe0GBUuBJ3Zg9D6sgjfF4mg2tW7WUFUBR/nxk/V4ZBhVqJ/vC6vZk/oysQb8d2rLtbIxtm/3V5gTabsPoqL96xQbEV6vV+6DDYyrnZy+7+ZHk2zcSdQr8Td1iTRyV690IgpxOnolBhY=
