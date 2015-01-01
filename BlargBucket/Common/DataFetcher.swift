@@ -296,8 +296,8 @@ class DataFetcher: NSObject {
 
 	/// Not implemented yet. Should clear the auth tokens out
 	class func clearAuthToken() {
-		//TODO: Implement
-		//Alamofire.Manager.sharedInstance.defaultHeaders.removeValueForKey("Authorization")
+		DataFetcher.JSONManager.requestSerializer.setValue(nil, forHTTPHeaderField: "Authorization")
+		DataFetcher.plainTextManager.requestSerializer.setValue(nil, forHTTPHeaderField: "Authorization")
 	}
 
 }
