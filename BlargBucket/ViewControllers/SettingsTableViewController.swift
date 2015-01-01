@@ -40,7 +40,7 @@ class SettingsTableViewController: UITableViewController {
 	/// There's only one setting right now, so this just logs you out.
 	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 		DataFetcher.clearAuthToken()
-		Locksmith.deleteData(forKey: "password", inService:  "BlargService", forUserAccount: "BlargUser")
+		Locksmith.clearAuthToken()
 		AppDelegate.sharedInstance().window?.rootViewController = LoginViewController()
 	}
 }

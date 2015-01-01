@@ -46,11 +46,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		window = UIWindow(frame: UIScreen.mainScreen().bounds)
 		window?.makeKeyAndVisible()
 
-		// TODO: Make a helper class for LockSmith... no more strings
-		let (dictionary, error) = Locksmith.loadData(forKey: "password", inService: "BlargService", forUserAccount: "BlargUser")
-
-		if dictionary != nil {
-			DataFetcher.setAuthToken(dictionary!["password"] as String)
+		if let token = Locksmith.getAuthToken() {
+			DataFetcher.setAuthToken(token)
 
 			let repoURL: String? = NSUserDefaults.standardUserDefaults().objectForKey("activeRepo") as String?
 

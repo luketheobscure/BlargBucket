@@ -30,6 +30,7 @@
 		B56B5ECA19A5194200D48E95 /* BlargTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56B5EC919A5194200D48E95 /* BlargTable.swift */; };
 		B56D3BC319E98E5E004A2504 /* DiffViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56D3BC219E98E5E004A2504 /* DiffViewController.swift */; };
 		B56D3BC519E98F05004A2504 /* DiffViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56D3BC419E98F05004A2504 /* DiffViewModel.swift */; };
+		B56F771E1A55EBA00046547C /* LocksmithBlargExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56F771D1A55EBA00046547C /* LocksmithBlargExtensions.swift */; };
 		B573029F199C6A0B00060D2E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B573029E199C6A0B00060D2E /* AppDelegate.swift */; };
 		B57302A9199C6A0B00060D2E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B57302A8199C6A0B00060D2E /* Images.xcassets */; };
 		B57302C0199C6A8F00060D2E /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B57302BE199C6A8F00060D2E /* Model.xcdatamodeld */; };
@@ -123,6 +124,7 @@
 		B56B5EC919A5194200D48E95 /* BlargTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BlargTable.swift; path = "ViewControllers/Base Classes/BlargTable.swift"; sourceTree = "<group>"; };
 		B56D3BC219E98E5E004A2504 /* DiffViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DiffViewController.swift; path = ViewControllers/DiffViewController.swift; sourceTree = "<group>"; };
 		B56D3BC419E98F05004A2504 /* DiffViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DiffViewModel.swift; path = ViewModels/DiffViewModel.swift; sourceTree = "<group>"; };
+		B56F771D1A55EBA00046547C /* LocksmithBlargExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocksmithBlargExtensions.swift; sourceTree = "<group>"; };
 		B5730299199C6A0B00060D2E /* BlargBucket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlargBucket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B573029D199C6A0B00060D2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Supporting Files/Info.plist"; sourceTree = "<group>"; };
 		B573029E199C6A0B00060D2E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -428,8 +430,9 @@
 				B573029E199C6A0B00060D2E /* AppDelegate.swift */,
 				B57302C5199C6DCF00060D2E /* DataFetcher.swift */,
 				B547AD3119B3D5C800AE2F5B /* CoreDataStack.swift */,
-				B5314CD919A3AAFE0066B402 /* Notifications.swift */,
 				B547AD2919B398EE00AE2F5B /* Formatters.swift */,
+				B56F771D1A55EBA00046547C /* LocksmithBlargExtensions.swift */,
+				B5314CD919A3AAFE0066B402 /* Notifications.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -708,6 +711,7 @@
 				B5B4CA09199FE07300A4213A /* RepositoriesTableViewController.swift in Sources */,
 				B5A9E73919A503D5001A25E8 /* PullRequest.swift in Sources */,
 				B564A9DA19AA57D400464885 /* NormalTableViewCell.swift in Sources */,
+				B56F771E1A55EBA00046547C /* LocksmithBlargExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

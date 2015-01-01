@@ -51,14 +51,10 @@ class LoginViewController: UIViewController {
 
 	/// Handles the action when the login button is pushed
 	@IBAction func loginButtonPushed(sender: AnyObject) {
-		var hash : NSString = "\(usernameField.text):\(passwordField.text)" as NSString
-		let data = hash.dataUsingEncoding(NSUTF8StringEncoding)
-		let base64Hash = data!.base64EncodedStringWithOptions(NSDataBase64EncodingOptions.Encoding64CharacterLineLength)
-
-		Locksmith.saveData(["password": base64Hash], forKey: "password", inService: "BlargService", forUserAccount: "BlargUser")
+		let authToken = Locksmith.createAuthToken(usernameField.text, password: passwordField.text)
 
 		//TODO: Check auth first
-		DataFetcher.setAuthToken(base64Hash)
+		DataFetcher.setAuthToken(authToken)
 		DataFetcher.loginAsUser()
 		AppDelegate.sharedInstance().window?.rootViewController = MainTabBarViewController()
 	}
