@@ -16,20 +16,6 @@ import CoreData
 @objc(BlargManagedObject)
 public class BlargManagedObject: NSManagedObject {
 
-	//TODO: Remove this
-
-	/// DEPRECATED since we moved to MagicalRecord. This will get refactored out at some point.
-	func checkAndSetDate(date: AnyObject, key: String){
-		var utc: AnyObject = date
-		if utc is NSString {
-			var string = utc as NSString
-			utc = Formatters.sharedInstance.utcDate.dateFromString(string)!
-		}
-		self.willChangeValueForKey(key)
-		self.setPrimitiveValue(utc, forKey: key )
-		self.didChangeValueForKey(key)
-	}
-
 	/// Makes this available to our test host. Just calls the MagicalRecord function `importFromObject` with the same arguments.
 	public override class func importFromObject(data:AnyObject!) -> AnyObject {
 		return super.importFromObject(data)

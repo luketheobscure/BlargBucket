@@ -84,15 +84,4 @@ public class Repository: BlargManagedObject {
 
 	}
 
-	func setUtc_created_on(date: AnyObject){
-		let createdOnKey: String = "utc_created_on"
-		checkAndSetDate(date, key: createdOnKey)
-	}
-
-	func setUtc_last_updated(date:AnyObject){
-		let createdOnKey: String = "utc_last_updated"
-		checkAndSetDate(date, key: createdOnKey)
-	}
-
-
 }

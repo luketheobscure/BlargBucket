@@ -17,7 +17,7 @@ class MainTabBarViewController: UITabBarController {
 		let info = RepositoryInfoViewController(style: .Grouped)
 		info.tabBarItem = UITabBarItem(title: "Overview", image: UIImage(named: "info"), selectedImage: UIImage(named: "infoFilled"))
 
-		let pullRequests = PullRequestsTableViewController()
+		let pullRequests = PullRequestsController()
 		pullRequests.tabBarItem = UITabBarItem(title: "Pull Requests", image: UIImage(named: "pullRequest"), selectedImage: UIImage(named: "pullRequestFilled"))
 
 		let events = EventsViewController()

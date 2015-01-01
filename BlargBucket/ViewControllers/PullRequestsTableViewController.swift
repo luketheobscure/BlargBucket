@@ -1,5 +1,5 @@
 //
-//  PullRequestsTableViewController.swift
+//  PullRequestsController.swift
 //  BlargBucket
 //
 //  Created by Luke Deniston on 8/29/14.
@@ -8,10 +8,8 @@
 
 import UIKit
 
-// TODO: Rename this
-
 /// Lists all the pull requests
-class PullRequestsTableViewController: BlargTable {
+class PullRequestsController: BlargTable {
 
 	/// Sets up the view model based on the `AppDelegate.sharedInstance().activeRepo`
 	override func viewWillAppear(animated: Bool) {
