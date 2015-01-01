@@ -125,6 +125,21 @@ class DataFetcher: NSObject {
 			}
 		}
 	}
+	
+	/**
+		Gets the readme for a repository
+
+		:param: repo The repository to get the readme for
+	*/
+	class func fetchReadMe(repo: Repository, callback:(readMe:String) -> ()) -> Void {
+		let readMeURL = "/api/1.0/repositories/\(repo.owner!)/\(repo.slug!)/raw/HEAD/README.md"
+		DataFetcher.plainTextManager.GET(readMeURL, parameters: nil, success: { (operation, response) -> Void in
+			callback(readMe: NSString(data: response as NSData, encoding: NSUTF8StringEncoding)!)
+		}) { (operation, error) -> Void in
+			let responseError: NSString = "\(operation.response.statusCode) error. README unavailable for the selected repository."
+			callback(readMe: responseError)
+		}
+	}
 
 	// MARK: Pull Request Stuff
 

@@ -6,3 +6,4 @@
 #import <AFNetworking/AFNetworking.h>
 #import <RegExCategories/RegExCategories.h>
 #import <MagicalRecord/CoreData+MagicalRecord.h>
+#import <MMMarkdown/MMMarkdown.h>

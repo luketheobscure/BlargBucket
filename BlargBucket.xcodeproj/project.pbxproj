@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		016AA5C61A55E7C600D169F7 /* ReadMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016AA5C41A55E7C600D169F7 /* ReadMeViewController.swift */; };
+		016AA5C71A55E7C600D169F7 /* ReadMeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 016AA5C51A55E7C600D169F7 /* ReadMeView.xib */; };
+		019487271A53E91C00B8F4A4 /* ReadMeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019487261A53E91C00B8F4A4 /* ReadMeViewModel.swift */; };
 		9C82EA889C8E46E78D2F6E0A /* libPods-BlargBucket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E5939069ECF049F5958530A3 /* libPods-BlargBucket.a */; };
 		B50261101A43DC9900FE4F44 /* Events.yml in Resources */ = {isa = PBXBuildFile; fileRef = B502610F1A43DC9900FE4F44 /* Events.yml */; };
 		B50261121A43DEFB00FE4F44 /* EventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50261111A43DEFB00FE4F44 /* EventTests.swift */; };
@@ -93,6 +96,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		016AA5C41A55E7C600D169F7 /* ReadMeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReadMeViewController.swift; path = ViewControllers/ReadMeViewController.swift; sourceTree = "<group>"; };
+		016AA5C51A55E7C600D169F7 /* ReadMeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ReadMeView.xib; path = ViewControllers/ReadMeView.xib; sourceTree = "<group>"; };
+		019487261A53E91C00B8F4A4 /* ReadMeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReadMeViewModel.swift; path = ViewModels/ReadMeViewModel.swift; sourceTree = "<group>"; };
 		0A02CCCAA03C03640B1AFB46 /* Pods-BlargBucket.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlargBucket.release.xcconfig"; path = "Pods/Target Support Files/Pods-BlargBucket/Pods-BlargBucket.release.xcconfig"; sourceTree = "<group>"; };
 		3A68715FD87B4DBD972D83A0 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9483CF23C6A7C3CF4433ABFA /* Pods-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -384,6 +390,7 @@
 				B56D3BC419E98F05004A2504 /* DiffViewModel.swift */,
 				B594D90C19A53FFF000D6A10 /* EventsViewModel.swift */,
 				B5DE805A19EAD82200645DD3 /* FileDiffViewModel.swift */,
+				019487261A53E91C00B8F4A4 /* ReadMeViewModel.swift */,
 				B5AC00AC199FD11F00FEC3A3 /* RepositoriesViewModel.swift */,
 				B5D17BBF19A9581F0023C263 /* RepositoryVM.swift */,
 				B587B4731A0D2C7E007F7F10 /* PullRequestViewModel.swift */,
@@ -404,6 +411,7 @@
 				B5B4CA37199FE8B800A4213A /* MainTabBarViewController.swift */,
 				B567B94819B189B500D4430B /* PullRequestsTableViewController.swift */,
 				B5997C9819F0CE0400441BD5 /* PullRequestViewController.swift */,
+				016AA5C41A55E7C600D169F7 /* ReadMeViewController.swift */,
 				B5B4CA08199FE07300A4213A /* RepositoriesTableViewController.swift */,
 				B5D17BBD19A957370023C263 /* RepositoryInfoViewController.swift */,
 				B556333A19F408C500856D7A /* ReviewersViewController.swift */,
@@ -450,6 +458,7 @@
 				B5B4CA4319A07ADE00A4213A /* LoginView.xib */,
 				B564A9D819AA57D400464885 /* NormalTableViewCell.swift */,
 				B5F646B119AD962F003A20A1 /* NormalTableViewCell.xib */,
+				016AA5C51A55E7C600D169F7 /* ReadMeView.xib */,
 				B583A9BC19F8551800AC1EF8 /* ReviewerCollectionViewCell.swift */,
 				B583A9BD19F8551800AC1EF8 /* ReviewerCollectionViewCell.xib */,
 			);
@@ -557,6 +566,7 @@
 				B5B4CA4519A07ADE00A4213A /* LoginView.xib in Resources */,
 				B5DE805F19EB274300645DD3 /* DiffTableViewCell.xib in Resources */,
 				B583A9BF19F8551800AC1EF8 /* ReviewerCollectionViewCell.xib in Resources */,
+				016AA5C71A55E7C600D169F7 /* ReadMeView.xib in Resources */,
 				B5F646B219AD962F003A20A1 /* NormalTableViewCell.xib in Resources */,
 				B57302A9199C6A0B00060D2E /* Images.xcassets in Resources */,
 				B5DE805919E9F99300645DD3 /* mplus-1m-light.ttf in Resources */,
@@ -673,6 +683,7 @@
 				B5D17BBE19A957370023C263 /* RepositoryInfoViewController.swift in Sources */,
 				B594D90D19A53FFF000D6A10 /* EventsViewModel.swift in Sources */,
 				B587B4741A0D2C7E007F7F10 /* PullRequestViewModel.swift in Sources */,
+				019487271A53E91C00B8F4A4 /* ReadMeViewModel.swift in Sources */,
 				B54C1B5B199D1F78002F5E04 /* Repository.swift in Sources */,
 				B5B4CA3F199FFA2300A4213A /* SettingsTableViewController.swift in Sources */,
 				B5CEDE2B19A5A7460013E4E4 /* Commit.swift in Sources */,
@@ -685,6 +696,7 @@
 				B5C57E911A3D0ACA0094E3BA /* Diffable.swift in Sources */,
 				B5B4CA3B199FEA7900A4213A /* UIColorExtension.swift in Sources */,
 				B5A9E73319A4648C001A25E8 /* Event.swift in Sources */,
+				016AA5C61A55E7C600D169F7 /* ReadMeViewController.swift in Sources */,
 				B5314CDA19A3AAFE0066B402 /* Notifications.swift in Sources */,
 				B56D3BC519E98F05004A2504 /* DiffViewModel.swift in Sources */,
 				B585F4221A2FF08A00567A34 /* Locksmith.swift in Sources */,
@@ -876,6 +888,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "BlargBucket-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -894,6 +907,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "BlargBucket-Bridging-Header.h";
+				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Release;
 		};

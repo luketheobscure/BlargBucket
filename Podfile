@@ -6,6 +6,7 @@ target "BlargBucket" do
 	pod 'AFNetworking', '~> 2.0'
 	pod 'RegExCategories', '~> 1.0'
 	pod 'MagicalRecord/Shorthand', '~> 2.2'
+	pod 'MMMarkdown', '~> 0.3'
 end
 
 target "Tests" do

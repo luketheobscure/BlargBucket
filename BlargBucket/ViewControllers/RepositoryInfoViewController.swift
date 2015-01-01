@@ -79,5 +79,13 @@ class RepositoryInfoViewController: UITableViewController {
 		cell.detailTextLabel!.text = model.detailTitle
 		return cell
 	}
+	
+	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+		tableView.deselectRowAtIndexPath(indexPath, animated: true)
+		let model = indexPath.section == 0 ? viewModel.info![indexPath.row] : viewModel.standardOptions[indexPath.row]
+		if let action = model.action {
+			action(view: self)
+		}
+	}
 
 }
