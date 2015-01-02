@@ -60,8 +60,8 @@ public class PullRequest: BlargManagedObject, Diffable {
 			}
 		}
 		tempReviewers.sort({
-			var name1:String? = $0.belongsToUser.fullName().lowercaseString
-			var name2:String? = $1.belongsToUser.fullName().lowercaseString
+			var name1:String? = $0.belongsToUser.display_name!.lowercaseString
+			var name2:String? = $1.belongsToUser.display_name!.lowercaseString
 			return name1 < name2
 		})
 		return tempReviewers

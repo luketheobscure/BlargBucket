@@ -49,8 +49,8 @@ class PullRequestViewController: UITableViewController {
 	override func viewWillAppear(animated: Bool) {
 		tableView.tableHeaderView = infoView.view
 		infoView.titleLabel?.text = pullRequest?.title
-		if pullRequest?.belongsToUser.fullName() != nil {
-			infoView.descriptionLabel.text = "Authored by \(pullRequest!.belongsToUser.fullName())"
+		if let displayName = pullRequest!.belongsToUser.display_name {
+			infoView.descriptionLabel.text = "Authored by \(displayName)"
 		}
 		infoView.setImage(UIImage(named: "user")!)
 		var urlString = pullRequest?.belongsToUser.avatar

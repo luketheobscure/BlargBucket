@@ -96,8 +96,7 @@ class DataFetcher: NSObject {
 		DataFetcher.fetchURL("/api/1.0/user") {
 			let userHash = $0["user"] as NSDictionary
 			var user = User.importFromObject(userHash) as User
-			// TODO: Constantize "current user"
-			NSUserDefaults.standardUserDefaults().setValue(user.username, forKeyPath: "Current User")
+			user.makeCurrentUser()
 		}
 	}
 

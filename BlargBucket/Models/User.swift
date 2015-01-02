@@ -9,6 +9,9 @@
 import UIKit
 import CoreData
 
+/// Used in looking up the current user in `standardUserDefaults`
+private var currentUserKey = "Current User"
+
 /// A user on bitbucket
 public class User: BlargManagedObject {
 
@@ -19,33 +22,15 @@ public class User: BlargManagedObject {
 	@NSManaged public var username: NSString?
 
 	/// Gets the current user based on NSUserDefaults.standardUserDefaults
-	class func currentUser() -> User? {
+	public class func currentUser() -> User? {
 		// TODO: Make sure there's a user first
-		let username: String = NSUserDefaults.standardUserDefaults().valueForKey("Current User") as String
-		let request = NSFetchRequest()
-		request.entity = NSEntityDescription.entityForName("User", inManagedObjectContext: NSManagedObjectContext.defaultContext())
-		request.predicate = NSPredicate(format: "username = '\(username)'")
-		var error = NSErrorPointer()
-		let results = NSManagedObjectContext.defaultContext().executeFetchRequest(request, error: nil) as Array?
-		if error != nil {
-			println("Error getting current user: \(error)")
-		}
-		return results?.last as? User
+		let username: String = NSUserDefaults.standardUserDefaults().valueForKey(currentUserKey) as String
+		return User.findFirstByAttribute("username", withValue: username) as? User
 	}
 
-	/// Gives the first and last name, or the username if those aren't available
-	public func fullName() -> NSString {
-		var firstName: NSString? = first_name
-		let lastName: NSString = last_name ?? ""
-		if firstName == nil {
-			firstName = username
-		}
-		
-		if firstName == nil {
-			return NSLocalizedString("Anonymous", comment: "Anonymous")
-		}
-
-		return "\(firstName!) \(lastName)"
+	/// Sets the users username as the current user in the defaults
+	public func makeCurrentUser() {
+		NSUserDefaults.standardUserDefaults().setValue(self.username, forKeyPath: currentUserKey)
 	}
 
 	/**

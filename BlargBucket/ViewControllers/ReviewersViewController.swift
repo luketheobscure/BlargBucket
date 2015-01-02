@@ -83,7 +83,7 @@ class ReviewersViewController: UICollectionViewController, UICollectionViewDeleg
 		let user = reviewer.belongsToUser
 
 
-		cell.titleLabel.text = user.fullName()
+		cell.titleLabel.text = user.display_name
 		if user.avatar != nil {
 			cell.avatarImageView?.sd_setImageWithURL(NSURL(string: user.avatar!))
 		}

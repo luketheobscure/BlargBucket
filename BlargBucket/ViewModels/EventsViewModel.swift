@@ -47,7 +47,7 @@ class EventsViewModel: NSFetchedResultsController {
 		} else {
 			description = NSLocalizedString(event.event!, comment: event.event!)
 		}
-		return "\(event.belongsToUser!.fullName()) \(description!)"
+		return "\(event.belongsToUser!.display_name) \(description!)"
 	}
 
 	/**
