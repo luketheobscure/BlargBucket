@@ -23,13 +23,7 @@ extension Locksmith {
 	/// Get the authToken we use in our networking credentials, or nil if none exists.
 	class func getAuthToken() -> String? {
 		let (dictionary, error) = Locksmith.loadData(forKey: key, inService: service, forUserAccount: userAccount)
-
-		if let password: String = dictionary?[key] as? String {
-			return password
-		} else {
-			println(error)
-		}
-		return nil
+		return dictionary?[key] as? String
 	}
 
 	/**
