@@ -51,7 +51,7 @@ public class Event: BlargManagedObject {
 
 		:returns: False if data["description"] isn't a dictionary or null, true if it is
 	*/
-	func shouldImport(data:AnyObject) -> Bool {
+	public func shouldImport(data:AnyObject) -> Bool {
 		if let description:AnyObject = data["description"] {
 			if !(description.isKindOfClass(NSDictionary) || description.isKindOfClass(NSNull)) {
 				var newData = NSMutableDictionary(dictionary: data as Dictionary)

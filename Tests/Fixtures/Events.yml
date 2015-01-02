@@ -30,12 +30,7 @@ Event1:
 
 Event2:
   "created_on": "2014-12-20T01:05:38"
-  description:   
-    commits:  
-        - description: "Some more awesome things"
-          hash: 3778dfb05e3c687af20asdf4ac5162afab4999d
-    "total_commits": 1
-  
+  description: A string for some reason
   event: pushed
   node: "<null>"
   repository:   

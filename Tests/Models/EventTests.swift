@@ -43,4 +43,12 @@ class EventTests: BlargTest {
 		XCTAssertEqual(allEvents.count, 2, "Didn't find all the events.")
 	}
 
+	func testShouldImport(){
+		let badEvent = Fixtures.fixtureForClass("Events", name: "Event2")
+		let goodEvent = Fixtures.fixtureForClass("Events", name: "Event1")
+		var event = Event.createEntity() as Event
+		XCTAssertFalse(event.shouldImport(badEvent!), "Import should have failed")
+		XCTAssertTrue(event.shouldImport(goodEvent!), "Import should have succeeded")
+	}
+
 }
