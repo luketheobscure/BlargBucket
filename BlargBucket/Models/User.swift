@@ -23,8 +23,7 @@ public class User: BlargManagedObject {
 
 	/// Gets the current user based on NSUserDefaults.standardUserDefaults
 	public class func currentUser() -> User? {
-		// TODO: Make sure there's a user first
-		let username: String = NSUserDefaults.standardUserDefaults().valueForKey(currentUserKey) as String
+		let username: String? = NSUserDefaults.standardUserDefaults().valueForKey(currentUserKey) as? String
 		return User.findFirstByAttribute("username", withValue: username) as? User
 	}
 
