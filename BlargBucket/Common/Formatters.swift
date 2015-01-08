@@ -20,10 +20,19 @@ class Formatters {
 		return _singletonInstance
 	}
 
-	/// Date formaetter for utc dates
+	/// Date formatter for utc dates
 	let utcDate: NSDateFormatter = ({
 		var formatter = NSDateFormatter()
 		formatter.dateFormat = "yyyy-mm-dd HH:mm:ssZ"
+		return formatter
+	})()
+
+	/// Makes a pretty date
+	let prettyDate: NSDateFormatter = ({
+		var formatter = NSDateFormatter()
+		formatter.dateStyle = .ShortStyle
+		formatter.timeStyle = .ShortStyle
+		formatter.doesRelativeDateFormatting = true
 		return formatter
 	})()
 

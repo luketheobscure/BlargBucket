@@ -49,6 +49,19 @@ class UserTests: BlargTest {
 		XCTAssertEqual(oldCount + 2, allUsers()!.count, "User count didn't change and it should have")
 	}
 
+	func testNiceName(){
+		let luke = User.importFromObject(Fixtures.fixtureForClass("Users", name: "Luke")) as User
+		XCTAssertEqual(luke.niceName(), "Luke McLuke", "Nice name didn't get the display name")
+		luke.display_name = nil
+		XCTAssertEqual(luke.niceName(), "Luke McDuke", "Nice name didn't get the first and last name")
+		luke.last_name = nil
+		XCTAssertEqual(luke.niceName(), "Luke", "Nice name didn't get the first name")
+		luke.first_name = nil
+		XCTAssertEqual(luke.niceName(), "Anonymous", "Nice name didn't get the first name")
+
+
+	}
+
 	func allUsers() -> [AnyObject]? {
 		return NSManagedObjectContext.defaultContext().executeFetchRequest(NSFetchRequest(entityName: "User"), error: nil)
 	}

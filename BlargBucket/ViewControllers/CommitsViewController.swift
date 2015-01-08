@@ -46,9 +46,18 @@ class CommitsViewController: BlargTable {
 		cell.accessoryType = .DisclosureIndicator
 
 		cell.textLabel.text = commit.commit_description
-		// TODO: Check first
-		// TODO: Make the date look nice
-		cell.detailTextLabel.text = "By \(commit.user!.display_name!) on \(commit.date!)"
+
+		var name = NSLocalizedString("Anonymous", comment: "Anonymous")
+		if let userName = commit.user?.niceName() {
+			name = userName
+		}
+
+		if let date = commit.date {
+			let prettyDate = Formatters.sharedInstance.prettyDate.stringFromDate(date)
+			cell.detailTextLabel.text = "By \(name), \(prettyDate)"
+		} else {
+			cell.detailTextLabel.text = "By \(name)"
+		}
 
 		let url = commit.user?.avatar ?? ""
 		cell.imageView.sd_setImageWithURL(NSURL(string: url), placeholderImage: UIImage(named: "user"))

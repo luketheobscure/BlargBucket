@@ -44,7 +44,24 @@ public class User: BlargManagedObject {
 			}
 		}
 		return false
-
 	}
 
+	/**
+		Guarantees a nice pretty name
+	*/
+	public func niceName() -> String {
+		if let name = display_name {
+			return name
+		}
+		if let name = first_name {
+			if let lastName = last_name {
+				return "\(name) \(lastName)"
+			}
+			return name
+		}
+		if let name = last_name {
+			return name
+		}
+		return NSLocalizedString("Anonymous", comment: "Anonymous")
+	}
 }
