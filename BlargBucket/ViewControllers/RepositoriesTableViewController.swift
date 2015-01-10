@@ -56,22 +56,27 @@ class RepositoriesTableViewController: BlargTable, UISearchControllerDelegate, U
 		self.dismissViewControllerAnimated(true, completion: nil)
 	}
 
+	private let reuseIdentifier = "subtitleCell"
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath)-> UITableViewCell {
-		// TODO: Need to dequeue here... But also set the style
-		let cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "reuseIdentifier")
+		var tableCell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier) as? UITableViewCell
+		if tableCell == nil {
+			tableCell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: reuseIdentifier)
+		}
 
-		let repo = (fetchedResults as RepositoriesViewModel).repoAtIndexPath(indexPath)
+		if let cell = tableCell {
+			let repo = (fetchedResults as RepositoriesViewModel).repoAtIndexPath(indexPath)
 
-        cell.textLabel?.text = repo.name
-		let language = repo.language ?? ""
-		cell.detailTextLabel!.text = language as NSString
-		cell.imageView?.sd_setImageWithURL(NSURL(string: repo.logo ?? ""), placeholderImage: UIImage(named: "repoPlaceholder"))
-		cell.imageView?.layer.cornerRadius = 22
-		cell.imageView?.clipsToBounds = true
+			cell.textLabel?.text = repo.name
+			let language = repo.language ?? ""
+			cell.detailTextLabel?.text = language as NSString
+			cell.imageView?.sd_setImageWithURL(NSURL(string: repo.logo ?? ""), placeholderImage: UIImage(named: "repoPlaceholder"))
+			cell.imageView?.layer.cornerRadius = 22
+			cell.imageView?.clipsToBounds = true
 
-		cell.textLabel?.font = UIFont(name: "Avenir Next", size: 14)
+			cell.textLabel?.font = UIFont(name: "Avenir Next", size: 14)
+		}
 
-        return cell
+        return tableCell!
     }
 
 	/// Updates the viewModel based on the search term, then reloads the table view
