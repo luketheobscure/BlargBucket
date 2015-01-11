@@ -41,13 +41,17 @@ class EventsViewModel: NSFetchedResultsController {
 		:param: event The event to find the title for
 	*/
 	func eventTitle(event: Event) -> String {
-		var description:String?
+		var description:String = ""
 		if event.hasCommits?.count != 0 {
 			description = "pushed \(event.hasCommits!.count) Commits"
 		} else {
 			description = NSLocalizedString(event.event!, comment: event.event!)
 		}
-		return "\(event.belongsToUser!.display_name) \(description!)"
+		if let displayName = event.belongsToUser?.display_name {
+			return "\(displayName) \(description)"
+		}
+		return description
+
 	}
 
 	/**

@@ -37,5 +37,7 @@ class ButtonTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+
+	class func reuseIdentifier() -> String { return "ButtonTableViewCellIdentifier" }
     
 }

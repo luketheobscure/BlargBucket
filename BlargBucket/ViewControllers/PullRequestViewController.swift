@@ -40,9 +40,8 @@ class PullRequestViewController: UITableViewController {
 	/// Registers the nibs and sets the title
 	override func viewDidLoad() {
 		title = "Details"
-		// TODO: Refactor into constants
-		tableView.registerNib(UINib(nibName: "NormalTableViewCell", bundle: nil), forCellReuseIdentifier: "optionCell")
-		tableView.registerNib(UINib(nibName: "ButtonTableViewCell", bundle: nil), forCellReuseIdentifier: "buttonCell")
+		tableView.registerNib(UINib(nibName: "NormalTableViewCell", bundle: nil), forCellReuseIdentifier: NormalTableViewCell.reuseIdentifier())
+		tableView.registerNib(UINib(nibName: "ButtonTableViewCell", bundle: nil), forCellReuseIdentifier: ButtonTableViewCell.reuseIdentifier())
 	}
 
 	/// Sets up the auxillary views

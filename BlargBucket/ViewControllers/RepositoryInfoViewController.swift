@@ -21,9 +21,11 @@ class RepositoryInfoViewController: UITableViewController {
 	let topView = InfoViewController()
 	var imageView: UIImageView?
 
+	private var reuseIdentifier = NormalTableViewCell.reuseIdentifier()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-		tableView.registerNib(UINib(nibName: "NormalTableViewCell", bundle: nil), forCellReuseIdentifier: "reuseIdentifier")
+		tableView.registerNib(UINib(nibName: "NormalTableViewCell", bundle: nil), forCellReuseIdentifier: reuseIdentifier)
 		tableView.tableHeaderView = topView.view
 		imageView = topView.imageView
 		imageView?.layer.borderColor = UIColor.yellowish().CGColor
@@ -73,7 +75,7 @@ class RepositoryInfoViewController: UITableViewController {
 	}
 
 	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell
+		let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath) as UITableViewCell
 		let model = indexPath.section == 0 ? viewModel.info![indexPath.row] : viewModel.standardOptions[indexPath.row]
 		cell.textLabel?.text = model.title
 		cell.detailTextLabel!.text = model.detailTitle

@@ -29,14 +29,14 @@ class PullRequestViewModel {
 				title: NSLocalizedString("Diff", comment: "Diff"),
 				detailTitle: nil,
 				imageView: nil,
-				reuseIdentifier: "optionCell",
+				reuseIdentifier: NormalTableViewCell.reuseIdentifier(),
 				action: { $0.navigationController!.pushViewController(DiffViewController(aDiffable: aPullRequest), animated: true) }
 			),
 			TableCellModel(
 				title:NSLocalizedString("Commits", comment: "Commits"),
 				detailTitle: nil,
 				imageView: nil,
-				reuseIdentifier: "optionCell",
+				reuseIdentifier: NormalTableViewCell.reuseIdentifier(),
 				action: { $0.navigationController!.pushViewController(CommitsViewController(aPullRequest: aPullRequest), animated: true) }
 			),
 			TableCellModel(
@@ -44,7 +44,7 @@ class PullRequestViewModel {
 				comment: "Activity"),
 				detailTitle: nil,
 				imageView: nil,
-				reuseIdentifier: "optionCell",
+				reuseIdentifier: NormalTableViewCell.reuseIdentifier(),
 				action: nil
 			)
 		]
@@ -54,7 +54,7 @@ class PullRequestViewModel {
 				title:NSLocalizedString("Decline", comment: "Decline"),
 				detailTitle: nil,
 				imageView: nil,
-				reuseIdentifier: "buttonCell",
+				reuseIdentifier: ButtonTableViewCell.reuseIdentifier(),
 				action: {
 					let alertController = UIAlertController(title: "Decline", message: "Decline pull request \"\(aPullRequest.title!)\"?", preferredStyle: .Alert)
 					let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
@@ -73,7 +73,7 @@ class PullRequestViewModel {
 				title:NSLocalizedString("Merge", comment: "Merge"),
 				detailTitle: nil,
 				imageView: nil,
-				reuseIdentifier: "buttonCell",
+				reuseIdentifier: ButtonTableViewCell.reuseIdentifier(),
 				action: {
 					//TODO: Add ability to customize the merge message (using the message currently hardcoded in DataFetcher.mergePullRequest as a default)
 					let alertController = UIAlertController(title: "Merge", message: "Merge pull request \"\(aPullRequest.title!)\"?", preferredStyle: .Alert)
@@ -113,7 +113,7 @@ class PullRequestViewModel {
 				title:NSLocalizedString("Unapprove", comment: "Approve"),
 				detailTitle: nil,
 				imageView: nil,
-				reuseIdentifier: "buttonCell",
+				reuseIdentifier: ButtonTableViewCell.reuseIdentifier(),
 				action: {
 					let alertController = UIAlertController(title: "Approve", message: "Approve pull request \"\(pullRequest.title!)\"?", preferredStyle: .Alert)
 					let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
@@ -130,7 +130,7 @@ class PullRequestViewModel {
 			title:NSLocalizedString("Approve", comment: "Approve"),
 			detailTitle: nil,
 			imageView: nil,
-			reuseIdentifier: "buttonCell",
+			reuseIdentifier: ButtonTableViewCell.reuseIdentifier(),
 			action: {
 				let alertController = UIAlertController(title: "Unapprove", message: "Unapprove pull request \"\(pullRequest.title!)\"?", preferredStyle: .Alert)
 				let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)

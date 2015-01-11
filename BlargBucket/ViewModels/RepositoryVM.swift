@@ -18,10 +18,10 @@ class RepositoryVM {
 
 	/// Static array of `TableCellModel`s with standard options
 	let standardOptions : [TableCellModel] = [
-		TableCellModel(title:NSLocalizedString("Read Me", comment: "Read Me"), detailTitle: nil, imageView: nil, reuseIdentifier: "optionCell", action: nil),
-		TableCellModel(title:NSLocalizedString("Source", comment: "Source"), detailTitle: nil, imageView: nil, reuseIdentifier: "optionCell", action: nil),
-		TableCellModel(title:NSLocalizedString("Commits", comment: "Commits"), detailTitle: nil, imageView: nil, reuseIdentifier: "optionCell", action: nil),
-		TableCellModel(title:NSLocalizedString("Branches", comment: "Branches"), detailTitle: nil, imageView: nil, reuseIdentifier: "optionCell", action: nil)
+		TableCellModel(title:NSLocalizedString("Read Me", comment: "Read Me"), detailTitle: nil, imageView: nil, reuseIdentifier: NormalTableViewCell.reuseIdentifier(), action: nil),
+		TableCellModel(title:NSLocalizedString("Source", comment: "Source"), detailTitle: nil, imageView: nil, reuseIdentifier: NormalTableViewCell.reuseIdentifier(), action: nil),
+		TableCellModel(title:NSLocalizedString("Commits", comment: "Commits"), detailTitle: nil, imageView: nil, reuseIdentifier: NormalTableViewCell.reuseIdentifier(), action: nil),
+		TableCellModel(title:NSLocalizedString("Branches", comment: "Branches"), detailTitle: nil, imageView: nil, reuseIdentifier: NormalTableViewCell.reuseIdentifier(), action: nil)
 	]
 
 	/// Designated initializer
