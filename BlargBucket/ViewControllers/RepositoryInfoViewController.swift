@@ -45,7 +45,6 @@ class RepositoryInfoViewController: UITableViewController {
 
 	func setupInfoView() {
 		var url = AppDelegate.sharedInstance().activeRepo?.logo ?? ""
-		// TODO: Check for image first
 		if url != "" {
 			SDWebImageDownloader.sharedDownloader().downloadImageWithURL(NSURL(string: url), options: nil, progress: nil, completed: {[weak self] (image, data, error, finished) in
 				if let wSelf = self {

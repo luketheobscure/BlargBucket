@@ -42,23 +42,33 @@ class DataFetcher: NSObject {
 		
 		:param: url The url to get
 		:param: completion The completion block, gets passed the JSON from the network request
+		:param: failure Optional failure completion handler
 	*/
-	class func fetchURL(url:String, completion: (JSON: AnyObject) -> () ){
+	class func fetchURL(url:String, completion: (JSON: AnyObject) -> (), failure: ((error: NSError?) -> ())? = nil){
 		println("Fetching URL: \(url)")
-		DataFetcher.JSONManager.GET(url, parameters: nil, success: { (operation, JSON) -> Void in
+		DataFetcher.JSONManager.GET(url, parameters: nil, success: { (operation, JSON) in
 			if JSON == nil {
 				print("Error getting JSON: ")
+				if let failureHandler = failure {
+					failureHandler(error: nil)
+				}
 				return
 			}
 			completion(JSON: JSON)
-			NSManagedObjectContext.defaultContext().saveToPersistentStoreWithCompletion({ (success, error) -> Void in
+			NSManagedObjectContext.defaultContext().saveToPersistentStoreWithCompletion({ (success, error) in
 				if (error != nil) {
 					println("Core data error!")
 					println(error)
+					if let failureHandler = failure {
+						failureHandler(error: error)
+					}
 				}
 			})
 			}) { (operation, error) -> Void in
 				println(error)
+				if let failureHandler = failure {
+					failureHandler(error: error)
+				}
 		}
 	}
 
@@ -70,18 +80,18 @@ class DataFetcher: NSObject {
 	*/
 	class func postURL(url:String, completion: (JSON: AnyObject) -> () ){
 		println("Posting URL: \(url)")
-		DataFetcher.JSONManager.POST(url, parameters: nil, success: { (operation, JSON) -> Void in
+		DataFetcher.JSONManager.POST(url, parameters: nil, success: { (operation, JSON) in
 			if JSON == nil {
 				print("Error getting JSON: ")
 				return
 			}
 			completion(JSON: JSON)
-			NSManagedObjectContext.defaultContext().saveToPersistentStoreWithCompletion({ (success, error) -> Void in
+			NSManagedObjectContext.defaultContext().saveToPersistentStoreWithCompletion({ (success, error) in
 				if (error != nil) {
 					println("Core data error!")
 					println(error)
 				}
-			})			}) { (operation, error) -> Void in
+			})			}) { (operation, error) in
 				println(error)
 		}
 	}
@@ -92,12 +102,15 @@ class DataFetcher: NSObject {
 		Gets the user info for the current user (based on the network authentication.
 		Sets the username in NSUserDefaults for the key path "Current User"
 	*/
-	class func loginAsUser() {
-		DataFetcher.fetchURL("/api/1.0/user") {
+	class func loginAsUser(result:(success:Bool, error: NSError?)->()) {
+		DataFetcher.fetchURL("/api/1.0/user", completion: {
 			let userHash = $0["user"] as NSDictionary
 			var user = User.importFromObject(userHash) as User
 			user.makeCurrentUser()
-		}
+			result(success: true, error: nil)
+		}, failure: {(error) in
+			result(success: false, error: error)
+		})
 	}
 
 	/// Gets all the repositories

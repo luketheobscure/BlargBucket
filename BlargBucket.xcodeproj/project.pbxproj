@@ -76,6 +76,7 @@
 		B5DE805B19EAD82200645DD3 /* FileDiffViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DE805A19EAD82200645DD3 /* FileDiffViewModel.swift */; };
 		B5DE805E19EB274300645DD3 /* DiffTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DE805C19EB274300645DD3 /* DiffTableViewCell.swift */; };
 		B5DE805F19EB274300645DD3 /* DiffTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5DE805D19EB274300645DD3 /* DiffTableViewCell.xib */; };
+		B5E5BFB41A6C378700F223E2 /* tetris.gif in Resources */ = {isa = PBXBuildFile; fileRef = B5E5BFB31A6C378700F223E2 /* tetris.gif */; };
 		B5EA027119F9572D00F9D573 /* Reviewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EA027019F9572D00F9D573 /* Reviewer.swift */; };
 		B5F52A0A19F21D2600468E35 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F52A0819F21D2600468E35 /* InfoViewController.swift */; };
 		B5F646B219AD962F003A20A1 /* NormalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5F646B119AD962F003A20A1 /* NormalTableViewCell.xib */; };
@@ -175,6 +176,7 @@
 		B5DE805A19EAD82200645DD3 /* FileDiffViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FileDiffViewModel.swift; path = ViewModels/FileDiffViewModel.swift; sourceTree = "<group>"; };
 		B5DE805C19EB274300645DD3 /* DiffTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DiffTableViewCell.swift; path = Views/DiffTableViewCell.swift; sourceTree = "<group>"; };
 		B5DE805D19EB274300645DD3 /* DiffTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DiffTableViewCell.xib; path = Views/DiffTableViewCell.xib; sourceTree = "<group>"; };
+		B5E5BFB31A6C378700F223E2 /* tetris.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = tetris.gif; path = "UI Resources/Loaders/tetris.gif"; sourceTree = "<group>"; };
 		B5EA027019F9572D00F9D573 /* Reviewer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reviewer.swift; path = Models/Reviewer.swift; sourceTree = "<group>"; };
 		B5F52A0819F21D2600468E35 /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InfoViewController.swift; path = ViewControllers/InfoViewController.swift; sourceTree = "<group>"; };
 		B5F646B119AD962F003A20A1 /* NormalTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NormalTableViewCell.xib; path = Views/NormalTableViewCell.xib; sourceTree = "<group>"; };
@@ -419,6 +421,7 @@
 				B5B4CA3A199FEA7900A4213A /* UIColorExtension.swift */,
 				B5B4CA4919A1677B00A4213A /* UIButtonExtension.swift */,
 				B5B4CA3C199FF3AD00A4213A /* BlargAppearance.swift */,
+				B5E5BFB01A6C375500F223E2 /* Loaders */,
 			);
 			name = "UI Resources";
 			sourceTree = "<group>";
@@ -454,6 +457,14 @@
 				B583A9BD19F8551800AC1EF8 /* ReviewerCollectionViewCell.xib */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		B5E5BFB01A6C375500F223E2 /* Loaders */ = {
+			isa = PBXGroup;
+			children = (
+				B5E5BFB31A6C378700F223E2 /* tetris.gif */,
+			);
+			name = Loaders;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -562,6 +573,7 @@
 				B5DE805919E9F99300645DD3 /* mplus-1m-light.ttf in Resources */,
 				B52FD1A21A0EC3CA00D7324F /* ButtonTableViewCell.xib in Resources */,
 				B5B93D1E19A6399200E5976E /* Localizable.strings in Resources */,
+				B5E5BFB41A6C378700F223E2 /* tetris.gif in Resources */,
 				B5D17BC219A985EE0023C263 /* InfoView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
