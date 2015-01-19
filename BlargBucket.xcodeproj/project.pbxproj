@@ -77,6 +77,10 @@
 		B5DE805E19EB274300645DD3 /* DiffTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DE805C19EB274300645DD3 /* DiffTableViewCell.swift */; };
 		B5DE805F19EB274300645DD3 /* DiffTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5DE805D19EB274300645DD3 /* DiffTableViewCell.xib */; };
 		B5E5BFB41A6C378700F223E2 /* tetris.gif in Resources */ = {isa = PBXBuildFile; fileRef = B5E5BFB31A6C378700F223E2 /* tetris.gif */; };
+		B5E5BFB61A6CBBEF00F223E2 /* worms.gif in Resources */ = {isa = PBXBuildFile; fileRef = B5E5BFB51A6CBBEF00F223E2 /* worms.gif */; };
+		B5E5BFB81A6CBD3000F223E2 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E5BFB71A6CBD3000F223E2 /* SettingsViewModel.swift */; };
+		B5E5BFBA1A6CC1A700F223E2 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E5BFB91A6CC1A700F223E2 /* Functions.swift */; };
+		B5E5BFBC1A6CD09700F223E2 /* BlargHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E5BFBB1A6CD09700F223E2 /* BlargHUD.swift */; };
 		B5EA027119F9572D00F9D573 /* Reviewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EA027019F9572D00F9D573 /* Reviewer.swift */; };
 		B5F52A0A19F21D2600468E35 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F52A0819F21D2600468E35 /* InfoViewController.swift */; };
 		B5F646B219AD962F003A20A1 /* NormalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5F646B119AD962F003A20A1 /* NormalTableViewCell.xib */; };
@@ -177,6 +181,10 @@
 		B5DE805C19EB274300645DD3 /* DiffTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DiffTableViewCell.swift; path = Views/DiffTableViewCell.swift; sourceTree = "<group>"; };
 		B5DE805D19EB274300645DD3 /* DiffTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DiffTableViewCell.xib; path = Views/DiffTableViewCell.xib; sourceTree = "<group>"; };
 		B5E5BFB31A6C378700F223E2 /* tetris.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = tetris.gif; path = "UI Resources/Loaders/tetris.gif"; sourceTree = "<group>"; };
+		B5E5BFB51A6CBBEF00F223E2 /* worms.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = worms.gif; path = "UI Resources/Loaders/worms.gif"; sourceTree = "<group>"; };
+		B5E5BFB71A6CBD3000F223E2 /* SettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewModel.swift; path = ViewModels/SettingsViewModel.swift; sourceTree = "<group>"; };
+		B5E5BFB91A6CC1A700F223E2 /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
+		B5E5BFBB1A6CD09700F223E2 /* BlargHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BlargHUD.swift; path = "UI Resources/BlargHUD.swift"; sourceTree = "<group>"; };
 		B5EA027019F9572D00F9D573 /* Reviewer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reviewer.swift; path = Models/Reviewer.swift; sourceTree = "<group>"; };
 		B5F52A0819F21D2600468E35 /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InfoViewController.swift; path = ViewControllers/InfoViewController.swift; sourceTree = "<group>"; };
 		B5F646B119AD962F003A20A1 /* NormalTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NormalTableViewCell.xib; path = Views/NormalTableViewCell.xib; sourceTree = "<group>"; };
@@ -386,10 +394,11 @@
 				B56D3BC419E98F05004A2504 /* DiffViewModel.swift */,
 				B594D90C19A53FFF000D6A10 /* EventsViewModel.swift */,
 				B5DE805A19EAD82200645DD3 /* FileDiffViewModel.swift */,
-				B5AC00AC199FD11F00FEC3A3 /* RepositoriesViewModel.swift */,
-				B5D17BBF19A9581F0023C263 /* RepositoryVM.swift */,
 				B587B4731A0D2C7E007F7F10 /* PullRequestViewModel.swift */,
 				B567B94A19B18A6D00D4430B /* PullRequestsViewModel.swift */,
+				B5AC00AC199FD11F00FEC3A3 /* RepositoriesViewModel.swift */,
+				B5D17BBF19A9581F0023C263 /* RepositoryVM.swift */,
+				B5E5BFB71A6CBD3000F223E2 /* SettingsViewModel.swift */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -418,10 +427,11 @@
 			isa = PBXGroup;
 			children = (
 				B57302A8199C6A0B00060D2E /* Images.xcassets */,
-				B5B4CA3A199FEA7900A4213A /* UIColorExtension.swift */,
-				B5B4CA4919A1677B00A4213A /* UIButtonExtension.swift */,
-				B5B4CA3C199FF3AD00A4213A /* BlargAppearance.swift */,
 				B5E5BFB01A6C375500F223E2 /* Loaders */,
+				B5B4CA3C199FF3AD00A4213A /* BlargAppearance.swift */,
+				B5E5BFBB1A6CD09700F223E2 /* BlargHUD.swift */,
+				B5B4CA4919A1677B00A4213A /* UIButtonExtension.swift */,
+				B5B4CA3A199FEA7900A4213A /* UIColorExtension.swift */,
 			);
 			name = "UI Resources";
 			sourceTree = "<group>";
@@ -436,6 +446,7 @@
 				B547AD2919B398EE00AE2F5B /* Formatters.swift */,
 				B56F771D1A55EBA00046547C /* LocksmithBlargExtensions.swift */,
 				B5314CD919A3AAFE0066B402 /* Notifications.swift */,
+				B5E5BFB91A6CC1A700F223E2 /* Functions.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -462,6 +473,7 @@
 		B5E5BFB01A6C375500F223E2 /* Loaders */ = {
 			isa = PBXGroup;
 			children = (
+				B5E5BFB51A6CBBEF00F223E2 /* worms.gif */,
 				B5E5BFB31A6C378700F223E2 /* tetris.gif */,
 			);
 			name = Loaders;
@@ -574,6 +586,7 @@
 				B52FD1A21A0EC3CA00D7324F /* ButtonTableViewCell.xib in Resources */,
 				B5B93D1E19A6399200E5976E /* Localizable.strings in Resources */,
 				B5E5BFB41A6C378700F223E2 /* tetris.gif in Resources */,
+				B5E5BFB61A6CBBEF00F223E2 /* worms.gif in Resources */,
 				B5D17BC219A985EE0023C263 /* InfoView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -689,6 +702,7 @@
 				B5B4CA3F199FFA2300A4213A /* SettingsTableViewController.swift in Sources */,
 				B5CEDE2B19A5A7460013E4E4 /* Commit.swift in Sources */,
 				B5AC00AD199FD11F00FEC3A3 /* RepositoriesViewModel.swift in Sources */,
+				B5E5BFBA1A6CC1A700F223E2 /* Functions.swift in Sources */,
 				B567B94B19B18A6D00D4430B /* PullRequestsViewModel.swift in Sources */,
 				B57302C6199C6DCF00060D2E /* DataFetcher.swift in Sources */,
 				B5AA7B921A380EF900A2BFF7 /* CommitsViewController.swift in Sources */,
@@ -702,7 +716,9 @@
 				B585F4221A2FF08A00567A34 /* Locksmith.swift in Sources */,
 				B5D17BC019A9581F0023C263 /* RepositoryVM.swift in Sources */,
 				B5F52A0A19F21D2600468E35 /* InfoViewController.swift in Sources */,
+				B5E5BFBC1A6CD09700F223E2 /* BlargHUD.swift in Sources */,
 				B547AD2A19B398EE00AE2F5B /* Formatters.swift in Sources */,
+				B5E5BFB81A6CBD3000F223E2 /* SettingsViewModel.swift in Sources */,
 				B5997C9919F0CE0400441BD5 /* PullRequestViewController.swift in Sources */,
 				B5DE805B19EAD82200645DD3 /* FileDiffViewModel.swift in Sources */,
 				B573029F199C6A0B00060D2E /* AppDelegate.swift in Sources */,

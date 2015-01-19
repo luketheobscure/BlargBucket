@@ -51,9 +51,7 @@ class LoginViewController: UIViewController {
 
 	/// Handles the action when the login button is pushed
 	@IBAction func loginButtonPushed(sender: AnyObject) {
-		let hud = MBProgressHUD.showHUDAddedTo(view, animated: true)
-		hud.mode = MBProgressHUDModeCustomView
-		hud.customView = UIImageView(image: UIImage.sd_animatedGIFNamed("tetris"))
+		BlargHUD.customizedHUDAddedTo(view)
 		let authToken = Locksmith.createAuthToken(usernameField.text, password: passwordField.text)
 
 		DataFetcher.setAuthToken(authToken)

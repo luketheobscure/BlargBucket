@@ -32,6 +32,11 @@ public class User: BlargManagedObject {
 		NSUserDefaults.standardUserDefaults().setValue(self.username, forKeyPath: currentUserKey)
 	}
 
+	/// Clears out whatevers in the user defaults for current user
+	public class func clearCurrentUser() {
+		NSUserDefaults.standardUserDefaults().removeObjectForKey(currentUserKey)
+	}
+
 	/**
 		Has the user approved the pull request?
 		
