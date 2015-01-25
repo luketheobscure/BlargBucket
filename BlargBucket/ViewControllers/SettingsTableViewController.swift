@@ -22,7 +22,7 @@ class SettingsTableViewController: UITableViewController {
 	}
 
 	required init(coder aDecoder: NSCoder) {
-	    fatalError("init(coder:) has not been implemented")
+	    super.init(coder: aDecoder)
 	}
 
 	override func viewDidLoad() {
@@ -33,6 +33,10 @@ class SettingsTableViewController: UITableViewController {
 	}
 
 	// MARK: - Table view data source
+
+	override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+		return viewModel.sectionTitles.count > section ? viewModel.sectionTitles[section] : nil
+	}
 
 	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
 		return viewModel.sections.count
@@ -48,6 +52,7 @@ class SettingsTableViewController: UITableViewController {
 
 		cell.textLabel?.text = cellModel.title
 		cell.detailTextLabel?.text = cellModel.detailTitle
+		cell.accessoryType = cellModel.accesoryType
 
 		return cell
 	}

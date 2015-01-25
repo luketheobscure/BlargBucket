@@ -8,10 +8,9 @@
 
 import UIKit
 
-// TODO: This class is half done. :(
-
 class SettingsViewModel {
    var sections: [[TableCellModel]] = []
+   var sectionTitles = [LocalizedString("Loading Indicator")]
 
    var HUD: MBProgressHUD?
 
@@ -46,9 +45,9 @@ class SettingsViewModel {
 				imageView: nil,
 				reuseIdentifier: NormalTableViewCell.reuseIdentifier(),
 				action: { (view) in
-					BlargHUD.setHudMode("worms")
-					self.showHUD(view.view)
-				}
+					self.setHUD("worms", tableView: view as UITableViewController)
+				},
+				accesoryType: BlargHUD.hudMode() == "worms" ? .Checkmark : .None
 			),
 			TableCellModel(
 				title: LocalizedString("Tetris"),
@@ -56,11 +55,19 @@ class SettingsViewModel {
 				imageView: nil,
 				reuseIdentifier: NormalTableViewCell.reuseIdentifier(),
 				action: { (view) in
-					BlargHUD.setHudMode("tetris")
-					self.showHUD(view.view)
-				}
+					self.setHUD("tetris", tableView: view as UITableViewController)
+				},
+				accesoryType: BlargHUD.hudMode() == "tetris" ? .Checkmark : .None
+
 			)
 		]
+	}
+
+	func setHUD(mode:String, tableView:UITableViewController){
+		BlargHUD.setHudMode(mode)
+		showHUD(tableView.view)
+		sections = [self.buildFirstSection() ,self.buildSecondSection()]
+		tableView.tableView.reloadData()
 	}
 
 	func showHUD(view:UIView) {

@@ -26,7 +26,7 @@ class BlargAppearance {
 		UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.seafoam()], forState: UIControlState.Selected)
 
 		//UIButton.appearance().backgroundColor = UIColor.yellowish()
-		UIButton.appearance().tintColor = UIColor.whiteColor()
+		UIButton.appearance().tintColor = UIColor.seafoam()
 
 		UITextField.appearance().backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.6)
 		UITextField.appearance().font = UIFont(name: "Avenir Next", size: 14)

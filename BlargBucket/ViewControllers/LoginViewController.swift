@@ -45,6 +45,7 @@ class LoginViewController: UIViewController {
 
 	override func viewDidAppear(animated: Bool) {
 		loginButton.backgroundColor = UIColor.orangeCream()
+		loginButton.tintColor = UIColor.whiteColor()
 		loginButton.layer.cornerRadius = 5
 		//loginButton.createShadow(UIColor.sharkFinGray(), radius: 5)
 	}
