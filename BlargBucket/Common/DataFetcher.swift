@@ -130,8 +130,9 @@ class DataFetcher: NSObject {
 		Gets the readme for a repository
 
 		:param: repo The repository to get the readme for
+		:param: callback Sends the readme response string (or an error message with a response code) back
 	*/
-	class func fetchReadMe(repo: Repository, callback:(readMe:String) -> ()) -> Void {
+	class func fetchReadMe(repo: Repository, callback:(readMe:String) -> ()) {
 		let readMeURL = "/api/1.0/repositories/\(repo.owner!)/\(repo.slug!)/raw/HEAD/README.md"
 		DataFetcher.plainTextManager.GET(readMeURL, parameters: nil, success: { (operation, response) -> Void in
 			callback(readMe: NSString(data: response as NSData, encoding: NSUTF8StringEncoding)!)

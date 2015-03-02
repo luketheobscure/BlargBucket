@@ -10,26 +10,33 @@ import Foundation
 
 class ReadMeViewModel: NSObject {
 	
-	dynamic var readMeMarkDown: String?
-	var readMeAttributed: NSAttributedString?
-	let repo = AppDelegate.sharedInstance().activeRepo
+	dynamic var readMeAttributed: NSAttributedString?
 	
 	/**
-	Start fetching the readme as soon as the view model is created
+	Fetch and parse the readme as soon as the view model is created
 	*/
 	override init(){
 		super.init()
-		DataFetcher.fetchReadMe(repo!) {self.readMeMarkDown = $0}
+		DataFetcher.fetchReadMe(AppDelegate.sharedInstance().activeRepo!) {self.parseMarkDown($0)}
 	}
 	
 	/**
 	Parse readme in markdown to HTML, then set it up as an attributed string
 	*/
-	func setAttributedString() {
-		let readMeHTML = (MMMarkdown.HTMLStringWithMarkdown(self.readMeMarkDown, error: nil))
-		let encodedData = readMeHTML.dataUsingEncoding(NSUTF8StringEncoding)
+	func parseMarkDown(readMeMarkDown: String?) {
+		var markdownError: NSError?
+		let readMeHTML = MMMarkdown.HTMLStringWithMarkdown(readMeMarkDown, error: &markdownError)
+		if (markdownError != nil) {
+			println(markdownError)
+		}
 		let attributedOptions = [NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType]
-		self.readMeAttributed = NSAttributedString(data: encodedData!, options: attributedOptions, documentAttributes: nil, error: nil)
+		var attributedStringError: NSError?
+		if let encodedData = readMeHTML.dataUsingEncoding(NSUTF8StringEncoding) {
+			self.readMeAttributed = NSAttributedString(data: encodedData, options: attributedOptions, documentAttributes: nil, error: &attributedStringError)
+		}
+		if (attributedStringError != nil) {
+			println(attributedStringError)
+		}
 	}
 
 }

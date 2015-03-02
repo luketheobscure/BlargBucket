@@ -82,10 +82,12 @@ class RepositoryInfoViewController: UITableViewController {
 	
 	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 		tableView.deselectRowAtIndexPath(indexPath, animated: true)
-		let model = indexPath.section == 0 ? viewModel.info![indexPath.row] : viewModel.standardOptions[indexPath.row]
-		if let action = model.action {
-			action(view: self)
+		
+		if let viewModelInfo = viewModel.info {
+			let model = indexPath.section == 0 ? viewModelInfo[indexPath.row] : viewModel.standardOptions[indexPath.row]
+			if let action = model.action {
+				action(view: self)
+			}
 		}
 	}
-
 }
