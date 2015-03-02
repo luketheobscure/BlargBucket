@@ -1,0 +1,265 @@
+PullRequestsTableViewController.swift
+	func viewModel() -> PullRequestsViewModel
+	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+ReviewersViewController.swift
+	convenience init(aPullRequest:PullRequest)
+	override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int
+	override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
+	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize
+	override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell
+EventTableViewCell.swift
+	override var imageView: UIImageView
+	override var detailTextLabel: UILabel
+	override var textLabel: UILabel
+	override func awakeFromNib()
+	override func setSelected(selected: Bool, animated: Bool)
+LoginViewController.swift
+	required init(coder aDecoder: NSCoder)
+	override func viewDidLoad()
+	override func viewDidAppear(animated: Bool)
+LocksmithRequest.swift
+	enum SecurityClass: Int
+	enum MatchLimit: Int
+	enum RequestType: Int
+	class LocksmithRequest: NSObject, DebugPrintable
+	var service: String
+	var key: String
+	var userAccount: String
+	var type: RequestType = .Read  // Default to non-destructive
+	var group: String?
+	var data: NSDictionary?
+	var matchLimit: MatchLimit = .One  // Default to one
+	override var debugDescription: String
+	required init(service: String, userAccount: String, key: String)
+	convenience init(service: String, userAccount: String, key: String, requestType: RequestType)
+	convenience init(service: String, userAccount: String, key: String, requestType: RequestType, data: NSDictionary)
+MainTabBarViewController.swift
+	override func viewDidLoad()
+RepositoryInfoViewController.swift
+	var viewModel = RepositoryVM()
+	var observer: AnyObject?
+	var backgroundImage: UIImageView?
+	let topView = InfoViewController()
+	var imageView: UIImageView?
+	override func viewDidLoad()
+	func setupInfoView()
+	override func numberOfSectionsInTableView(tableView: UITableView) -> Int
+	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+EventsViewModel.swift
+	convenience init(repository:Repository)
+PullRequestViewModel.swift
+	init(aPullRequest:PullRequest)
+ReadMeViewModel.swift
+	class ReadMeViewModel: NSObject
+	dynamic var readMeAttributed: NSAttributedString?
+Repository.swift
+	@NSManaged public var logo: NSString?
+	@NSManaged public var is_private: NSNumber?
+	@NSManaged public var name: NSString?
+	@NSManaged public var owner: NSString?
+	@NSManaged public var slug: NSString?
+	@NSManaged public var url: NSString?
+	@NSManaged public var scm: NSString?
+	@NSManaged public var has_wiki: NSNumber?
+	@NSManaged public var no_forks: NSNumber?
+	@NSManaged public var email_mailinglist: NSString?
+	@NSManaged public var is_mq: NSNumber?
+	@NSManaged public var size: NSNumber?
+	@NSManaged public var read_only: NSNumber?
+	@NSManaged public var fork_of: NSString?
+	@NSManaged public var mq_of: NSString?
+	@NSManaged public var state: NSString?
+	@NSManaged public var utc_created_on: NSDate?
+	@NSManaged public var website: NSString?
+	@NSManaged public var repo_description: NSString?
+	@NSManaged public var has_issues: NSNumber?
+	@NSManaged public var is_fork: NSNumber?
+	@NSManaged public var language: NSString?
+	@NSManaged public var utc_last_updated: NSDate?
+	@NSManaged public var email_writers: NSNumber?
+	@NSManaged public var no_public_forks: NSNumber?
+	@NSManaged public var creator: NSString?
+	@NSManaged public var resource_uri: NSString?
+	@NSManaged public var uuid: String?
+	public var full_name: String
+SettingsTableViewController.swift
+	override func viewDidLoad()
+	override func numberOfSectionsInTableView(tableView: UITableView) -> Int
+	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+Commit.swift
+	@NSManaged public var commit_hash: String?
+	@NSManaged public var commit_description: String?
+	@NSManaged public var date: NSDate?
+	@NSManaged public var belongsToRepository: Repository?
+	@NSManaged public var belongsToPullRequest: PullRequest?
+	@NSManaged public var user: User?
+	@NSManaged public var diff_url: String?
+	@NSManaged public var diff: String?
+	public var diffUrlString: String?
+	public var diffString: String?
+RepositoriesViewModel.swift
+	let fetchRequest = NSFetchRequest(entityName: "Repository")
+PullRequestsViewModel.swift
+	convenience init(repository:Repository)
+CommitsViewController.swift
+	convenience init(aPullRequest: PullRequest)
+	override func viewWillAppear(animated: Bool)
+	func viewModel() -> CommitsViewModel
+	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+CommitsViewModel.swift
+	convenience init(pullRequest:PullRequest)
+UIColor.h
+	class UIColor : NSObject, NSSecureCoding, NSCoding, NSCopying
+UIColorExtension.swift
+	class func sharkFinGray() -> UIColor
+	class func seafoam() -> UIColor
+	class func yellowish() -> UIColor
+	class func orangeCream() -> UIColor
+	class func badicalRed() -> UIColor
+Event.swift
+	@NSManaged public var event: NSString?
+	@NSManaged public var node: NSString?
+	@NSManaged public var utc_created_on: NSDate?
+	@NSManaged public var belongsToUser: User?
+	@NSManaged public var belongsToRepository: Repository?
+	@NSManaged public var hasCommits: NSSet?
+ReadMeViewController.swift
+	class ReadMeViewController: UIViewController
+	@IBOutlet var textView: UITextView!
+	var viewModel = ReadMeViewModel()
+	override init()
+	override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!)
+	required init(coder aDecoder: NSCoder)
+	override func didReceiveMemoryWarning()
+DiffViewModel.swift
+	init(aDiffable: Diffable)
+	func numberOfSectionsInTableView(tableView: UITableView) -> Int
+	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+	func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String?
+Locksmith.swift
+	class Locksmith: NSObject
+	class func performRequest(request: LocksmithRequest) -> (NSDictionary?, NSError?)
+	enum ErrorMessage: String
+	enum LocksmithErrorCode: Int
+	enum LocksmithErrorMessage: String
+	class func keychainError(forCode statusCode: Int) -> NSError?
+	class Locksmith : NSObject
+	class func saveData(data: Dictionary<String, String>, forKey key: String, inService service: String, forUserAccount userAccount: String) -> (NSDictionary?, NSError?)
+	class func loadData(forKey key: String, inService service: String, forUserAccount userAccount: String) -> (NSDictionary?, NSError?)
+	class func deleteData(forKey key: String, inService service: String, forUserAccount userAccount: String) -> (NSDictionary?, NSError?)
+	class func updateData(data: Dictionary<String, String>, forKey key: String, inService service: String, forUserAccount userAccount: String) -> (NSDictionary?, NSError?)
+	func setOptional(optional: AnyObject?, forKey key: NSCopying)
+	class Locksmith : NSObject
+RepositoryVM.swift
+	let repo = AppDelegate.sharedInstance().activeRepo
+InfoViewController.swift
+	override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!)
+	required init(coder aDecoder: NSCoder)
+	override func viewDidLoad()
+Formatters.swift
+	let imageURLSizeRegEx = NSRegularExpression(pattern: "_16\\.png", options: NSRegularExpressionOptions.AllowCommentsAndWhitespace, error: nil)
+PullRequestViewController.swift
+	convenience init(aPullRequest: PullRequest)
+	override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
+	override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
+	override func numberOfSectionsInTableView(tableView: UITableView) -> Int
+	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+FileDiffViewModel.swift
+	var prevNumber: String = ""
+	var newNumber: String = ""
+	var text: String = ""
+	var backgroundColor: UIColor = UIColor.whiteColor()
+	init(diff:String)
+EventsViewController.swift
+	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+TableCellModel.swift
+	struct TableCellModel
+	var title: String?
+	var detailTitle: String?
+	var imageView: UIImageView?
+	var reuseIdentifier: String = "reuseIdentifer"
+	var action: ((view:UIViewController) -> ())?
+Reviewer.swift
+	convenience init(user: User, pullRequest: PullRequest)
+DiffViewController.swift
+	var diffable: Diffable?
+	init(aDiffable:Diffable)
+	override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?)
+	required init(coder aDecoder: NSCoder)
+ReviewerCollectionViewCell.swift
+	override func awakeFromNib()
+	override func prepareForReuse()
+ButtonTableViewCell.swift
+	override var imageView: UIImageView
+	override var textLabel: UILabel
+	@IBOutlet weak var customImageView: UIImageView!
+	@IBOutlet weak var customTextLabel: UILabel!
+	override func awakeFromNib()
+	override func setSelected(selected: Bool, animated: Bool)
+BlargAppearance.swift
+	class BlargAppearance
+	class func apply()
+UIButtonExtension.swift
+	func createShadow(color:UIColor, radius: CGFloat)
+User.swift
+	@NSManaged public var avatar: NSString?
+	@NSManaged public var display_name: NSString?
+	@NSManaged public var last_name: NSString?
+	@NSManaged public var first_name: NSString?
+	@NSManaged public var username: NSString?
+BlargTable.swift
+	override func viewDidLoad()
+	override func numberOfSectionsInTableView(tableView: UITableView) -> Int
+	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+	func controllerWillChangeContent(controller: NSFetchedResultsController!)
+	func controllerDidChangeContent(controller: NSFetchedResultsController!)
+	func controller(controller: NSFetchedResultsController!, didChangeSection sectionInfo: NSFetchedResultsSectionInfo!, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType)
+	func controller(controller: NSFetchedResultsController!, didChangeObject anObject: AnyObject!, atIndexPath indexPath: NSIndexPath!, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath!)
+BlargNav.swift
+	let repoImage : UIImageView?
+	override init(rootViewController: UIViewController)
+	required init(coder aDecoder: NSCoder)
+	override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!)
+CoreDataStack.swift
+	public class CoreDataStack
+	public class var sharedInstance: CoreDataStack
+	public lazy var managedObjectModel: NSManagedObjectModel =
+	public class func toggleTestStack()
+	public class func defaultContext() -> NSManagedObjectContext
+RepositoriesTableViewController.swift
+	func searchBar(searchBar: UISearchBar!, textDidChange searchText: String!)
+	func viewModel() -> RepositoriesViewModel
+	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath)-> UITableViewCell
+PullRequest.swift
+	@NSManaged public var pullRequestID: NSNumber?
+	@NSManaged public var title: String?
+	@NSManaged public var pr_description: String?
+	@NSManaged public var source_branch: String?
+	@NSManaged public var destination_branch: String?
+	@NSManaged public var diff_url: String?
+	@NSManaged public var diff: String?
+	@NSManaged public var string: String
+	@NSManaged public var created_on: NSDate
+	@NSManaged public var updated_on: NSDate
+	@NSManaged public var belongsToUser: User
+	@NSManaged public var belongsToRepository: Repository?
+	@NSManaged public var hasCommits: NSSet?
+	@NSManaged public var hasReviewers: NSSet?
+	public var diffUrlString: String?
+	public var diffString: String?
+NormalTableViewCell.swift
+	override var imageView: UIImageView
+	override var detailTextLabel: UILabel
+	override var textLabel: UILabel
+	@IBOutlet weak var customImageView: UIImageView!
+	@IBOutlet weak var customTextLabel: UILabel!
+	@IBOutlet weak var customDetailLabel: UILabel!
+	override func awakeFromNib()
+	override func setSelected(selected: Bool, animated: Bool)
