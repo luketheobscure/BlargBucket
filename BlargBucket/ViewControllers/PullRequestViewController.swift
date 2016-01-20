@@ -26,7 +26,7 @@ class PullRequestViewController: UITableViewController {
 	/**
 		Designated initializer. Grabs the commits since it's in here already
 		
-		:param: aPullRequest The pull request to display
+		- parameter aPullRequest: The pull request to display
 	*/
     convenience init(aPullRequest: PullRequest){
 		self.init(style: .Grouped)
@@ -54,7 +54,7 @@ class PullRequestViewController: UITableViewController {
 		infoView.setImage(UIImage(named: "user")!)
 		var urlString = pullRequest?.belongsToUser.avatar
 		if urlString != nil {
-			let url = NSURL(string: urlString!)
+			let url = NSURL(string: urlString! as String)
 			self.infoView.backgroundImageView.sd_setImageWithURL(url, placeholderImage: UIImage(named: "user"))
 			self.infoView.imageView.sd_setImageWithURL(url, placeholderImage: UIImage(named: "user"))
 		}

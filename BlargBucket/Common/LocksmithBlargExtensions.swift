@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Locksmith
 
 /// The service identifier in the keychain.
 private let service = "BlargService"
@@ -15,36 +16,55 @@ private let key = "AuthToken"
 /// The "user account" of our service in the keychain. Not the current users user account.
 private let userAccount = "Blarguser"
 
+struct derp {
+    let derp = "derp"
+}
+
 /**
 	Contains extensions for working with Locksmith, so we don't have to specify service identifiers and stuff.
 */
 extension Locksmith {
 
 	/// Get the authToken we use in our networking credentials, or nil if none exists.
-	class func getAuthToken() -> String? {
-		let (dictionary, error) = Locksmith.loadData(forKey: key, inService: service, forUserAccount: userAccount)
-		return dictionary?[key] as? String
+	static func getAuthToken() -> String? {
+//		let userData = Locksmith.loadDataForUserAccount(loadDataForUserAccount(userAccount, inService: service))
+//            
+//		return userData?[key] as? String
+        
+        guard let userData: [String : AnyObject] = Locksmith.loadDataForUserAccount(userAccount, inService: service) else {
+            return "error"
+        }
+        
+        return userData.first!.1 as? String
 	}
 
 	/**
 		Creates and stores the authToken
 
-		:param: user The username
+		- parameter user: The username
 
-		:param: password The plain text password. This methods hashes it for you.
+		- parameter password: The plain text password. This methods hashes it for you.
 
-		:returns: The auth token so you don't have to retrieve it.
+		- returns: The auth token so you don't have to retrieve it.
 	*/
-	class func createAuthToken(user: String, password: String) -> String {
-		var hash : NSString = "\(user):\(password)" as NSString
+	static func createAuthToken(user: String, password: String) -> String {
+		let hash : NSString = "\(user):\(password)" as NSString
 		let data = hash.dataUsingEncoding(NSUTF8StringEncoding)
 		let authToken = data!.base64EncodedStringWithOptions(NSDataBase64EncodingOptions.Encoding64CharacterLineLength)
-		Locksmith.saveData([key: authToken], forKey: key, inService: service, forUserAccount: userAccount)
+        do {
+            try Locksmith.saveData([key: authToken], forUserAccount: userAccount, inService: service)
+        } catch {
+            print(error)
+        }
 		return authToken
 	}
 
 	/// Deletes the auth token from the keychain.
-	class func clearAuthToken(){
-		Locksmith.deleteData(forKey: key, inService:  service, forUserAccount: userAccount)
+	static func clearAuthToken(){
+        do {
+            try Locksmith.deleteDataForUserAccount(userAccount, inService: service)
+        } catch {
+            print(error)
+        }
 	}
 }

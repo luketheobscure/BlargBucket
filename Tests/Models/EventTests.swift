@@ -11,8 +11,8 @@ import XCTest
 import BlargBucket
 
 class EventTests: BlargTest {
-	lazy var event: Event = Event.importFromObject(Fixtures.fixtureForClass("Events", name: "Event1")) as Event
-	lazy var event2: Event = Event.importFromObject(Fixtures.fixtureForClass("Events", name: "Event2")) as Event
+	lazy var event: Event = Event.importFromObject(Fixtures.fixtureForClass("Events", name: "Event1")) as! Event
+	lazy var event2: Event = Event.importFromObject(Fixtures.fixtureForClass("Events", name: "Event2")) as! Event
 
 	func testEventEvent(){
 		XCTAssertEqual(event.event!, "pushed", "Event event was wrong.")
@@ -46,7 +46,7 @@ class EventTests: BlargTest {
 	func testShouldImport(){
 		let badEvent = Fixtures.fixtureForClass("Events", name: "Event2")
 		let goodEvent = Fixtures.fixtureForClass("Events", name: "Event1")
-		var event = Event.createEntity() as Event
+		var event = Event.createEntity() as! Event
 		XCTAssertFalse(event.shouldImport(badEvent!), "Import should have failed")
 		XCTAssertTrue(event.shouldImport(goodEvent!), "Import should have succeeded")
 	}

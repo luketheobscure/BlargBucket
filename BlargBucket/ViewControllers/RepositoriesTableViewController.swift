@@ -25,11 +25,15 @@ class RepositoriesTableViewController: BlargTable, UISearchControllerDelegate, U
 		DataFetcher.fetchRepoInfo()
 		fetchedResults = RepositoriesViewModel()
 		fetchedResults?.delegate = self
-		var error = NSErrorPointer()
-		fetchedResults!.performFetch(error)
+		let error = NSErrorPointer()
+		do {
+			try fetchedResults!.performFetch()
+		} catch let error1 as NSError {
+			error.memory = error1
+		}
 
 		if error != nil {
-			println(error.debugDescription)
+			print(error.debugDescription)
 		}
 
 		searchController.searchResultsUpdater = self
@@ -45,12 +49,12 @@ class RepositoriesTableViewController: BlargTable, UISearchControllerDelegate, U
 	}
 
 	func viewModel() -> RepositoriesViewModel {
-		return fetchedResults as RepositoriesViewModel
+		return fetchedResults as! RepositoriesViewModel
 	}
 
     // MARK: - Table view data source
 	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-		let repo = (fetchedResults as RepositoriesViewModel).repoAtIndexPath(indexPath)
+		let repo = (fetchedResults as! RepositoriesViewModel).repoAtIndexPath(indexPath)
 		AppDelegate.sharedInstance().activeRepo = repo
 		DataFetcher.fetchEvents(repo)
 		self.dismissViewControllerAnimated(true, completion: nil)
@@ -58,25 +62,28 @@ class RepositoriesTableViewController: BlargTable, UISearchControllerDelegate, U
 
 	private let reuseIdentifier = "subtitleCell"
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath)-> UITableViewCell {
-		var tableCell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier) as? UITableViewCell
-		if tableCell == nil {
+        var tableCell: UITableViewCell
+        if let unwrappedTableCell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier) {
+            tableCell = unwrappedTableCell as UITableViewCell
+        } else {
 			tableCell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: reuseIdentifier)
 		}
 
-		if let cell = tableCell {
-			let repo = (fetchedResults as RepositoriesViewModel).repoAtIndexPath(indexPath)
+//		if let cell = tableCell {
+        let cell = tableCell
+        let repo = (fetchedResults as! RepositoriesViewModel).repoAtIndexPath(indexPath)
 
-			cell.textLabel?.text = repo.name
-			let language = repo.language ?? ""
-			cell.detailTextLabel?.text = language as NSString
-			cell.imageView?.sd_setImageWithURL(NSURL(string: repo.logo ?? ""), placeholderImage: UIImage(named: "repoPlaceholder"))
-			cell.imageView?.layer.cornerRadius = 22
-			cell.imageView?.clipsToBounds = true
+        cell.textLabel?.text = repo.name as? String
+        let language = repo.language ?? ""
+        cell.detailTextLabel?.text = language as NSString as String
+        cell.imageView?.sd_setImageWithURL(NSURL(string: (repo.logo ?? "") as String), placeholderImage: UIImage(named: "repoPlaceholder"))
+        cell.imageView?.layer.cornerRadius = 22
+        cell.imageView?.clipsToBounds = true
 
-			cell.textLabel?.font = UIFont(name: "Avenir Next", size: 14)
-		}
+        cell.textLabel?.font = UIFont(name: "Avenir Next", size: 14)
+//		}
 
-        return tableCell!
+        return tableCell
     }
 
 	/// Updates the viewModel based on the search term, then reloads the table view

@@ -12,7 +12,7 @@ import CoreData
 
 class UserTests: BlargTest {
 
-	lazy var user1 = User.importFromObject(Fixtures.fixtureForClass("Users", name:"Luke")) as User
+	lazy var user1 = User.importFromObject(Fixtures.fixtureForClass("Users", name:"Luke")) as! User
 
 	func testUsername(){
 		XCTAssertEqual(user1.username!, "lukederp", "Username is wrong")
@@ -28,16 +28,16 @@ class UserTests: BlargTest {
 
 	func testCurrentUser(){
 		XCTAssertNil(User.currentUser(), "Somethings weird. Shouldn't have gotten a user yet.")
-		var currentUser = User.importFromObject(Fixtures.fixtureForClass("Users", name:"Luke")) as User
+		var currentUser = User.importFromObject(Fixtures.fixtureForClass("Users", name:"Luke")) as! User
 		currentUser.makeCurrentUser()
-		XCTAssertEqual(NSUserDefaults.standardUserDefaults().valueForKey("Current User") as NSString, currentUser.username!, "Didn't set current user.")
+		XCTAssertEqual(NSUserDefaults.standardUserDefaults().valueForKey("Current User") as! NSString, currentUser.username!, "Didn't set current user.")
 		XCTAssertEqual(User.currentUser()!.username!, currentUser.username!, "Didn't get current user.")
 	}
 
 	func testUsernameIsUnique(){
 		let luke = Fixtures.fixtureForClass("Users", name:"Luke")
 		let oldCount = allUsers()!.count
-		let user = User.importFromObject(Fixtures.fixtureForClass("Users", name: "Luke")) as User
+		let user = User.importFromObject(Fixtures.fixtureForClass("Users", name: "Luke"))as! User
 
 		XCTAssertEqual("lukederp", user.username!, "Username doesn't match")
 		XCTAssertEqual(oldCount + 1, allUsers()!.count, "User count didn't change and it should have")
@@ -50,7 +50,7 @@ class UserTests: BlargTest {
 	}
 
 	func testNiceName(){
-		let luke = User.importFromObject(Fixtures.fixtureForClass("Users", name: "Luke")) as User
+		let luke = User.importFromObject(Fixtures.fixtureForClass("Users", name: "Luke")) as! User
 		XCTAssertEqual(luke.niceName(), "Luke McLuke", "Nice name didn't get the display name")
 		luke.display_name = nil
 		XCTAssertEqual(luke.niceName(), "Luke McDuke", "Nice name didn't get the first and last name")
@@ -63,7 +63,11 @@ class UserTests: BlargTest {
 	}
 
 	func allUsers() -> [AnyObject]? {
-		return NSManagedObjectContext.defaultContext().executeFetchRequest(NSFetchRequest(entityName: "User"), error: nil)
+        do {
+            return try NSManagedObjectContext.defaultContext().executeFetchRequest(NSFetchRequest(entityName: "User"))
+        } catch {
+            return nil
+        }
 	}
 
 }

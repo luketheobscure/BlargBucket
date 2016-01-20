@@ -8,6 +8,8 @@
 
 import UIKit
 import QuartzCore
+import Locksmith
+import MBProgressHUD
 
 /// The main log in view. This is the first view that's presented if you're not logged in.
 class LoginViewController: UIViewController {
@@ -22,11 +24,11 @@ class LoginViewController: UIViewController {
 	@IBOutlet weak var loginButton: UIButton!
 
 	/// Designated initializer
-	override init() {
+	init() {
 		super.init(nibName: "LoginView", bundle: nil)
 	}
 
-	required init(coder aDecoder: NSCoder) {
+	required init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
 	}
 	
@@ -35,7 +37,7 @@ class LoginViewController: UIViewController {
 
 		let gradient = CAGradientLayer()
 		gradient.frame = view.bounds
-		gradient.colors = NSArray(objects: UIColor.sharkFinGray().CGColor, UIColor.seafoam().CGColor)
+		gradient.colors = NSArray(objects: UIColor.sharkFinGray().CGColor, UIColor.seafoam().CGColor) as [AnyObject]
 		gradient.opacity = 0.8
 		view.layer.insertSublayer(gradient, atIndex: 0)
 
@@ -53,7 +55,7 @@ class LoginViewController: UIViewController {
 	/// Handles the action when the login button is pushed
 	@IBAction func loginButtonPushed(sender: AnyObject) {
 		BlargHUD.customizedHUDAddedTo(view)
-		let authToken = Locksmith.createAuthToken(usernameField.text, password: passwordField.text)
+		let authToken = Locksmith.createAuthToken(usernameField.text!, password: passwordField.text!)
 
 		DataFetcher.setAuthToken(authToken)
 		DataFetcher.loginAsUser() { (success, error) in

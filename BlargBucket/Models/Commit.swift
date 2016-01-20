@@ -48,8 +48,8 @@ public class Commit: BlargManagedObject, Diffable {
 	/**
 		Creates a commit
 		
-		:param: hash The git hash ID
-		:param: description The git commit description
+		- parameter hash: The git hash ID
+		- parameter description: The git commit description
 	*/
 	class func commitWithHash(hash:String, description:String?) -> Commit {
 		var commit : Commit?
@@ -57,8 +57,13 @@ public class Commit: BlargManagedObject, Diffable {
 		request.entity = NSEntityDescription.entityForName("Commit", inManagedObjectContext: NSManagedObjectContext.defaultContext())
 		request.predicate = NSPredicate(format: "commit_hash = '\(hash)'")
 		var error = NSErrorPointer()
-		let results = NSManagedObjectContext.defaultContext().executeFetchRequest(request, error: error) as Array?
-		commit = results!.last as? Commit
+        var results: Array<AnyObject>?! = nil
+        do {
+            results = try NSManagedObjectContext.defaultContext().executeFetchRequest(request) as Array?!
+        } catch {
+            print(error)
+        }
+		commit = results!!.last as? Commit
 
 		if commit == nil {
 			commit =  NSEntityDescription.insertNewObjectForEntityForName("Commit", inManagedObjectContext: NSManagedObjectContext.defaultContext()) as? Commit

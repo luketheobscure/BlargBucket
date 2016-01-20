@@ -6,5 +6,5 @@
 #import <SDWebImage/UIImage+GIF.h>
 #import <AFNetworking/AFNetworking.h>
 #import <RegExCategories/RegExCategories.h>
-#import <MagicalRecord/CoreData+MagicalRecord.h>
 #import <MBProgressHUD/MBProgressHUD.h>
+#import <MagicalRecord/MagicalRecord.h>

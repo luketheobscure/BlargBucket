@@ -37,12 +37,12 @@ class RepositoryVM {
 	/**
 		Used for populating `self.info`.
 		
-		:param: repo The repo to find the info for
+		- parameter repo: The repo to find the info for
 	*/
 	func buildViewModel(repo: Repository) -> [TableCellModel]? {
 		return [
-			TableCellModel(title: "Name", detailTitle: repo.name, imageView: nil, reuseIdentifier: "derp", action: nil),
-			TableCellModel(title: "Language", detailTitle: repo.language, imageView: nil, reuseIdentifier: "derp", action: nil)
+			TableCellModel(title: "Name", detailTitle: repo.name as? String, imageView: nil, reuseIdentifier: "derp", action: nil),
+			TableCellModel(title: "Language", detailTitle: repo.language as? String, imageView: nil, reuseIdentifier: "derp", action: nil)
 		]
 	}
 

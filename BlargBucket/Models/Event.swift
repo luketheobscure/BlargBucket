@@ -25,7 +25,7 @@ public class Event: BlargManagedObject {
 	/**
 	Deletes all the events for a repo. Bitbucket doesn't give events an ID, so we just blow it away each time we need to fetch it. :(
 
-	:param: repo The repository to get the events for.
+	- parameter repo: The repository to get the events for.
 	*/
 	class func deleteAll(repo: Repository) {
 		let events = Event.findByAttribute("belongsToRepository", withValue: repo)
@@ -47,14 +47,14 @@ public class Event: BlargManagedObject {
 
 		Sometimes BitBucket returns a Dictionary for the key "description", sometimes it returns a string. This causes issues when MagicalRecord tries to parse it. This method will block import if needed, throw away the bad value, then try to import again.
 		
-		:param: data The data MagicalRecord is trying to import
+		- parameter data: The data MagicalRecord is trying to import
 
-		:returns: False if data["description"] isn't a dictionary or null, true if it is
+		- returns: False if data["description"] isn't a dictionary or null, true if it is
 	*/
 	public func shouldImport(data:AnyObject) -> Bool {
 		if let description:AnyObject = data["description"] {
 			if !(description.isKindOfClass(NSDictionary) || description.isKindOfClass(NSNull)) {
-				var newData = NSMutableDictionary(dictionary: data as Dictionary)
+				var newData = NSMutableDictionary(dictionary: data as! Dictionary)
 				newData["description"] = NSNull()
 				Event.importFromObject(newData)
 				return false

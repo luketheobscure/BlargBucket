@@ -17,11 +17,15 @@ class PullRequestsController: BlargTable {
 		if AppDelegate.sharedInstance().activeRepo != nil {
 			fetchedResults = PullRequestsViewModel(repository: AppDelegate.sharedInstance().activeRepo!)
 			fetchedResults?.delegate = self
-			var error = NSErrorPointer()
-			fetchedResults!.performFetch(error)
+			let error = NSErrorPointer()
+			do {
+				try fetchedResults!.performFetch()
+			} catch let error1 as NSError {
+				error.memory = error1
+			}
 
 			if error != nil {
-				println(error.debugDescription)
+				print(error.debugDescription)
 			}
 
 			tableView.registerNib(UINib(nibName: "EventTableViewCell", bundle: nil), forCellReuseIdentifier: "reuseIdentifier")
@@ -34,19 +38,19 @@ class PullRequestsController: BlargTable {
 	}
 
 	func viewModel() -> PullRequestsViewModel {
-		return fetchedResults as PullRequestsViewModel
+		return fetchedResults as! PullRequestsViewModel
 	}
 
 	// MARK: - Table view data source
 	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		let pullRequest = viewModel().modelAtIndexPath(indexPath)
-		let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as EventTableViewCell
+		let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as! EventTableViewCell
 
 		cell.textLabel.text = pullRequest.title
 		cell.detailTextLabel.text = pullRequest.pr_description
 
 		let url = pullRequest.belongsToUser.avatar ?? ""
-		cell.imageView.sd_setImageWithURL(NSURL(string: url), placeholderImage: UIImage(named: "repoPlaceholder"))
+		cell.imageView.sd_setImageWithURL(NSURL(string: url as String), placeholderImage: UIImage(named: "repoPlaceholder"))
 
 		cell.setNeedsUpdateConstraints()
 		cell.updateConstraintsIfNeeded()

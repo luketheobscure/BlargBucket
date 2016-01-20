@@ -14,15 +14,15 @@ import QuartzCore
 */
 class BlargNav: UINavigationController {
 
-	let repoImage : UIImageView?
+	var repoImage : UIImageView? = nil
 
 	override init(rootViewController: UIViewController) {
 		super.init(rootViewController: rootViewController)
 		navigationBar.translucent = false
 
-		var logoURL = AppDelegate.sharedInstance().activeRepo?.logo ?? ""
-		var repoImage = UIImageView(frame: CGRectMake(0, 0, 30, 30))
-		repoImage.sd_setImageWithURL(NSURL(string: logoURL), placeholderImage: UIImage(named: "repoPlaceholder"))
+		let logoURL = AppDelegate.sharedInstance().activeRepo?.logo ?? ""
+		let repoImage = UIImageView(frame: CGRectMake(0, 0, 30, 30))
+		repoImage.sd_setImageWithURL(NSURL(string: logoURL as String), placeholderImage: UIImage(named: "repoPlaceholder"))
 		repoImage.layer.cornerRadius = 15
 		repoImage.layer.borderColor = UIColor.yellowish().CGColor
 		repoImage.layer.borderWidth = 2
@@ -30,20 +30,20 @@ class BlargNav: UINavigationController {
 
 		repoImage.addGestureRecognizer( UITapGestureRecognizer(target: self, action: "showRepoPicker") )
 
-		var repoButton = UIBarButtonItem(customView: repoImage)
+		let repoButton = UIBarButtonItem(customView: repoImage)
 
 		rootViewController.navigationItem.rightBarButtonItem = repoButton
 
 		NSNotificationCenter.defaultCenter().addObserverForName(Notifications().RepoChanged, object: nil, queue: nil) { (_) -> Void in
-			var logoURL = AppDelegate.sharedInstance().activeRepo?.logo ?? ""
-			repoImage.sd_setImageWithURL(NSURL(string: logoURL), placeholderImage: UIImage(named: "repoPlaceholder"))
+			let logoURL = AppDelegate.sharedInstance().activeRepo?.logo ?? ""
+			repoImage.sd_setImageWithURL(NSURL(string: logoURL as String), placeholderImage: UIImage(named: "repoPlaceholder"))
 		}
 
 
 
 	}
 
-	required init(coder aDecoder: NSCoder) {
+	required init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
 	}
 
@@ -53,9 +53,9 @@ class BlargNav: UINavigationController {
 
 	/// Presents a RepositoriesTableViewController modally
 	func showRepoPicker() {
-		var repositoriesVC = RepositoriesTableViewController()
+		let repositoriesVC = RepositoriesTableViewController()
 		repositoriesVC.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Close", style: UIBarButtonItemStyle.Plain, target: self, action: "closeModal" )
-		var navVC = UINavigationController(rootViewController: repositoriesVC)
+		let navVC = UINavigationController(rootViewController: repositoriesVC)
 		self.presentViewController(navVC, animated: true, completion: nil)
 	}
 

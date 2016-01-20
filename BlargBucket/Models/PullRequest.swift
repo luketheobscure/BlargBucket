@@ -56,10 +56,10 @@ public class PullRequest: BlargManagedObject, Diffable {
 		var tempReviewers:[Reviewer] = []
 		if hasReviewers != nil {
 			for user in hasReviewers! {
-				tempReviewers.append(user as Reviewer)
+				tempReviewers.append(user as! Reviewer)
 			}
 		}
-		tempReviewers.sort({
+		tempReviewers.sortInPlace({
 			var name1:String? = $0.belongsToUser.display_name!.lowercaseString
 			var name2:String? = $1.belongsToUser.display_name!.lowercaseString
 			return name1 < name2

@@ -40,7 +40,7 @@ public class User: BlargManagedObject {
 	/**
 		Has the user approved the pull request?
 		
-		:param: pullRequest The pull request in question
+		- parameter pullRequest: The pull request in question
 	*/
 	func hasApprovedPullRequest(pullRequest:PullRequest) -> Bool {
 		for reviewer in pullRequest.reviewersArray() {
@@ -56,16 +56,16 @@ public class User: BlargManagedObject {
 	*/
 	public func niceName() -> String {
 		if let name = display_name {
-			return name
+			return name as String
 		}
 		if let name = first_name {
 			if let lastName = last_name {
 				return "\(name) \(lastName)"
 			}
-			return name
+			return name as String
 		}
 		if let name = last_name {
-			return name
+			return name as String
 		}
 		return NSLocalizedString("Anonymous", comment: "Anonymous")
 	}

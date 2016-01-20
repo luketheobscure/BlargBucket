@@ -9,6 +9,8 @@
 import UIKit
 import Security
 import CoreData
+import MagicalRecord
+import Locksmith
 
 /**
 	BlargBucket's AppDelegate. Sets up all the things.
@@ -36,12 +38,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			- Sets up CoreData stack
 			- Checks if you're logged in and redirects you accordingly
 	*/
-	func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
 
 		BlargAppearance.apply()
 		let storeName = "BlargData.sqlite"
 		MagicalRecord.setupCoreDataStackWithAutoMigratingSqliteStoreNamed(storeName)
-		println("The database is here: \(NSPersistentStore.urlForStoreName(storeName))")
+		print("The database is here: \(NSPersistentStore.urlForStoreName(storeName))")
 
 		window = UIWindow(frame: UIScreen.mainScreen().bounds)
 		window?.makeKeyAndVisible()
@@ -49,10 +51,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		if let token = Locksmith.getAuthToken() {
 			DataFetcher.setAuthToken(token)
 
-			let repoURL: String? = NSUserDefaults.standardUserDefaults().objectForKey("activeRepo") as String?
+			let repoURL: String? = NSUserDefaults.standardUserDefaults().objectForKey("activeRepo") as! String?
 
 			if repoURL != nil {
-				var repo = Repository.repoWithURL(repoURL!)
+				let repo = Repository.repoWithURL(repoURL!)
 				activeRepo = repo
 			}
 
@@ -70,11 +72,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		@return The shared application delegate
 	*/
 	class func sharedInstance() -> AppDelegate {
-		return UIApplication.sharedApplication().delegate as AppDelegate
+		return UIApplication.sharedApplication().delegate as! AppDelegate
 	}
 
 	/// Cleans up the CoreData store
-	func applicationWillTerminate(application: UIApplication!) {
+	func applicationWillTerminate(application: UIApplication) {
 		MagicalRecord.cleanUp()
 	}
 

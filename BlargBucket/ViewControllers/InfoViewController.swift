@@ -24,7 +24,7 @@ class InfoViewController: UIViewController {
 	@IBOutlet weak var descriptionLabel: UILabel!
 
 	/// Designated initializer
-	override init() {
+	init() {
 		super.init(nibName: "InfoView", bundle: nil)
 	}
 
@@ -32,7 +32,7 @@ class InfoViewController: UIViewController {
 		super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
 	}
 
-	required init(coder aDecoder: NSCoder) {
+	required init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
 	}
 

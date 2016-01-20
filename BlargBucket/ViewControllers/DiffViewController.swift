@@ -22,7 +22,7 @@ class DiffViewController: UITableViewController {
 	/**
 		Deisgnated initializer
 		
-		:param: adiffable The pull request to show the diff for
+		- parameter adiffable: The pull request to show the diff for
 	*/
 	init(aDiffable:Diffable) {
 		super.init(style: .Grouped)
@@ -36,15 +36,15 @@ class DiffViewController: UITableViewController {
 
 	/// Sets up the observer
 	override func viewDidLoad() {
-		observer = NSNotificationCenter.defaultCenter().addObserverForName(NSManagedObjectContextObjectsDidChangeNotification, object: NSManagedObjectContext.defaultContext(), queue: nil, usingBlock: {  [unowned self](notification:NSNotification!) -> Void in
-			if notification.userInfo![NSUpdatedObjectsKey] != nil && (notification.userInfo![NSUpdatedObjectsKey] as NSSet).containsObject(self.diffable!){
-				dispatch_async(dispatch_get_main_queue(), {
-					self.setupViewModel(self.diffable!)
-					self.tableView.reloadData()
-				})
-
-			}
-		})
+//		observer = NSNotificationCenter.defaultCenter().addObserverForName(NSManagedObjectContextObjectsDidChangeNotification, object: NSManagedObjectContext.defaultContext(), queue: nil, usingBlock: {  [unowned self](notification:NSNotification!) -> Void in
+//			if notification.userInfo![NSUpdatedObjectsKey] != nil && (notification.userInfo![NSUpdatedObjectsKey] as! NSSet).containsObject(self.diffable!){
+//				dispatch_async(dispatch_get_main_queue(), {
+//					self.setupViewModel(self.diffable!)
+//					self.tableView.reloadData()
+//				})
+//
+//			}
+//		})
 	}
 
 	override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
@@ -58,7 +58,7 @@ class DiffViewController: UITableViewController {
 	/**
 		Sets up the viewModel and sets the `tableview.datasource`
 		
-		:param: aDiffable The pull request to be passed to the viewModel
+		- parameter aDiffable: The pull request to be passed to the viewModel
 	*/
 	func setupViewModel(aDiffable:Diffable){
 		viewModel = DiffViewModel(aDiffable: aDiffable)

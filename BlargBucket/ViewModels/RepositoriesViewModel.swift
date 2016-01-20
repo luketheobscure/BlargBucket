@@ -18,10 +18,14 @@ class RepositoriesViewModel: NSFetchedResultsController {
 			if newValue != nil && newValue != ""{
 				fetchRequest.predicate = NSPredicate(format: "name contains[cd] %@", newValue!)
 			}
-			var error = NSErrorPointer()
-			performFetch(error)
+			let error = NSErrorPointer()
+			do {
+				try performFetch()
+			} catch let error1 as NSError {
+				error.memory = error1
+			}
 			if error != nil {
-				println(error)
+				print(error)
 			}
 		}
 		get {
@@ -39,7 +43,7 @@ class RepositoriesViewModel: NSFetchedResultsController {
 
 	/// Returns the repository at the index path
 	func repoAtIndexPath(indexPath: NSIndexPath) -> Repository! {
-		return objectAtIndexPath(indexPath) as Repository
+		return objectAtIndexPath(indexPath) as! Repository
 	}
    
 }

@@ -15,7 +15,7 @@ class CommitsViewModel: NSFetchedResultsController {
 	/**
 	Designated initializer
 
-	:param: repository The repository to find the pull requests for
+	- parameter repository: The repository to find the pull requests for
 	*/
 	convenience init(pullRequest:PullRequest){
 		let fetchRequest = Commit.requestAllWhere("belongsToPullRequest", isEqualTo: pullRequest)
@@ -26,10 +26,10 @@ class CommitsViewModel: NSFetchedResultsController {
 	/**
 	Finds a pull request
 
-	:param: indexPath Returns the pull request found here
+	- parameter indexPath: Returns the pull request found here
 	*/
 	func modelAtIndexPath(indexPath: NSIndexPath) -> Commit! {
-		return objectAtIndexPath(indexPath) as Commit
+		return objectAtIndexPath(indexPath) as! Commit
 	}
 
 }
