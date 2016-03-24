@@ -30,7 +30,9 @@ public class Event: BlargManagedObject {
 	class func deleteAll(repo: Repository) {
 		let events = Event.findByAttribute("belongsToRepository", withValue: repo)
 		for event in events {
-			event.deleteEntity()
+            if let e = event as? Event {
+                e.deleteEntity()
+            }
 		}
 	}
 
