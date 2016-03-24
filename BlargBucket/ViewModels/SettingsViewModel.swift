@@ -75,7 +75,7 @@ class SettingsViewModel {
 	func showHUD(view:UIView) {
 		self.HUD = BlargHUD.customizedHUDAddedTo(view)
 		self.HUD?.labelText = LocalizedString("Tap to dismiss") as String
-		var tappy = UITapGestureRecognizer(target: self, action: "removeHUD")
+		let tappy = UITapGestureRecognizer(target: self, action: #selector(SettingsViewModel.removeHUD))
 		self.HUD?.addGestureRecognizer(tappy)
 	}
 

@@ -25,7 +25,7 @@ class RepositoriesTableViewController: BlargTable, UISearchControllerDelegate, U
 		DataFetcher.fetchRepoInfo()
 		fetchedResults = RepositoriesViewModel()
 		fetchedResults?.delegate = self
-		let error = NSErrorPointer()
+        let error: NSErrorPointer = nil
 		do {
 			try fetchedResults!.performFetch()
 		} catch let error1 as NSError {

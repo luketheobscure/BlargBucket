@@ -23,10 +23,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	/// The currently selected repository
 	var activeRepo : Repository? {
 		didSet {
-			if activeRepo!.resource_uri == nil {
-				return
-			}
-			NSUserDefaults.standardUserDefaults().setObject(activeRepo!.resource_uri!, forKey: "activeRepo")
+            guard let repo = activeRepo,
+                let resource_uri = repo.resource_uri else
+            {
+                return
+            }
+			NSUserDefaults.standardUserDefaults().setObject(resource_uri, forKey: "activeRepo")
 			NSNotificationCenter.defaultCenter().postNotificationName(Notifications().RepoChanged, object: activeRepo)
 			DataFetcher.fetchPullRequests(activeRepo!)
 		}
@@ -48,21 +50,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		window = UIWindow(frame: UIScreen.mainScreen().bounds)
 		window?.makeKeyAndVisible()
 
-		if let token = Locksmith.getAuthToken() {
-			DataFetcher.setAuthToken(token)
-
-			let repoURL: String? = NSUserDefaults.standardUserDefaults().objectForKey("activeRepo") as! String?
-
-			if repoURL != nil {
-				let repo = Repository.repoWithURL(repoURL!)
-				activeRepo = repo
-			}
-
+		if let token = Locksmith.getAuthToken(),
+            let repoURL = NSUserDefaults.standardUserDefaults().objectForKey("activeRepo") as? String
+        {
+            DataFetcher.setAuthToken(token)
+            activeRepo = Repository.repoWithURL(repoURL)
 			window?.rootViewController = MainTabBarViewController()
 		} else {
 			window?.rootViewController = LoginViewController()
 		}
-		
+        
 		return true
 	}
 
@@ -81,4 +78,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	}
 
 }
-

@@ -16,10 +16,6 @@ private let key = "AuthToken"
 /// The "user account" of our service in the keychain. Not the current users user account.
 private let userAccount = "Blarguser"
 
-struct derp {
-    let derp = "derp"
-}
-
 /**
 	Contains extensions for working with Locksmith, so we don't have to specify service identifiers and stuff.
 */

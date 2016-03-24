@@ -18,7 +18,7 @@ class RepositoriesViewModel: NSFetchedResultsController {
 			if newValue != nil && newValue != ""{
 				fetchRequest.predicate = NSPredicate(format: "name contains[cd] %@", newValue!)
 			}
-			let error = NSErrorPointer()
+            let error: NSErrorPointer = nil
 			do {
 				try performFetch()
 			} catch let error1 as NSError {
@@ -36,7 +36,7 @@ class RepositoriesViewModel: NSFetchedResultsController {
 	/// Designated initializer
 	override init() {
 		let fetchRequest = NSFetchRequest(entityName: "Repository")
-		fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "name", ascending: true, selector: "localizedCaseInsensitiveCompare:") ]
+		fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "name", ascending: true, selector: #selector(NSString.localizedCaseInsensitiveCompare(_:))) ]
 		super.init(fetchRequest: fetchRequest, managedObjectContext: NSManagedObjectContext.defaultContext(), sectionNameKeyPath: nil, cacheName: nil)
 		DataFetcher.fetchRepoInfo()
 	}

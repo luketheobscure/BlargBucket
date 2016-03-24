@@ -56,7 +56,6 @@ public class Commit: BlargManagedObject, Diffable {
 		let request = NSFetchRequest()
 		request.entity = NSEntityDescription.entityForName("Commit", inManagedObjectContext: NSManagedObjectContext.defaultContext())
 		request.predicate = NSPredicate(format: "commit_hash = '\(hash)'")
-		var error = NSErrorPointer()
         var results: Array<AnyObject>?! = nil
         do {
             results = try NSManagedObjectContext.defaultContext().executeFetchRequest(request) as Array?!

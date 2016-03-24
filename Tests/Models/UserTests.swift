@@ -28,24 +28,23 @@ class UserTests: BlargTest {
 
 	func testCurrentUser(){
 		XCTAssertNil(User.currentUser(), "Somethings weird. Shouldn't have gotten a user yet.")
-		var currentUser = User.importFromObject(Fixtures.fixtureForClass("Users", name:"Luke")) as! User
+		let currentUser = User.importFromObject(Fixtures.fixtureForClass("Users", name:"Luke")) as! User
 		currentUser.makeCurrentUser()
-		XCTAssertEqual(NSUserDefaults.standardUserDefaults().valueForKey("Current User") as! NSString, currentUser.username!, "Didn't set current user.")
+		XCTAssertEqual(NSUserDefaults.standardUserDefaults().valueForKey("Current User") as? NSString, currentUser.username!, "Didn't set current user.")
 		XCTAssertEqual(User.currentUser()!.username!, currentUser.username!, "Didn't get current user.")
 	}
 
 	func testUsernameIsUnique(){
-		let luke = Fixtures.fixtureForClass("Users", name:"Luke")
 		let oldCount = allUsers()!.count
 		let user = User.importFromObject(Fixtures.fixtureForClass("Users", name: "Luke"))as! User
 
 		XCTAssertEqual("lukederp", user.username!, "Username doesn't match")
 		XCTAssertEqual(oldCount + 1, allUsers()!.count, "User count didn't change and it should have")
 
-		let user2: AnyObject = User.importFromObject(Fixtures.fixtureForClass("Users", name: "Luke"))
+		User.importFromObject(Fixtures.fixtureForClass("Users", name: "Luke"))
 		XCTAssertEqual(oldCount + 1, allUsers()!.count, "User count changed and it shouldn't have")
 
-		let user3: AnyObject = User.importFromObject(Fixtures.fixtureForClass("Users", name: "Nick"))
+		User.importFromObject(Fixtures.fixtureForClass("Users", name: "Nick"))
 		XCTAssertEqual(oldCount + 2, allUsers()!.count, "User count didn't change and it should have")
 	}
 

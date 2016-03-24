@@ -17,7 +17,7 @@ class PullRequestsController: BlargTable {
 		if AppDelegate.sharedInstance().activeRepo != nil {
 			fetchedResults = PullRequestsViewModel(repository: AppDelegate.sharedInstance().activeRepo!)
 			fetchedResults?.delegate = self
-			let error = NSErrorPointer()
+            let error: NSErrorPointer = nil
 			do {
 				try fetchedResults!.performFetch()
 			} catch let error1 as NSError {

@@ -37,15 +37,15 @@ class BlargTable: UITableViewController, NSFetchedResultsControllerDelegate {
 
 	// MARK: - NSFetchedResultsControllerDelegate
 
-	func controllerWillChangeContent(controller: NSFetchedResultsController!) {
+	func controllerWillChangeContent(controller: NSFetchedResultsController) {
 		tableView.beginUpdates()
 	}
 
-	func controllerDidChangeContent(controller: NSFetchedResultsController!) {
+	func controllerDidChangeContent(controller: NSFetchedResultsController) {
 		tableView.endUpdates()
 	}
 
-	func controller(controller: NSFetchedResultsController!, didChangeSection sectionInfo: NSFetchedResultsSectionInfo!, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
+	func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
 		switch(type) {
 			case .Insert:
 				tableView.insertSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)

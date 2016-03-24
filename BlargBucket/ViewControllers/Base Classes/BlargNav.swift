@@ -27,8 +27,9 @@ class BlargNav: UINavigationController {
 		repoImage.layer.borderColor = UIColor.yellowish().CGColor
 		repoImage.layer.borderWidth = 2
 		repoImage.layer.masksToBounds = true
-
-		repoImage.addGestureRecognizer( UITapGestureRecognizer(target: self, action: "showRepoPicker") )
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(BlargNav.showRepoPicker))
+		repoImage.addGestureRecognizer(tapGestureRecognizer)
 
 		let repoButton = UIBarButtonItem(customView: repoImage)
 
@@ -54,7 +55,8 @@ class BlargNav: UINavigationController {
 	/// Presents a RepositoriesTableViewController modally
 	func showRepoPicker() {
 		let repositoriesVC = RepositoriesTableViewController()
-		repositoriesVC.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Close", style: UIBarButtonItemStyle.Plain, target: self, action: "closeModal" )
+        let close = UIBarButtonItem(title: "Close", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(BlargNav.closeModal))
+		repositoriesVC.navigationItem.rightBarButtonItem = close
 		let navVC = UINavigationController(rootViewController: repositoriesVC)
 		self.presentViewController(navVC, animated: true, completion: nil)
 	}

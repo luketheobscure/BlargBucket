@@ -42,13 +42,13 @@ class RepositoryTests: BlargTest {
 
 	func testCount() {
 		let firstCount = allRepos()!.count
-		let repository = Repository.importFromObject(Fixtures.fixtureForClass("Repositories", name: "Repo1")) as! Repository
+		Repository.importFromObject(Fixtures.fixtureForClass("Repositories", name: "Repo1")) as! Repository
 		XCTAssertEqual(firstCount + 1, allRepos()!.count, "Count didn't go up and it should have")
 
-		let repository2 = Repository.importFromObject(Fixtures.fixtureForClass("Repositories", name: "Repo1")) as! Repository
+		Repository.importFromObject(Fixtures.fixtureForClass("Repositories", name: "Repo1")) as! Repository
 		XCTAssertEqual(firstCount + 1, allRepos()!.count, "Count went up and it shouldn't have")
 
-		let repository3 = Repository.importFromObject(Fixtures.fixtureForClass("Repositories", name: "Repo2")) as! Repository
+		Repository.importFromObject(Fixtures.fixtureForClass("Repositories", name: "Repo2")) as! Repository
 		XCTAssertEqual(firstCount + 2, allRepos()!.count, "Count didn't go up and it should have")
 	}
 

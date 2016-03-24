@@ -24,7 +24,7 @@ class DiffViewModel: NSObject, UITableViewDataSource {
 	*/
 	init(aDiffable: Diffable) {
 		diffable = aDiffable
-		var expression = try? NSRegularExpression(pattern: "^diff", options: .AnchorsMatchLines)
+		let expression = try? NSRegularExpression(pattern: "^diff", options: .AnchorsMatchLines)
 		if diffable.diffString != nil {
 			let diff = diffable.diffString! as NSString
 			let tempSections = diff.split(expression)

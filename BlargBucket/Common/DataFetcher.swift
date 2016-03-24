@@ -48,8 +48,7 @@ class DataFetcher: NSObject {
 	class func fetchURL(url:String, completion: (JSON: AnyObject) -> (), failure: ((error: NSError?) -> ())? = nil){
 		print("Fetching URL: \(url)")
 		DataFetcher.JSONManager.GET(url, parameters: nil, success: { (operation, JSON) in
-            
-			if JSON == nil {
+            guard let response = JSON else {
 				print("Error getting JSON: ", terminator: "")
 				if let failureHandler = failure {
 					failureHandler(error: nil)
@@ -57,7 +56,7 @@ class DataFetcher: NSObject {
 				return
 			}
             
-			completion(JSON: JSON)
+			completion(JSON: response)
 //			NSManagedObjectContext.defaultContext().saveToPersistentStoreWithCompletion({ (success, error) in
 //				if (error != nil) {
 //					print("Core data error!")
@@ -84,11 +83,11 @@ class DataFetcher: NSObject {
 	class func postURL(url:String, completion: (JSON: AnyObject) -> () ){
 		print("Posting URL: \(url)")
 		DataFetcher.JSONManager.POST(url, parameters: nil, success: { (operation, JSON) in
-			if JSON == nil {
+            guard let response = JSON else {
 				print("Error getting JSON: ", terminator: "")
 				return
 			}
-			completion(JSON: JSON)
+			completion(JSON: response)
 			NSManagedObjectContext.defaultContext().saveToPersistentStoreWithCompletion({ (success, error) in
 				if (error != nil) {
 					print("Core data error!")
@@ -123,7 +122,6 @@ class DataFetcher: NSObject {
             for repo in repos {
                 let aRepo: Repository = Repository.importFromObject(repo) as! Repository
                 print(aRepo)
-                
             }
         })
 	}
@@ -136,9 +134,9 @@ class DataFetcher: NSObject {
 	class func fetchEvents(repo: Repository){
         DataFetcher.fetchURL("/api/1.0/repositories/\(repo.owner!)/\(repo.slug!)/events/", completion: { (JSON:AnyObject) in
             Event.deleteAll(repo)
-            var events = JSON["events"] as! NSArray
+            let events = JSON["events"] as! NSArray
             for eventJSON in events {
-                var event = Event.importFromObject(eventJSON) as! Event
+                let event = Event.importFromObject(eventJSON) as! Event
                 event.belongsToRepository = repo
             }
         })
@@ -154,9 +152,9 @@ class DataFetcher: NSObject {
 	class func fetchPullRequests(repo: Repository){
 		if let owner = repo.owner {
             DataFetcher.fetchURL("/api/2.0/repositories/\(owner)/\(repo.slug!)/pullrequests/", completion: { (JSON:AnyObject) in
-                var pullRequests = JSON["values"] as! NSArray
+                let pullRequests = JSON["values"] as! NSArray
                 for pullRequestJSON in pullRequests {
-                    var pullRequest = PullRequest.importFromObject(pullRequestJSON) as! PullRequest
+                    let pullRequest = PullRequest.importFromObject(pullRequestJSON) as! PullRequest
                     pullRequest.belongsToRepository = repo
                 }
             })
@@ -175,7 +173,7 @@ class DataFetcher: NSObject {
             for reviewJSON in JSON as! NSArray {
                 let user = User.importFromObject(reviewJSON) as! User
                 //TODO: This creates a new reviewer everytime. That's bad, mmmm'K?
-                var reviewer = Reviewer(user: user, pullRequest: pullRequest)
+                let reviewer = Reviewer(user: user, pullRequest: pullRequest)
                 reviewer.approved = reviewJSON["approved"] as! NSNumber
                 reviewers.append(reviewer)
             }
@@ -191,13 +189,13 @@ class DataFetcher: NSObject {
 	class func fetchPullRequestCommits(pullRequest: PullRequest){
 		let repo = pullRequest.belongsToRepository!
         DataFetcher.fetchURL("/api/2.0/repositories/\(repo.owner!)/\(repo.slug!)/pullrequests/\(pullRequest.pullRequestID!)/commits", completion: { (JSON:AnyObject) in
-            var backgroundContext = NSManagedObjectContext.contextForCurrentThread()
+//            var backgroundContext = NSManagedObjectContext.contextForCurrentThread()
             var commits: [Commit] = []
             
             //			var commits = Commit.importFromArray(JSON["values"] as NSArray)
             
             for commitJSON in JSON["values"] as! NSArray {
-                var commit : Commit = Commit.createEntity() as! Commit
+                let commit = Commit.createEntity() as! Commit
                 commit.importValuesForKeysWithObject(commitJSON)
                 commits.append(commit)
             }
@@ -213,8 +211,8 @@ class DataFetcher: NSObject {
 	class func fetchDiff(diffable: Diffable){
 		// We expect this to 'fail'. BB returns a 403 with the correct url
 		DataFetcher.plainTextManager.GET(diffable.diffUrlString!, parameters: nil, success: { (operation, response) -> Void in
-			var responseString = NSString(data: response as! NSData, encoding: NSUTF8StringEncoding)
-			diffable.diffString = responseString as! String
+			let responseString = NSString(data: response as! NSData, encoding: NSUTF8StringEncoding)
+			diffable.diffString = String(responseString)
 			NSManagedObjectContext.defaultContext().saveToPersistentStoreWithCompletion({ (success, error) -> Void in
 				if (error != nil) {
 					print("Core data error!")
@@ -253,7 +251,7 @@ class DataFetcher: NSObject {
 	class func unaprovePullRequest(pullRequest: PullRequest){
 		let repo = pullRequest.belongsToRepository!
 		DataFetcher.JSONManager.DELETE("/api/2.0/repositories/\(repo.owner!)/\(repo.slug!)/pullrequests/\(pullRequest.pullRequestID!)/approve", parameters: nil, success: { (operation, JSON) -> Void in
-			if JSON == nil {
+            guard let _ = JSON else {
 				print("Error getting events: ", terminator: "")
 				return
 			}

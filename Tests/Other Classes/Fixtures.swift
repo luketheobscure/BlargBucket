@@ -17,10 +17,10 @@ struct Fixtures {
 	})()
 
 	static func fixtureForClass(className:String, name:String) -> [String:AnyObject]? {
-		NSBundle(forClass: BlargTest.self)
+//		NSBundle(forClass: BlargTest.self)
 		let path = NSBundle(forClass: BlargTest.self).pathForResource(className, ofType: "yml")
 		let content = try? NSString(contentsOfFile: path!, encoding: NSUTF8StringEncoding)
-		var error = NSErrorPointer()
+        let error: NSErrorPointer = nil
 		var yml: AnyObject! = nil
         do {
             yml = try YAMLSerialization.objectWithYAMLString(content as! String, options: kYAMLReadOptionStringScalars)

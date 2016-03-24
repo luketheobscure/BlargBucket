@@ -20,7 +20,7 @@ class CommitsViewController: BlargTable {
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
 		fetchedResults?.delegate = self
-		let error = NSErrorPointer()
+        let error: NSErrorPointer = nil
 		do {
 			try fetchedResults!.performFetch()
 		} catch let error1 as NSError {
