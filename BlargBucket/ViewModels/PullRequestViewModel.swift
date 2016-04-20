@@ -20,7 +20,7 @@ class PullRequestViewModel {
 	/**
 		Designated initializer. Populates self.sections
 		
-		:param: aPullRequest Gets set to self.pullRequest
+		- parameter aPullRequest: Gets set to self.pullRequest
 	*/
 	init(aPullRequest:PullRequest){
 		pullRequest = aPullRequest
@@ -96,7 +96,7 @@ class PullRequestViewModel {
 	/**
 		Finds a `TableCellModel` in self.sections at an indexPath
 
-		:param: indexPath The indexPath to look at
+		- parameter indexPath: The indexPath to look at
 	*/
 	func tableCellModelAtPath(indexPath:NSIndexPath) -> TableCellModel {
 		return sections[indexPath.section][indexPath.row]
@@ -105,7 +105,7 @@ class PullRequestViewModel {
 	/**
 		Returns a cell to either approve of unapprove a pull request. Checks if the current user has already approved it
 		
-		:param: pullRequest The pull request in question
+		- parameter pullRequest: The pull request in question
 	*/
 	func approveCell(pullRequest: PullRequest) -> TableCellModel {
 		if User.currentUser()!.hasApprovedPullRequest(pullRequest) {

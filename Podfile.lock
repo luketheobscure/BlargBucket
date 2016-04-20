@@ -21,6 +21,7 @@ PODS:
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - LibYAML (0.1.4)
+  - Locksmith (2.0.5)
   - MagicalRecord/Shorthand (2.2)
   - MBProgressHUD (0.9)
   - RegExCategories (1.0)
@@ -32,6 +33,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
+  - Locksmith (~> 2.0.5)
   - MagicalRecord/Shorthand (~> 2.2)
   - MBProgressHUD (~> 0.8)
   - RegExCategories (~> 1.0)
@@ -39,12 +41,13 @@ DEPENDENCIES:
   - YAML-Framework (~> 0.0)
 
 SPEC CHECKSUMS:
-  AFNetworking: 0f54cb5d16ce38c1b76948faffb8d5fb705021c7
-  LibYAML: d447960375d9114187bfddba6e6c24d69bff11f8
-  MagicalRecord: 2b471584fc9e3137f3d0a56967917baa4979e224
-  MBProgressHUD: 2038dbcf3dce73215abed6001657043d53aa79a8
-  RegExCategories: a6410301023ff81bd047c05fd8691d24ca5c7ea9
-  SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
-  YAML-Framework: 65dfb647479445c4446681966064fcb56cc9fc7c
+  AFNetworking: 96ac9bf3eda33582701cb1fcc5b896aa1e20311e
+  LibYAML: 3af2c5adf3a40dff936d087aa6a77edc10036bc5
+  Locksmith: 6b527f58b7223e469a4b30d42d65ec9fcbf28c97
+  MagicalRecord: 2dc87179ae7c1f2a274442624ec65a07d4357a6f
+  MBProgressHUD: d8e7ea388dc1549a42e0d219067cf5f2c898fb66
+  RegExCategories: e68befacacd5bda853c88f70ec745cb2d0cfb89c
+  SDWebImage: ed3095af2ff88b436426037444979b917f6c5575
+  YAML-Framework: 6fe698e19d39d778829f5937e39d1e6bc12afd7b
 
-COCOAPODS: 0.35.0
+COCOAPODS: 0.39.0

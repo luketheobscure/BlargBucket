@@ -12,8 +12,8 @@ import BlargBucket
 
 class PullRequestTests: BlargTest {
 
-	lazy var pullRequest = PullRequest.importFromObject( Fixtures.fixtureForClass("PullRequests", name: "PullRequest") ) as PullRequest
-	lazy var pullRequest2 = PullRequest.importFromObject( Fixtures.fixtureForClass("PullRequests", name: "PullRequest2") ) as PullRequest
+	lazy var pullRequest = PullRequest.importFromObject( Fixtures.fixtureForClass("PullRequests", name: "PullRequest") ) as! PullRequest
+	lazy var pullRequest2 = PullRequest.importFromObject( Fixtures.fixtureForClass("PullRequests", name: "PullRequest2") ) as! PullRequest
 
 	func testDescription(){
 		XCTAssertEqual(pullRequest.pr_description!, "Derp request", "Description wrong")

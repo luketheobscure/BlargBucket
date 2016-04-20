@@ -20,11 +20,15 @@ class CommitsViewController: BlargTable {
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
 		fetchedResults?.delegate = self
-		var error = NSErrorPointer()
-		fetchedResults!.performFetch(error)
+        let error: NSErrorPointer = nil
+		do {
+			try fetchedResults!.performFetch()
+		} catch let error1 as NSError {
+			error.memory = error1
+		}
 
 		if error != nil {
-			println(error.debugDescription)
+			print(error.debugDescription)
 		}
 
 		tableView.registerNib(UINib(nibName: "EventTableViewCell", bundle: nil), forCellReuseIdentifier: "reuseIdentifier")
@@ -36,13 +40,13 @@ class CommitsViewController: BlargTable {
 	}
 
 	func viewModel() -> CommitsViewModel {
-		return fetchedResults as CommitsViewModel
+		return fetchedResults as! CommitsViewModel
 	}
 
 	// MARK: - Table view data source
 	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		let commit = viewModel().modelAtIndexPath(indexPath)
-		let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as EventTableViewCell
+		let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as! EventTableViewCell
 		cell.accessoryType = .DisclosureIndicator
 
 		cell.textLabel.text = commit.commit_description
@@ -60,7 +64,7 @@ class CommitsViewController: BlargTable {
 		}
 
 		let url = commit.user?.avatar ?? ""
-		cell.imageView.sd_setImageWithURL(NSURL(string: url), placeholderImage: UIImage(named: "user"))
+		cell.imageView.sd_setImageWithURL(NSURL(string: url as String), placeholderImage: UIImage(named: "user"))
 
 		cell.setNeedsUpdateConstraints()
 		cell.updateConstraintsIfNeeded()

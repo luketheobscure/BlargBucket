@@ -15,7 +15,7 @@ class PullRequestsViewModel: NSFetchedResultsController {
 	/**
 		Designated initializer
 		
-		:param: repository The repository to find the pull requests for
+		- parameter repository: The repository to find the pull requests for
 	*/
 	convenience init(repository:Repository){
 		let fetchRequest = NSFetchRequest(entityName: "PullRequest")
@@ -28,10 +28,10 @@ class PullRequestsViewModel: NSFetchedResultsController {
 	/**
 		Finds a pull request
 
-		:param: indexPath Returns the pull request found here
+		- parameter indexPath: Returns the pull request found here
 	*/
 	func modelAtIndexPath(indexPath: NSIndexPath) -> PullRequest! {
-		return objectAtIndexPath(indexPath) as PullRequest
+		return objectAtIndexPath(indexPath) as! PullRequest
 	}
    
 }

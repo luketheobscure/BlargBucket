@@ -7,6 +7,7 @@
 //
 import XCTest
 import BlargBucket
+import MagicalRecord
 
 class BlargTest: XCTestCase {
 	var fixtures = Fixtures()

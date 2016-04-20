@@ -21,14 +21,14 @@ class PullRequestViewController: UITableViewController {
 	var	reviewersViewController: ReviewersViewController?
 
 	/// This isn't a BlargTable, but we still set up a viewModel
-	var viewModel: PullRequestViewModel?
+	var viewModel: PullRequestViewModel! = nil
 
 	/**
 		Designated initializer. Grabs the commits since it's in here already
 		
-		:param: aPullRequest The pull request to display
+		- parameter aPullRequest: The pull request to display
 	*/
-    convenience init(aPullRequest: PullRequest){
+    convenience init(aPullRequest: PullRequest) {
 		self.init(style: .Grouped)
 		pullRequest = aPullRequest
 		viewModel = PullRequestViewModel(aPullRequest: aPullRequest)
@@ -52,12 +52,12 @@ class PullRequestViewController: UITableViewController {
 			infoView.descriptionLabel.text = "Authored by \(displayName)"
 		}
 		infoView.setImage(UIImage(named: "user")!)
-		var urlString = pullRequest?.belongsToUser.avatar
-		if urlString != nil {
-			let url = NSURL(string: urlString!)
-			self.infoView.backgroundImageView.sd_setImageWithURL(url, placeholderImage: UIImage(named: "user"))
-			self.infoView.imageView.sd_setImageWithURL(url, placeholderImage: UIImage(named: "user"))
-		}
+        guard let urlString = pullRequest?.belongsToUser.avatar as? String else {
+            return
+        }
+        let url = NSURL(string: urlString)
+        self.infoView.backgroundImageView.sd_setImageWithURL(url, placeholderImage: UIImage(named: "user"))
+        self.infoView.imageView.sd_setImageWithURL(url, placeholderImage: UIImage(named: "user"))
 	}
 
     // MARK: - Table view data source
@@ -77,16 +77,16 @@ class PullRequestViewController: UITableViewController {
 	}
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return viewModel?.sections.count ?? 0
+        return viewModel.sections.count ?? 0
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel?.sections[section].count ?? 0
+        return viewModel.sections[section].count ?? 0
     }
 
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		let cellModel = viewModel!.tableCellModelAtPath(indexPath)
+		let cellModel = viewModel.tableCellModelAtPath(indexPath)
         let cell = tableView.dequeueReusableCellWithIdentifier(cellModel.reuseIdentifier, forIndexPath: indexPath) as UITableViewCell
 
         cell.textLabel?.text = cellModel.title
@@ -97,9 +97,8 @@ class PullRequestViewController: UITableViewController {
 
 	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 		tableView.deselectRowAtIndexPath(indexPath, animated: true)
-		let model = viewModel?.tableCellModelAtPath(indexPath)
-		if let action = model?.action {
-			action(view: self)
-		}
-	}
+        if let action = viewModel.tableCellModelAtPath(indexPath).action {
+            action(view: self)
+        }
+    }
 }

@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Luke Deniston. All rights reserved.
 //
 
+import MBProgressHUD
+
 /// Key used for setting/retrieving the hud mode from standardUserDefaults
 private var customHUDKey = "customHUDKey"
 
@@ -21,10 +23,10 @@ class BlargHUD: MBProgressHUD {
 	/**
 		The preferred method for showing a loading indicator on a view.
 		
-		:param: view The view to render the loading indicator over.
+		- parameter view: The view to render the loading indicator over.
 	*/
 	class func customizedHUDAddedTo(view: UIView) -> MBProgressHUD {
-		var HUD = MBProgressHUD.showHUDAddedTo(view, animated: true)
+		let HUD = MBProgressHUD.showHUDAddedTo(view, animated: true)
 		HUD.mode = MBProgressHUDModeCustomView
 		HUD.customView = UIImageView(image: UIImage.sd_animatedGIFNamed(BlargHUD.hudMode()))
 		return HUD
@@ -33,7 +35,7 @@ class BlargHUD: MBProgressHUD {
 	/**
 		Stores the standardUserDefaults value for our hud mode. Currently supports only "worms" or "tetris"
 		
-		:param: mode The value to be stored
+		- parameter mode: The value to be stored
 	*/
 	class func setHudMode(mode:String) {
 		NSUserDefaults.standardUserDefaults().setValue(mode, forKeyPath: customHUDKey)

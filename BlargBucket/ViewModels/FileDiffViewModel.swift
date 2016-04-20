@@ -28,7 +28,7 @@ class FileDiffViewModel: NSObject {
 	/**
 		Designated initializer
 		
-		:param: diff A diff string to get parsed
+		- parameter diff: A diff string to get parsed
 	*/
 	init(diff:String) {
 		super.init()
@@ -44,16 +44,16 @@ class FileDiffViewModel: NSObject {
 		if tempLines.count <= 1 {
 			return nil
 		}
-		let firstLineParts = tempLines[0].componentsSeparatedByString(" ")
+//		let firstLineParts = tempLines[0].componentsSeparatedByString(" ")
 
 		// tempLines[2] will be something like '--- a/file/derp'. We don't want the '--- a/'
-		return tempLines[2].substringFromIndex(advance(tempLines[2].startIndex, 6))
+		return tempLines[2].substringFromIndex(tempLines[2].startIndex.advancedBy(6))
 	}
 
 	/**
 		Turns a string into an array of `Line`s
 		
-		:param: tempLines An array of strings to get parsed
+		- parameter tempLines: An array of strings to get parsed
 	*/
 	func parseLines(tempLines:[String]) -> [Line] {
 		var processedLines:[Line] = []
@@ -65,13 +65,13 @@ class FileDiffViewModel: NSObject {
 			if NSRegularExpression.rx("^@@").isMatch(line) {
 				var splitLine = line.componentsSeparatedByString(" ")
 
-				var prevLineRange = splitLine[1] as String // Gives us something like "+66,77"
-				var tempPrevLine = prevLineRange.componentsSeparatedByString(",")[0] // Something like "+66"
-				prevLine = dropFirst(tempPrevLine).toInt()!
+				let prevLineRange = splitLine[1] as String // Gives us something like "+66,77"
+				let tempPrevLine = prevLineRange.componentsSeparatedByString(",")[0] // Something like "+66"
+				prevLine = Int(String(tempPrevLine.characters.dropFirst()))!
 
-				var nextLineRange = splitLine[2] as String // Gives us something like "+66,77"
-				var tempNextLine = nextLineRange.componentsSeparatedByString(",")[0] // Something like "+66"
-				newLine = dropFirst(tempNextLine).toInt()!
+				let nextLineRange = splitLine[2] as String // Gives us something like "+66,77"
+				let tempNextLine = nextLineRange.componentsSeparatedByString(",")[0] // Something like "+66"
+				newLine = Int(String(tempNextLine.characters.dropFirst()))!
 			}
 
 			if !beginProcess && NSRegularExpression.rx("^@@").isMatch(line) {
@@ -82,26 +82,32 @@ class FileDiffViewModel: NSObject {
 				continue
 			}
 			if !NSRegularExpression.rx("^@@").isMatch(line){
-				if countElements(line) == 0 {
+				if line.characters.count == 0 {
 					processedLines.append(
-						Line(prevNumber: String(prevLine++), newNumber: String(newLine++), text: "", backgroundColor: UIColor.whiteColor())
+						Line(prevNumber: String(prevLine), newNumber: String(newLine), text: "", backgroundColor: UIColor.whiteColor())
 					)
+                    prevLine += 1
+                    newLine += 1
 					continue
 				}
 				var backgroundColor: UIColor = UIColor.whiteColor()
 				var cellPrevLine = ""
 				var cellNewLine = ""
-				let firstCharacter = Array(line)[0]
+				let firstCharacter = Array(line.characters)[0]
 				switch firstCharacter {
 					case "+":
 						backgroundColor = UIColor(red: 221/255, green: 1, blue: 221/255, alpha: 1)
-						cellNewLine = String(newLine++)
+						cellNewLine = String(newLine)
+                        newLine += 1
 					case "-":
 						backgroundColor = UIColor(red: 254/255, green: 232/255, blue: 233/255, alpha: 1)
-						cellPrevLine = String(prevLine++)
+						cellPrevLine = String(prevLine)
+                    prevLine += 1
 					default:
-						cellNewLine = String(newLine++)
-						cellPrevLine = String(prevLine++)
+						cellNewLine = String(newLine)
+						cellPrevLine = String(prevLine)
+                    newLine += 1
+                    prevLine += 1
 				}
 				processedLines.append(
 					Line(prevNumber: cellPrevLine, newNumber:cellNewLine, text: line, backgroundColor: backgroundColor)

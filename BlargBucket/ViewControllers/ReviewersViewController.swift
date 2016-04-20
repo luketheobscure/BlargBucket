@@ -25,7 +25,7 @@ class ReviewersViewController: UICollectionViewController, UICollectionViewDeleg
 	/**
 		Designated initializer
 
-		:param: aPullRequest The pull request to show the info for
+		- parameter aPullRequest: The pull request to show the info for
 	*/
 	convenience init(aPullRequest:PullRequest) {
 		let flowLayout = UICollectionViewFlowLayout()
@@ -78,14 +78,14 @@ class ReviewersViewController: UICollectionViewController, UICollectionViewDeleg
 	}
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as ReviewerCollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! ReviewerCollectionViewCell
 		let reviewer = reviewers[indexPath.row] as Reviewer
 		let user = reviewer.belongsToUser
 
 
-		cell.titleLabel.text = user.display_name
+		cell.titleLabel.text = user.display_name as? String
 		if user.avatar != nil {
-			cell.avatarImageView?.sd_setImageWithURL(NSURL(string: user.avatar!))
+			cell.avatarImageView?.sd_setImageWithURL(NSURL(string: user.avatar! as String))
 		}
 
         return cell

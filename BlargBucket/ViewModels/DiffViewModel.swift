@@ -20,18 +20,18 @@ class DiffViewModel: NSObject, UITableViewDataSource {
 	/**
 		Designated initializer. Parses the raw diff string, then creates `FileDiffViewModel`s of the pieces. Finally populates `self.sections` with the result.
 		
-		:param: aDiffable Gets assigned to `self.diffable`
+		- parameter aDiffable: Gets assigned to `self.diffable`
 	*/
 	init(aDiffable: Diffable) {
 		diffable = aDiffable
-		var expression = NSRegularExpression(pattern: "^diff", options: .AnchorsMatchLines, error: nil)
+		let expression = try? NSRegularExpression(pattern: "^diff", options: .AnchorsMatchLines)
 		if diffable.diffString != nil {
 			let diff = diffable.diffString! as NSString
 			let tempSections = diff.split(expression)
 			for derp in tempSections {
-				FileDiffViewModel(diff: derp as String)
+				FileDiffViewModel(diff: derp as! String)
 			}
-			sections = tempSections.map { FileDiffViewModel(diff: $0 as String) }
+			sections = tempSections.map { FileDiffViewModel(diff: $0 as! String) }
 		} else {
 			sections = []
 		}
@@ -50,7 +50,7 @@ class DiffViewModel: NSObject, UITableViewDataSource {
 	}
 
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCellWithIdentifier("DiffCell", forIndexPath: indexPath) as DiffTableViewCell
+		let cell = tableView.dequeueReusableCellWithIdentifier("DiffCell", forIndexPath: indexPath) as! DiffTableViewCell
 		let line: Line = sections[indexPath.section].lines[indexPath.row]
 		cell.textLabel.text = line.text
 		cell.prevLine.text = line.prevNumber

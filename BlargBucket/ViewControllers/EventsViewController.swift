@@ -17,10 +17,14 @@ class EventsViewController: BlargTable {
 		if AppDelegate.sharedInstance().activeRepo != nil {
 			fetchedResults = EventsViewModel(repository: AppDelegate.sharedInstance().activeRepo!)
 			fetchedResults?.delegate = self
-			var error = NSErrorPointer()
-			fetchedResults!.performFetch(error)
+            let error: NSErrorPointer = nil
+			do {
+				try fetchedResults!.performFetch()
+			} catch let error1 as NSError {
+				error.memory = error1
+			}
 			if error != nil {
-				println(error.debugDescription)
+				print(error.debugDescription)
 			}
 			tableView.registerNib(UINib(nibName: "EventTableViewCell", bundle: nil), forCellReuseIdentifier: "reuseIdentifier")
 		}
@@ -32,20 +36,20 @@ class EventsViewController: BlargTable {
 
 	/// Convenience, just so you don't have to cast
 	func viewModel() -> EventsViewModel{
-		return fetchedResults as EventsViewModel
+		return fetchedResults as! EventsViewModel
 	}
 
 	// MARK: - Table view data source
 	
 	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		let event = viewModel().modelAtIndexPath(indexPath)
-		let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as EventTableViewCell
+		let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as! EventTableViewCell
 		
 		cell.textLabel.text = viewModel().eventTitle(event)
 		cell.detailTextLabel.text = viewModel().eventCreated(event)
 
 		let url = event.belongsToUser?.avatar ?? ""
-		cell.imageView.sd_setImageWithURL(NSURL(string: url), placeholderImage: UIImage(named: "repoPlaceholder"))
+		cell.imageView.sd_setImageWithURL(NSURL(string: url as String), placeholderImage: UIImage(named: "repoPlaceholder"))
 
 		cell.setNeedsUpdateConstraints()
 		cell.updateConstraintsIfNeeded()

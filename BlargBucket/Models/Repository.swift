@@ -42,10 +42,10 @@ public class Repository: BlargManagedObject {
 
 	public var full_name: String {
 		get {
-			if self.owner != nil && self.slug != nil {
-				return "\(self.owner!)/\(self.slug!)"
-			}
-			return ""
+            guard let repoOwner = owner, let repoSlug = slug else {
+                return ""
+            }
+            return "\(repoOwner)/\(repoSlug)"
 		}
 		set {
 			var array = newValue.componentsSeparatedByString("/")
@@ -57,31 +57,28 @@ public class Repository: BlargManagedObject {
 	/**
 		Returns a repo or creates one if it doesn't exist.
 		
-		:param: url The url of the repo
-		:param: context An optional NSManagedObjectContext
+		- parameter url: The url of the repo
+		- parameter context: An optional NSManagedObjectContext
 	*/
 	public class func repoWithURL(url:AnyObject, context: NSManagedObjectContext = NSManagedObjectContext.defaultContext()) -> Repository {
-		var repo = Repository.findFirstByAttribute("resource_uri", withValue: url) as? Repository
-		if repo == nil {
-			repo = Repository.createEntity() as Repository?
-			repo!.resource_uri = url as? NSString
-		}
-		
-		return repo!
+        if let repo = Repository.findFirstByAttribute("resource_uri", withValue: url) as? Repository {
+            return repo
+        } else {
+            let repo = Repository.createEntity() as! Repository
+            repo.resource_uri = url as? NSString
+            return repo
+        }
 	}
 
 	/**
 		Setter for `logo`. Fixes the url with `Formatters.fixImgeURL`
 		
-		:param: logo The logo url
+		- parameter logo: The logo url
 	*/
-	func setLogo(logo: NSString) {
-		let newLogo = Formatters.sharedInstance.fixImgeURL(logo)
-
+	func setTheLogo(logo: NSString) {
+		let newLogo = Formatters.sharedInstance.fixImgeURL(logo as String)
 		self.willChangeValueForKey("logo")
 		self.setPrimitiveValue(newLogo, forKey: "logo")
 		self.didChangeValueForKey("logo")
-
 	}
-
 }

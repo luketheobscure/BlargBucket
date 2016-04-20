@@ -8,10 +8,11 @@
 
 import UIKit
 import CoreData
+import AFNetworking
 
 private let _JSONManager: AFHTTPRequestOperationManager = {
 	let manager = AFHTTPRequestOperationManager(baseURL: NSURL(string: "https://bitbucket.org"))
-	manager.requestSerializer = AFJSONRequestSerializer(writingOptions:nil)
+	manager.requestSerializer = AFJSONRequestSerializer(writingOptions:[])
 	return manager
 }()
 
@@ -40,32 +41,33 @@ class DataFetcher: NSObject {
 	/**
 		Most methods in this class call this to do the actual heavy lifting
 		
-		:param: url The url to get
-		:param: completion The completion block, gets passed the JSON from the network request
-		:param: failure Optional failure completion handler
+		- parameter url: The url to get
+		- parameter completion: The completion block, gets passed the JSON from the network request
+		- parameter failure: Optional failure completion handler
 	*/
 	class func fetchURL(url:String, completion: (JSON: AnyObject) -> (), failure: ((error: NSError?) -> ())? = nil){
-		println("Fetching URL: \(url)")
+		print("Fetching URL: \(url)")
 		DataFetcher.JSONManager.GET(url, parameters: nil, success: { (operation, JSON) in
-			if JSON == nil {
-				print("Error getting JSON: ")
+            guard let response = JSON else {
+				print("Error getting JSON: ", terminator: "")
 				if let failureHandler = failure {
 					failureHandler(error: nil)
 				}
 				return
 			}
-			completion(JSON: JSON)
-			NSManagedObjectContext.defaultContext().saveToPersistentStoreWithCompletion({ (success, error) in
-				if (error != nil) {
-					println("Core data error!")
-					println(error)
-					if let failureHandler = failure {
-						failureHandler(error: error)
-					}
-				}
-			})
+            
+			completion(JSON: response)
+//			NSManagedObjectContext.defaultContext().saveToPersistentStoreWithCompletion({ (success, error) in
+//				if (error != nil) {
+//					print("Core data error!")
+//					print(error)
+//					if let failureHandler = failure {
+//						failureHandler(error: error)
+//					}
+//				}
+//			})
 			}) { (operation, error) -> Void in
-				println(error)
+				print(error)
 				if let failureHandler = failure {
 					failureHandler(error: error)
 				}
@@ -75,24 +77,24 @@ class DataFetcher: NSObject {
 	/**
 		Post methods in this class call this to do the heavy lifting
 
-		:param: url The url to post to
-		:param: completion The completion block, gets passed the JSON from the network request
+		- parameter url: The url to post to
+		- parameter completion: The completion block, gets passed the JSON from the network request
 	*/
 	class func postURL(url:String, completion: (JSON: AnyObject) -> () ){
-		println("Posting URL: \(url)")
+		print("Posting URL: \(url)")
 		DataFetcher.JSONManager.POST(url, parameters: nil, success: { (operation, JSON) in
-			if JSON == nil {
-				print("Error getting JSON: ")
+            guard let response = JSON else {
+				print("Error getting JSON: ", terminator: "")
 				return
 			}
-			completion(JSON: JSON)
+			completion(JSON: response)
 			NSManagedObjectContext.defaultContext().saveToPersistentStoreWithCompletion({ (success, error) in
 				if (error != nil) {
-					println("Core data error!")
-					println(error)
+					print("Core data error!")
+					print(error)
 				}
 			})			}) { (operation, error) in
-				println(error)
+				print(error)
 		}
 	}
 
@@ -104,8 +106,8 @@ class DataFetcher: NSObject {
 	*/
 	class func loginAsUser(result:(success:Bool, error: NSError?)->()) {
 		DataFetcher.fetchURL("/api/1.0/user", completion: {
-			let userHash = $0["user"] as NSDictionary
-			var user = User.importFromObject(userHash) as User
+			let userHash = $0["user"] as! NSDictionary
+			let user = User.importFromObject(userHash) as! User
 			user.makeCurrentUser()
 			result(success: true, error: nil)
 		}, failure: {(error) in
@@ -115,28 +117,29 @@ class DataFetcher: NSObject {
 
 	/// Gets all the repositories
 	class func fetchRepoInfo(){
-		DataFetcher.fetchURL("/api/1.0/user/repositories/") {
-			var repos = $0 as NSArray
-			for repo in repos {
-				var aRepo: Repository = Repository.importFromObject(repo) as Repository
-			}
-		}
+        DataFetcher.fetchURL("/api/1.0/user/repositories/", completion: {
+            let repos = $0 as! NSArray
+            for repo in repos {
+                let aRepo: Repository = Repository.importFromObject(repo) as! Repository
+                print(aRepo)
+            }
+        })
 	}
 
 	/**
 		Gets all the events for a repository
 		
-		:param: repo The repository to get the events for
+		- parameter repo: The repository to get the events for
 	*/
 	class func fetchEvents(repo: Repository){
-		DataFetcher.fetchURL("/api/1.0/repositories/\(repo.owner!)/\(repo.slug!)/events/") { (JSON:AnyObject) in
-			Event.deleteAll(repo)
-			var events = JSON["events"] as NSArray
-			for eventJSON in events {
-				var event = Event.importFromObject(eventJSON) as Event
-				event.belongsToRepository = repo
-			}
-		}
+        DataFetcher.fetchURL("/api/1.0/repositories/\(repo.owner!)/\(repo.slug!)/events/", completion: { (JSON:AnyObject) in
+            Event.deleteAll(repo)
+            let events = JSON["events"] as! NSArray
+            for eventJSON in events {
+                let event = Event.importFromObject(eventJSON) as! Event
+                event.belongsToRepository = repo
+            }
+        })
 	}
 
 	// MARK: Pull Request Stuff
@@ -144,76 +147,76 @@ class DataFetcher: NSObject {
 	/**
 		Gets all the pull requests for a given repo
 		
-		:param: repo The repository to get the pull requests for
+		- parameter repo: The repository to get the pull requests for
 	*/
 	class func fetchPullRequests(repo: Repository){
 		if let owner = repo.owner {
-			DataFetcher.fetchURL("/api/2.0/repositories/\(owner)/\(repo.slug!)/pullrequests/") { (JSON:AnyObject) in
-				var pullRequests = JSON["values"] as NSArray
-				for pullRequestJSON in pullRequests {
-					var pullRequest = PullRequest.importFromObject(pullRequestJSON) as PullRequest
-					pullRequest.belongsToRepository = repo
-				}
-			}
+            DataFetcher.fetchURL("/api/2.0/repositories/\(owner)/\(repo.slug!)/pullrequests/", completion: { (JSON:AnyObject) in
+                let pullRequests = JSON["values"] as! NSArray
+                for pullRequestJSON in pullRequests {
+                    let pullRequest = PullRequest.importFromObject(pullRequestJSON) as! PullRequest
+                    pullRequest.belongsToRepository = repo
+                }
+            })
 		}
 	}
 
 	/**
 		Gets the reviewers for a pull request
 		
-		:param: pullRequest The pull request to get the reviewers for
+		- parameter pullRequest: The pull request to get the reviewers for
 	*/
 	class func fetchPullRequestReviewers(pullRequest: PullRequest){
 		let repo = pullRequest.belongsToRepository!
-		DataFetcher.fetchURL("/api/1.0/repositories/\(repo.owner!)/\(repo.slug!)/pullrequests/\(pullRequest.pullRequestID!)/participants") { (JSON:AnyObject) in
-			var reviewers: [Reviewer] = []
-			for reviewJSON in JSON as NSArray {
-				let user = User.importFromObject(reviewJSON) as User
-				//TODO: This creates a new reviewer everytime. That's bad, mmmm'K?
-				var reviewer = Reviewer(user: user, pullRequest: pullRequest)
-				reviewer.approved = reviewJSON["approved"] as NSNumber
-				reviewers.append(reviewer)
-			}
-			pullRequest.hasReviewers = NSSet(array: reviewers)
-		}
+        DataFetcher.fetchURL("/api/1.0/repositories/\(repo.owner!)/\(repo.slug!)/pullrequests/\(pullRequest.pullRequestID!)/participants", completion: { (JSON:AnyObject) in
+            var reviewers: [Reviewer] = []
+            for reviewJSON in JSON as! NSArray {
+                let user = User.importFromObject(reviewJSON) as! User
+                //TODO: This creates a new reviewer everytime. That's bad, mmmm'K?
+                let reviewer = Reviewer(user: user, pullRequest: pullRequest)
+                reviewer.approved = reviewJSON["approved"] as! NSNumber
+                reviewers.append(reviewer)
+            }
+            pullRequest.hasReviewers = NSSet(array: reviewers)
+        })
 	}
 
 	/**
 	Gets the commits for a pull request
 
-	:param: pullRequest The pull request to get the commits for
+	- parameter pullRequest: The pull request to get the commits for
 	*/
 	class func fetchPullRequestCommits(pullRequest: PullRequest){
 		let repo = pullRequest.belongsToRepository!
-		DataFetcher.fetchURL("/api/2.0/repositories/\(repo.owner!)/\(repo.slug!)/pullrequests/\(pullRequest.pullRequestID!)/commits") { (JSON:AnyObject) in
-			var backgroundContext = NSManagedObjectContext.contextForCurrentThread()
-			var commits: [Commit] = []
-
-//			var commits = Commit.importFromArray(JSON["values"] as NSArray)
-
-			for commitJSON in JSON["values"] as NSArray {
-				var commit : Commit = Commit.createEntity() as Commit
-				commit.importValuesForKeysWithObject(commitJSON)
-				commits.append(commit)
-			}
-			pullRequest.hasCommits = NSSet(array: commits)
-		}
+        DataFetcher.fetchURL("/api/2.0/repositories/\(repo.owner!)/\(repo.slug!)/pullrequests/\(pullRequest.pullRequestID!)/commits", completion: { (JSON:AnyObject) in
+//            var backgroundContext = NSManagedObjectContext.contextForCurrentThread()
+            var commits: [Commit] = []
+            
+            //			var commits = Commit.importFromArray(JSON["values"] as NSArray)
+            
+            for commitJSON in JSON["values"] as! NSArray {
+                let commit = Commit.createEntity() as! Commit
+                commit.importValuesForKeysWithObject(commitJSON)
+                commits.append(commit)
+            }
+            pullRequest.hasCommits = NSSet(array: commits)
+        })
 	}
 
 	/**
 		Gets the diff for a pull request, commit or other object. For PullRequests, Bitbucket will send us a 403 with the real URL in the response, so we set that to the diffUrlString then try this again.
 		
-		:param: diffable The object to get the diff for. Usually a pull request or a commit.
+		- parameter diffable: The object to get the diff for. Usually a pull request or a commit.
 	*/
 	class func fetchDiff(diffable: Diffable){
 		// We expect this to 'fail'. BB returns a 403 with the correct url
 		DataFetcher.plainTextManager.GET(diffable.diffUrlString!, parameters: nil, success: { (operation, response) -> Void in
-			var responseString = NSString(data: response as NSData, encoding: NSUTF8StringEncoding)
-			diffable.diffString = responseString
+			let responseString = NSString(data: response as! NSData, encoding: NSUTF8StringEncoding)
+			diffable.diffString = String(responseString)
 			NSManagedObjectContext.defaultContext().saveToPersistentStoreWithCompletion({ (success, error) -> Void in
 				if (error != nil) {
-					println("Core data error!")
-					println(error)
+					print("Core data error!")
+					print(error)
 				}
 			})
 		}) { (operation, error) -> Void in
@@ -221,7 +224,7 @@ class DataFetcher: NSObject {
 				diffable.diffUrlString = operation.response.URL?.absoluteString
 				DataFetcher.fetchDiff(diffable)
 			} else {
-				println(error)
+				print(error)
 			}
 		}
 	}
@@ -231,7 +234,7 @@ class DataFetcher: NSObject {
 	/**
 		Marks a pull request as approved on BitBucket!
 		
-		:param: The pull request to approve
+		- parameter The: pull request to approve
 	*/
 	class func approvePullRequest(pullRequest: PullRequest){
 		let repo = pullRequest.belongsToRepository!
@@ -243,45 +246,45 @@ class DataFetcher: NSObject {
 	/**
 		Marks a pull request as unapproved on BitBucket! Fetches the list of approvers when it finishes
 
-		:param: The pull request to unapprove
+		- parameter The: pull request to unapprove
 	*/
 	class func unaprovePullRequest(pullRequest: PullRequest){
 		let repo = pullRequest.belongsToRepository!
 		DataFetcher.JSONManager.DELETE("/api/2.0/repositories/\(repo.owner!)/\(repo.slug!)/pullrequests/\(pullRequest.pullRequestID!)/approve", parameters: nil, success: { (operation, JSON) -> Void in
-			if JSON == nil {
-				print("Error getting events: ")
+            guard let _ = JSON else {
+				print("Error getting events: ", terminator: "")
 				return
 			}
 			DataFetcher.fetchPullRequestReviewers(pullRequest)
 			NSManagedObjectContext.defaultContext().saveToPersistentStoreWithCompletion({ (success, error) -> Void in
 				if (error != nil) {
-					println("Core data error!")
-					println(error)
+					print("Core data error!")
+					print(error)
 				}
 			})
 		}) { (operation, error) -> Void in
-			println(error)
+			print(error)
 		}
 	}
 
 	/**
 		Declines a pull request on BitBucket, then refetched all the PR's to make sure everything is kosher.
 
-		:param: The pull request to decline
+		- parameter The: pull request to decline
 	*/
 	class func declinePullRequest(pullRequest: PullRequest){
 		let repo = pullRequest.belongsToRepository!
 		DataFetcher.JSONManager.POST("/api/2.0/repositories/\(repo.owner!)/\(repo.slug!)/pullrequests/\(pullRequest.pullRequestID!)/decline", parameters: nil, success: { (operation, JSON) -> Void in
 			DataFetcher.fetchPullRequests(repo)
 			}) { (operation, error) -> Void in
-				println(error)
+				print(error)
 		}
 	}
 
 	/**
 		Merges a pull request on Bitbucket, then refetches all the PR's. Note that the /merge API requires a merge message. This is hardcoded to BitBucket's default for now (with a signature from the app).
 	
-		:param: The pull request to merge
+		- parameter The: pull request to merge
 	*/
 	class func mergePullRequest(pullRequest: PullRequest){
 		let repo = pullRequest.belongsToRepository!
@@ -290,7 +293,7 @@ class DataFetcher: NSObject {
 		DataFetcher.JSONManager.POST("/api/2.0/repositories/\(repo.owner!)/\(repo.slug!)/pullrequests/\(pullRequest.pullRequestID!)/merge", parameters: params, success: { (operation, JSON) -> Void in
 			DataFetcher.fetchPullRequests(repo)
 			}) { (operation, error) -> Void in
-				println(error)
+				print(error)
 		}
 	}
 
@@ -299,7 +302,7 @@ class DataFetcher: NSObject {
 	/**
 		Sets the authorization token for our two AFHTTPRequestOperationManager's
 		
-		:param: token The auth token to set. Should be a base 64 of "username:password"
+		- parameter token: The auth token to set. Should be a base 64 of "username:password"
 	*/
 	class func setAuthToken(token:String) {
 		DataFetcher.JSONManager.requestSerializer.setValue("Basic \(token)", forHTTPHeaderField: "Authorization")

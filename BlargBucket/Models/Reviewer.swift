@@ -24,8 +24,8 @@ public class Reviewer: BlargManagedObject {
 	/**
 		Designated initializer. Creates a Reviewer
 		
-		:param: user A user
-		:param: pullRequest A pull request
+		- parameter user: A user
+		- parameter pullRequest: A pull request
 	*/
 	convenience init(user: User, pullRequest: PullRequest){
 		let entity = NSEntityDescription.entityForName("Reviewer", inManagedObjectContext: NSManagedObjectContext.defaultContext())

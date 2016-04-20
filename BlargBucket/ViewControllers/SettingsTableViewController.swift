@@ -13,7 +13,7 @@ class SettingsTableViewController: UITableViewController {
 
 	let viewModel = SettingsViewModel()
 
-	override init() {
+	init() {
 		super.init(style: .Grouped)
 	}
 
@@ -22,7 +22,7 @@ class SettingsTableViewController: UITableViewController {
 	}
 
 	required init(coder aDecoder: NSCoder) {
-	    super.init(coder: aDecoder)
+	    super.init(coder: aDecoder)!
 	}
 
 	override func viewDidLoad() {
@@ -35,7 +35,7 @@ class SettingsTableViewController: UITableViewController {
 	// MARK: - Table view data source
 
 	override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-		return viewModel.sectionTitles.count > section ? viewModel.sectionTitles[section] : nil
+		return viewModel.sectionTitles.count > section ? viewModel.sectionTitles[section] as String : nil
 	}
 
 	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -47,7 +47,7 @@ class SettingsTableViewController: UITableViewController {
 	}
 
 	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		var cellModel = viewModel.sections[indexPath.section][indexPath.row]
+		let cellModel = viewModel.sections[indexPath.section][indexPath.row]
 		let cell = tableView.dequeueReusableCellWithIdentifier(cellModel.reuseIdentifier, forIndexPath: indexPath) as UITableViewCell
 
 		cell.textLabel?.text = cellModel.title
@@ -58,7 +58,7 @@ class SettingsTableViewController: UITableViewController {
 	}
 
 	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-		var cellModel = viewModel.sections[indexPath.section][indexPath.row]
+		let cellModel = viewModel.sections[indexPath.section][indexPath.row]
 		if let action = cellModel.action {
 			action(view: self)
 		}

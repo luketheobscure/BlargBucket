@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Locksmith
+import MBProgressHUD
 
 class SettingsViewModel {
    var sections: [[TableCellModel]] = []
@@ -15,15 +17,15 @@ class SettingsViewModel {
    var HUD: MBProgressHUD?
 
 	init() {
-		var firstSection = buildFirstSection()
-		var secondSection = buildSecondSection()
+		let firstSection = buildFirstSection()
+		let secondSection = buildSecondSection()
 		sections = [firstSection, secondSection]
 	}
 
 	func buildSecondSection() -> [TableCellModel] {
 		return [
 			TableCellModel(
-				title: LocalizedString("Logout"),
+				title: LocalizedString("Logout") as String,
 				detailTitle: nil,
 				imageView: nil,
 				reuseIdentifier: ButtonTableViewCell.reuseIdentifier(),
@@ -40,22 +42,22 @@ class SettingsViewModel {
 	func buildFirstSection() -> [TableCellModel] {
 		return [
 			TableCellModel(
-				title: LocalizedString("Worms"),
+				title: LocalizedString("Worms") as String,
 				detailTitle: nil,
 				imageView: nil,
 				reuseIdentifier: NormalTableViewCell.reuseIdentifier(),
 				action: { (view) in
-					self.setHUD("worms", tableView: view as UITableViewController)
+					self.setHUD("worms", tableView: view as! UITableViewController)
 				},
 				accesoryType: BlargHUD.hudMode() == "worms" ? .Checkmark : .None
 			),
 			TableCellModel(
-				title: LocalizedString("Tetris"),
+				title: LocalizedString("Tetris") as String,
 				detailTitle: nil,
 				imageView: nil,
 				reuseIdentifier: NormalTableViewCell.reuseIdentifier(),
 				action: { (view) in
-					self.setHUD("tetris", tableView: view as UITableViewController)
+					self.setHUD("tetris", tableView: view as! UITableViewController)
 				},
 				accesoryType: BlargHUD.hudMode() == "tetris" ? .Checkmark : .None
 
@@ -72,8 +74,8 @@ class SettingsViewModel {
 
 	func showHUD(view:UIView) {
 		self.HUD = BlargHUD.customizedHUDAddedTo(view)
-		self.HUD?.labelText = LocalizedString("Tap to dismiss")
-		var tappy = UITapGestureRecognizer(target: self, action: "removeHUD")
+		self.HUD?.labelText = LocalizedString("Tap to dismiss") as String
+		let tappy = UITapGestureRecognizer(target: self, action: #selector(SettingsViewModel.removeHUD))
 		self.HUD?.addGestureRecognizer(tappy)
 	}
 

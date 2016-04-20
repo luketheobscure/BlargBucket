@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9C82EA889C8E46E78D2F6E0A /* libPods-BlargBucket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E5939069ECF049F5958530A3 /* libPods-BlargBucket.a */; };
+		48907E65F7DA407A6FBF3BCD /* Pods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4796949D09F0268E36A3230C /* Pods_Tests.framework */; };
+		562CC63F703AAE31A1C88D14 /* Pods_BlargBucket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBD6C1B439F57DD4BF7EE5DB /* Pods_BlargBucket.framework */; };
 		B50261101A43DC9900FE4F44 /* Events.yml in Resources */ = {isa = PBXBuildFile; fileRef = B502610F1A43DC9900FE4F44 /* Events.yml */; };
 		B50261121A43DEFB00FE4F44 /* EventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50261111A43DEFB00FE4F44 /* EventTests.swift */; };
 		B52FD1A11A0EC3CA00D7324F /* ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52FD19F1A0EC3CA00D7324F /* ButtonTableViewCell.swift */; };
@@ -37,8 +38,6 @@
 		B57302C6199C6DCF00060D2E /* DataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57302C5199C6DCF00060D2E /* DataFetcher.swift */; };
 		B583A9BE19F8551800AC1EF8 /* ReviewerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B583A9BC19F8551800AC1EF8 /* ReviewerCollectionViewCell.swift */; };
 		B583A9BF19F8551800AC1EF8 /* ReviewerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B583A9BD19F8551800AC1EF8 /* ReviewerCollectionViewCell.xib */; };
-		B585F4221A2FF08A00567A34 /* Locksmith.swift in Sources */ = {isa = PBXBuildFile; fileRef = B585F4201A2FF08A00567A34 /* Locksmith.swift */; };
-		B585F4231A2FF08A00567A34 /* LocksmithRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B585F4211A2FF08A00567A34 /* LocksmithRequest.swift */; };
 		B587B4721A0D2BDB007F7F10 /* TableCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B587B4711A0D2BDB007F7F10 /* TableCellModel.swift */; };
 		B587B4741A0D2C7E007F7F10 /* PullRequestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B587B4731A0D2C7E007F7F10 /* PullRequestViewModel.swift */; };
 		B594D90B19A53FD5000D6A10 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B594D90A19A53FD5000D6A10 /* EventsViewController.swift */; };
@@ -84,7 +83,6 @@
 		B5EA027119F9572D00F9D573 /* Reviewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EA027019F9572D00F9D573 /* Reviewer.swift */; };
 		B5F52A0A19F21D2600468E35 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F52A0819F21D2600468E35 /* InfoViewController.swift */; };
 		B5F646B219AD962F003A20A1 /* NormalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5F646B119AD962F003A20A1 /* NormalTableViewCell.xib */; };
-		F7AB4864BDE974A4409B3845 /* libPods-Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F33C1EE740E4029A551673B /* libPods-Tests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,9 +98,9 @@
 /* Begin PBXFileReference section */
 		0A02CCCAA03C03640B1AFB46 /* Pods-BlargBucket.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlargBucket.release.xcconfig"; path = "Pods/Target Support Files/Pods-BlargBucket/Pods-BlargBucket.release.xcconfig"; sourceTree = "<group>"; };
 		3A68715FD87B4DBD972D83A0 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		4796949D09F0268E36A3230C /* Pods_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9483CF23C6A7C3CF4433ABFA /* Pods-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.release.xcconfig"; sourceTree = "<group>"; };
 		9E9EC40F88EA1A02B1FA4A5C /* Pods-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		9F33C1EE740E4029A551673B /* libPods-Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A92B1606B64A41DCA1A82776 /* libPods-BlargBucketTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BlargBucketTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B502610F1A43DC9900FE4F44 /* Events.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Events.yml; sourceTree = "<group>"; };
 		B50261111A43DEFB00FE4F44 /* EventTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventTests.swift; path = Models/EventTests.swift; sourceTree = "<group>"; };
@@ -139,8 +137,6 @@
 		B57302C5199C6DCF00060D2E /* DataFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataFetcher.swift; sourceTree = "<group>"; };
 		B583A9BC19F8551800AC1EF8 /* ReviewerCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReviewerCollectionViewCell.swift; path = Views/ReviewerCollectionViewCell.swift; sourceTree = "<group>"; };
 		B583A9BD19F8551800AC1EF8 /* ReviewerCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ReviewerCollectionViewCell.xib; path = Views/ReviewerCollectionViewCell.xib; sourceTree = "<group>"; };
-		B585F4201A2FF08A00567A34 /* Locksmith.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Locksmith.swift; path = ext/Locksmith.swift; sourceTree = "<group>"; };
-		B585F4211A2FF08A00567A34 /* LocksmithRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocksmithRequest.swift; path = ext/LocksmithRequest.swift; sourceTree = "<group>"; };
 		B587B4711A0D2BDB007F7F10 /* TableCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableCellModel.swift; path = "ViewModels/Base Classes/TableCellModel.swift"; sourceTree = "<group>"; };
 		B587B4731A0D2C7E007F7F10 /* PullRequestViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PullRequestViewModel.swift; path = ViewModels/PullRequestViewModel.swift; sourceTree = "<group>"; };
 		B594D90A19A53FD5000D6A10 /* EventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventsViewController.swift; path = ViewControllers/EventsViewController.swift; sourceTree = "<group>"; };
@@ -188,7 +184,7 @@
 		B5EA027019F9572D00F9D573 /* Reviewer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reviewer.swift; path = Models/Reviewer.swift; sourceTree = "<group>"; };
 		B5F52A0819F21D2600468E35 /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InfoViewController.swift; path = ViewControllers/InfoViewController.swift; sourceTree = "<group>"; };
 		B5F646B119AD962F003A20A1 /* NormalTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NormalTableViewCell.xib; path = Views/NormalTableViewCell.xib; sourceTree = "<group>"; };
-		E5939069ECF049F5958530A3 /* libPods-BlargBucket.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BlargBucket.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DBD6C1B439F57DD4BF7EE5DB /* Pods_BlargBucket.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BlargBucket.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE9DFE0D8D53A187F38197E8 /* Pods-BlargBucket.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlargBucket.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BlargBucket/Pods-BlargBucket.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -197,7 +193,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F7AB4864BDE974A4409B3845 /* libPods-Tests.a in Frameworks */,
+				48907E65F7DA407A6FBF3BCD /* Pods_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,7 +202,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B547AD3C19B3E36C00AE2F5B /* CoreData.framework in Frameworks */,
-				9C82EA889C8E46E78D2F6E0A /* libPods-BlargBucket.a in Frameworks */,
+				562CC63F703AAE31A1C88D14 /* Pods_BlargBucket.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,10 +215,10 @@
 				B50976D319BD687300513CC4 /* libPods-BlargBucket-SDWebImage.a */,
 				B50976D119BD687000513CC4 /* libPods-BlargBucket.a */,
 				B547AD3A19B3E36200AE2F5B /* CoreData.framework */,
-				E5939069ECF049F5958530A3 /* libPods-BlargBucket.a */,
 				A92B1606B64A41DCA1A82776 /* libPods-BlargBucketTests.a */,
 				3A68715FD87B4DBD972D83A0 /* libPods.a */,
-				9F33C1EE740E4029A551673B /* libPods-Tests.a */,
+				DBD6C1B439F57DD4BF7EE5DB /* Pods_BlargBucket.framework */,
+				4796949D09F0268E36A3230C /* Pods_Tests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -357,15 +353,6 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
-		B585F4241A2FF49C00567A34 /* ext */ = {
-			isa = PBXGroup;
-			children = (
-				B585F4201A2FF08A00567A34 /* Locksmith.swift */,
-				B585F4211A2FF08A00567A34 /* LocksmithRequest.swift */,
-			);
-			name = ext;
-			sourceTree = "<group>";
-		};
 		B587B4701A0D2BB3007F7F10 /* Base Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -439,7 +426,6 @@
 		B5B4CA4619A07D8300A4213A /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				B585F4241A2FF49C00567A34 /* ext */,
 				B573029E199C6A0B00060D2E /* AppDelegate.swift */,
 				B57302C5199C6DCF00060D2E /* DataFetcher.swift */,
 				B547AD3119B3D5C800AE2F5B /* CoreDataStack.swift */,
@@ -491,6 +477,7 @@
 				B55DBAE41A2F6503001D90E8 /* Frameworks */,
 				B55DBAE51A2F6503001D90E8 /* Resources */,
 				EBFD52BBFB97809C9ACD4350 /* Copy Pods Resources */,
+				FDFB5A32C6BCEE7BDD834E07 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -512,6 +499,7 @@
 				B5730297199C6A0B00060D2E /* Resources */,
 				C7E8AF455FB64AF3AA59A9F5 /* Copy Pods Resources */,
 				B547AD2819B396A300AE2F5B /* Generate TODO Warnings */,
+				4160E323537FDC2288313AD6 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -528,7 +516,9 @@
 		B5730291199C6A0B00060D2E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0600;
+				LastSwiftMigration = 0720;
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "Luke Deniston";
 				TargetAttributes = {
 					B55DBAE61A2F6503001D90E8 = {
@@ -594,6 +584,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		4160E323537FDC2288313AD6 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BlargBucket/Pods-BlargBucket-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		61DB2A1AFB8A7FBD49E8FACE /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -668,6 +673,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Tests/Pods-Tests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		FDFB5A32C6BCEE7BDD834E07 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Tests/Pods-Tests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -693,7 +713,6 @@
 				B556333B19F408C500856D7A /* ReviewersViewController.swift in Sources */,
 				B5D17BBB19A84A770023C263 /* EventTableViewCell.swift in Sources */,
 				B5B4CA4419A07ADE00A4213A /* LoginViewController.swift in Sources */,
-				B585F4231A2FF08A00567A34 /* LocksmithRequest.swift in Sources */,
 				B5B4CA38199FE8B800A4213A /* MainTabBarViewController.swift in Sources */,
 				B5D17BBE19A957370023C263 /* RepositoryInfoViewController.swift in Sources */,
 				B594D90D19A53FFF000D6A10 /* EventsViewModel.swift in Sources */,
@@ -713,7 +732,6 @@
 				B5A9E73319A4648C001A25E8 /* Event.swift in Sources */,
 				B5314CDA19A3AAFE0066B402 /* Notifications.swift in Sources */,
 				B56D3BC519E98F05004A2504 /* DiffViewModel.swift in Sources */,
-				B585F4221A2FF08A00567A34 /* Locksmith.swift in Sources */,
 				B5D17BC019A9581F0023C263 /* RepositoryVM.swift in Sources */,
 				B5F52A0A19F21D2600468E35 /* InfoViewController.swift in Sources */,
 				B5E5BFBC1A6CD09700F223E2 /* BlargHUD.swift in Sources */,
@@ -760,10 +778,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -776,6 +791,7 @@
 				INFOPLIST_FILE = Tests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "LukeDeniston.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Tests/Tests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -789,10 +805,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"${SRCROOT}/Pods/Headers/Public/**",
@@ -801,6 +814,7 @@
 				INFOPLIST_FILE = Tests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "LukeDeniston.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Tests/Tests-Bridging-Header.h";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BlargBucket.app/BlargBucket";
@@ -827,6 +841,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
@@ -901,9 +916,11 @@
 				);
 				INFOPLIST_FILE = "BlargBucket/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "LukeDeniston.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "BlargBucket-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -920,8 +937,10 @@
 				);
 				INFOPLIST_FILE = "BlargBucket/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "LukeDeniston.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "BlargBucket-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

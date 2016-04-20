@@ -8,6 +8,7 @@
 
 import XCTest
 import BlargBucket
+import MagicalRecord
 
 class CommitTests: BlargTest {
 
@@ -15,7 +16,7 @@ class CommitTests: BlargTest {
 		// We're doing some weird things here as a temporary fix for XCTool/Travis
 		MagicalRecord.setupCoreDataStackWithInMemoryStore()
 		var data = Fixtures.fixtureForClass("Commits", name: "LukesCommit")
-		return Commit.testImportFromObject(data) as Commit
+		return Commit.testImportFromObject(data) as! Commit
 	}()
 
 	func testMessage(){

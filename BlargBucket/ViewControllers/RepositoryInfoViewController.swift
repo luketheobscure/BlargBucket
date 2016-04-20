@@ -8,6 +8,7 @@
 
 import UIKit
 import QuartzCore
+import SDWebImage
 
 // TODO: Add documentation after we refactor
 
@@ -44,13 +45,13 @@ class RepositoryInfoViewController: UITableViewController {
     }
 
 	func setupInfoView() {
-		var url = AppDelegate.sharedInstance().activeRepo?.logo ?? ""
+		let url = AppDelegate.sharedInstance().activeRepo?.logo ?? ""
 		if url != "" {
-			SDWebImageDownloader.sharedDownloader().downloadImageWithURL(NSURL(string: url), options: nil, progress: nil, completed: {[weak self] (image, data, error, finished) in
+			SDWebImageDownloader.sharedDownloader().downloadImageWithURL(NSURL(string: url as String), options: SDWebImageDownloaderOptions.LowPriority, progress: nil, completed: {[weak self] (image, data, error, finished) in
 				if let wSelf = self {
 					if image != nil {
-						self?.backgroundImage?.image = image?
-						self?.imageView?.image = image
+						wSelf.backgroundImage?.image = image
+						wSelf.imageView?.image = image
 					}
 				}
 			})
@@ -58,8 +59,8 @@ class RepositoryInfoViewController: UITableViewController {
 		let textLabel = topView.titleLabel as UILabel
 		let detailLabel = topView.descriptionLabel as UILabel
 
-		textLabel.text = AppDelegate.sharedInstance().activeRepo?.name
-		detailLabel.text = AppDelegate.sharedInstance().activeRepo?.repo_description
+		textLabel.text = AppDelegate.sharedInstance().activeRepo?.name as? String
+		detailLabel.text = AppDelegate.sharedInstance().activeRepo?.repo_description as? String
 
 	}
 
@@ -69,9 +70,9 @@ class RepositoryInfoViewController: UITableViewController {
 		return 2
 	}
 
-	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return viewModel.info?.count ?? 0
-	}
+//	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//		return viewModel.info?.count ?? 0
+//	}
 
 	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath) as UITableViewCell

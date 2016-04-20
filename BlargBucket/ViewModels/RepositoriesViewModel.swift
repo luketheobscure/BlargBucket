@@ -18,10 +18,14 @@ class RepositoriesViewModel: NSFetchedResultsController {
 			if newValue != nil && newValue != ""{
 				fetchRequest.predicate = NSPredicate(format: "name contains[cd] %@", newValue!)
 			}
-			var error = NSErrorPointer()
-			performFetch(error)
+            let error: NSErrorPointer = nil
+			do {
+				try performFetch()
+			} catch let error1 as NSError {
+				error.memory = error1
+			}
 			if error != nil {
-				println(error)
+				print(error)
 			}
 		}
 		get {
@@ -32,14 +36,14 @@ class RepositoriesViewModel: NSFetchedResultsController {
 	/// Designated initializer
 	override init() {
 		let fetchRequest = NSFetchRequest(entityName: "Repository")
-		fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "name", ascending: true, selector: "localizedCaseInsensitiveCompare:") ]
+		fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "name", ascending: true, selector: #selector(NSString.localizedCaseInsensitiveCompare(_:))) ]
 		super.init(fetchRequest: fetchRequest, managedObjectContext: NSManagedObjectContext.defaultContext(), sectionNameKeyPath: nil, cacheName: nil)
 		DataFetcher.fetchRepoInfo()
 	}
 
 	/// Returns the repository at the index path
 	func repoAtIndexPath(indexPath: NSIndexPath) -> Repository! {
-		return objectAtIndexPath(indexPath) as Repository
+		return objectAtIndexPath(indexPath) as! Repository
 	}
    
 }

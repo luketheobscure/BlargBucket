@@ -9,7 +9,7 @@
 /**
 	Slightly shorter way of creating a localized string.
 	
-	:param: string The string to localize.
+	- parameter string: The string to localize.
 */
 func LocalizedString(string:String) -> NSString {
 	return NSLocalizedString(string, comment: string)

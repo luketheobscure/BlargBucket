@@ -38,10 +38,10 @@ class Formatters {
 
 	/// Fixes image url's from BitBucket to get the full size url's
 	func fixImgeURL(url: String) -> String {
-		var mutableString = NSMutableString(string: url)
+		let mutableString = NSMutableString(string: url)
 		imageURLSizeRegEx?.replaceMatchesInString(mutableString, options: NSMatchingOptions.WithoutAnchoringBounds, range: NSMakeRange(0, mutableString.length), withTemplate: ".png")
-		return mutableString
+		return mutableString as String
 	}
-	let imageURLSizeRegEx = NSRegularExpression(pattern: "_16\\.png", options: NSRegularExpressionOptions.AllowCommentsAndWhitespace, error: nil)
+	let imageURLSizeRegEx = try? NSRegularExpression(pattern: "_16\\.png", options: NSRegularExpressionOptions.AllowCommentsAndWhitespace)
 
 }
